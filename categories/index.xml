@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Categories - Category - Kine&#39;s info</title>
+        <link>https://kine.github.io/KinesInfo/categories/</link>
+        <description>Categories - Category - Kine&#39;s info</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 16 Nov 2021 10:00:10 &#43;0100</lastBuildDate><atom:link href="https://kine.github.io/KinesInfo/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Test</title>
+    <link>https://kine.github.io/KinesInfo/categories/test/</link>
+    <pubDate>Tue, 16 Nov 2021 10:00:10 &#43;0100</pubDate><author>
+        <name>Author</name>
+    </author><guid>https://kine.github.io/KinesInfo/categories/test/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Welcome</title>
+    <link>https://kine.github.io/KinesInfo/categories/welcome/</link>
+    <pubDate>Tue, 16 Nov 2021 10:00:10 &#43;0100</pubDate><author>
+        <name>Author</name>
+    </author><guid>https://kine.github.io/KinesInfo/categories/welcome/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
+</rss>
