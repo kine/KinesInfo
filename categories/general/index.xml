@@ -1,9 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Test - Category - Kine&#39;s info</title>
-        <link>https://kine.github.io/KinesInfo/categories/test/</link>
-        <description>Test - Category - Kine&#39;s info</description>
-        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 16 Nov 2021 10:00:10 &#43;0100</lastBuildDate><atom:link href="https://kine.github.io/KinesInfo/categories/test/" rel="self" type="application/rss+xml" /><item>
+        <title>General - Category - Kine&#39;s info</title>
+        <link>https://kine.github.io/KinesInfo/categories/general/</link>
+        <description>General - Category - Kine&#39;s info</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 16 Nov 2021 10:00:10 &#43;0100</lastBuildDate><atom:link href="https://kine.github.io/KinesInfo/categories/general/" rel="self" type="application/rss+xml" /><item>
     <title>My new blog</title>
     <link>https://kine.github.io/KinesInfo/posts/newblog/</link>
     <pubDate>Tue, 16 Nov 2021 10:00:10 &#43;0100</pubDate><author>
