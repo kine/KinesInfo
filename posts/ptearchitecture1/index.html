@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Architecture of PTE - Kine&#39;s info</title>
+<meta name="description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Kine&#39;s info">
+<meta property="og:title" content="Architecture of PTE">
+<meta property="og:description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.kine.cz/posts/ptearchitecture1/">
+  <meta property="og:image" content="https://blog.kine.cz/assets/KSC.png">
+
+
+
+  <link rel="shortcut icon" href="https://blog.kine.cz/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.89.4" />
+  <link rel="stylesheet" href="https://blog.kine.cz/css/bundle.min.5233f2a4cd515395301b4154f6c1c621695e8cf53faa0935b76ac52fed7f4585.css" integrity="sha256-UjPypM1RU5UwG0FU9sHGIWlejPU/qgk1t2rFL&#43;1/RYU="><link rel="stylesheet" href="https://blog.kine.cz/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="https://blog.kine.cz/" class="nav">
+        
+          Architecture of PTE
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/about" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/categories" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/tags" class="nav link"><i class='fas fa-tags'></i> Tags</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active"> (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Architecture%20of%20PTE&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fptearchitecture1%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fptearchitecture1%2f&amp;title=Architecture%20of%20PTE" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fptearchitecture1%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="https://blog.kine.cz/"><img src="https://blog.kine.cz/assets/KSC.png" class="circle" width="100" alt="Kine&#39;s Info" /></a>
+  <header>
+    <h1>Kine's Info</h1>
+  </header>
+  <main>
+    <p>Another blog about Microsoft Dynamics 365 Business Central (AL, Powershell, Azure DevOps etc.)<center><a href='https://mvp.microsoft.com/en-us/mvp/kamil%20sacek-21590'><img src='https://blog.kine.cz/assets/MVP_Logo_Horizontal_Secondary_Blue286_CMYK_72ppi.png' width='50%'></a></center></p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article>
+    <div class="post">
+      <header>
+  <div class="title">
+    
+      <h2><a href="https://blog.kine.cz/posts/ptearchitecture1/">Architecture of PTE</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time datetime="2021-11-18 16:51:00 &#43;0100 &#43;0100">November 18, 2021</time>
+    
+    <p>6-Minute Read</p>
+  </div>
+</header>
+
+      <div id="socnet-share">
+        
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Architecture%20of%20PTE&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fptearchitecture1%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fptearchitecture1%2f&amp;title=Architecture%20of%20PTE" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fptearchitecture1%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+      </div>
+      <div class="content">
+        
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#split-or-not-to-split">Split or not to split</a></li>
+    <li><a href="#types-of-pte-apps">Types of PTE apps</a></li>
+    <li><a href="#differences">Differences</a>
+      <ul>
+        <li><a href="#splitting">Splitting</a></li>
+        <li><a href="#all-in-one">All-in-one</a></li>
+        <li><a href="#comparing">Comparing</a></li>
+      </ul>
+    </li>
+    <li><a href="#smart-architecture">SMART Architecture</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+        
+        <p>On Directions EMEA in Milan I delivered session about Architecture of PTE for Business Central. I was trying to find some rules when or why you should or shouldn&rsquo;t 
+split your PTE into multiple apps. Now I will try to catch this into this article.</p>
+<h2 id="split-or-not-to-split">Split or not to split</h2>
+<p>Some partners are putting everything into one app per customer. Some are splitting all to separate apps based on different rules like per process, per area etc.
+Our company is going through the way of splitting, rather than not splitting, because on the beginning we wanted to have possibility to re-use the &ldquo;tiny apps&rdquo; for others if needed.
+But the result? Here is the picture (taken from real live customer project):</p>
+<p><img src="https://blog.kine.cz/assets/DependencyGraph.png" alt="Real structure example"></p>
+<p>As you can see, some apps are &ldquo;self standing&rdquo;. This is what we wanted to have. But most of them are connected with others. That&rsquo;s something we didn&rsquo;t want. What does it mean? They are not re-usable, if you do not want to re-use even the dependencies. It means you can reuse only the &ldquo;leftmost&rdquo; apps. It makes most of the apps non-reusable without refactoring.</p>
+<p>But the question stays: <strong>Split or not to split?</strong></p>
+<h2 id="types-of-pte-apps">Types of PTE apps</h2>
+<p>based on the chart, I made some analysis and found these sets of apps based on names of the apps:</p>
+<ul>
+<li><em>TOOLS/LIBRARIES</em> - &ldquo;Record links&rdquo;, &ldquo;Control Focus&rdquo;, &ldquo;Barcodes&rdquo;, &ldquo;PDF Signature&rdquo;</li>
+<li><em>IMPORTS/EXPORTS</em> - &ldquo;Data Migration&rdquo;, &ldquo;Salary Import Connector&rdquo;, &ldquo;Banking&rdquo;</li>
+<li><em>CONNECTORS</em> - &ldquo;Manufacturing API&rdquo;, &ldquo;Laboratory Integration&rdquo;, &ldquo;NAV Web Service Adapter&rdquo;</li>
+<li><em>SIMPLE PROCESSES</em> - &ldquo;VAT Posting Date Change&rdquo;, &ldquo;Standard Cost Management&rdquo;, &ldquo;Approval&rdquo;, &ldquo;On Hold&rdquo;</li>
+<li><em>COMPLEX PROCESSES OR AREAS</em> - &ldquo;Service Acceptance&rdquo;, &ldquo;Spare Parts&rdquo;, &ldquo;Overhead Material&rdquo;, &ldquo;FA Inventory&rdquo;, &ldquo;Price Security&rdquo;, &ldquo;Manufacturing&rdquo;, &ldquo;Report Pack&rdquo;…</li>
+<li><em>EXTENSIONS (CUSTOMIZATIONS)</em> - &ldquo;Handling Unit Extension&rdquo;, &ldquo;Continia Extension&rdquo;, &ldquo;Small modifications&rdquo;, „Intrastat Extension&quot;</li>
+</ul>
+<p>We can define some properties of each type, which could help us to identify them:</p>
+<ul>
+<li><em>TOOLS/LIBRARIES</em> - Adding functionality which is used through whole system, independent on specific processes/areas</li>
+<li><em>IMPORTS/EXPORTS</em> - working with files or other data sources</li>
+<li><em>CONNECTORS</em> - connecting with other systems (through API - as client or as server) or between extensions</li>
+<li><em>SIMPLE PROCESSES</em> - mostly adding some small tasks and processes, limited schema changes (not many fields and tables)</li>
+<li><em>COMPLEX PROCESSES or AREAS</em> - creating new processes or whole areas, new tables, pages…</li>
+<li><em>EXTENSIONS (CUSTOMIZATIONS)</em> - are modifying app which is in responsibility of someone else (3rd part, different product group etc.)</li>
+</ul>
+<p>And based on their properties, we can divide them into two groups:</p>
+<ul>
+<li><strong>Not Problematic</strong>
+<ul>
+<li><em>TOOLS</em> - mostly depending on standard only (lowest level dependencies)</li>
+<li><em>IMPORTS/EXPORTS</em> - low probability of depending apps, rather depends on other (similar to CONNECTORS), sometimes need to be OnPrem if we are OnPrem</li>
+<li><em>CONNECTORS</em> - should be top (or bottom) app in the tree</li>
+</ul>
+</li>
+<li><strong>Problematic</strong>
+<ul>
+<li><em>SIMPLE PROCESSES</em> - you do not know if it will not grow to be complex</li>
+<li><em>COMPLEX PROCESSES or AREAS</em> - hard to split the processes correctly and solve the dependencies when cyclic</li>
+<li><em>EXTENSIONS (CUSTOMIZATIONS)</em> - could have depending apps, could grow to complex processes</li>
+</ul>
+</li>
+</ul>
+<p>But still: <strong>Split or not to split?</strong></p>
+<h2 id="differences">Differences</h2>
+<p>Ok, previous classification is not helping us to answer the question. We should look at the
+CONs and PROs of the splitting the PTE into separate Apps:</p>
+<h3 id="splitting">Splitting</h3>
+<ul>
+<li><strong>PRO</strong>:
+<ul>
+<li>Easier parallel development (development split to more apps)</li>
+<li>Clear responsibilities</li>
+<li>Simpler/Smaller apps</li>
+<li>Simpler maintenance</li>
+<li>Re-use (really?)</li>
+<li>List of functionalities</li>
+<li>Possibility to „uninstall&quot; customization when not needed (really?)</li>
+</ul>
+</li>
+<li><strong>CONS</strong>:
+<ul>
+<li>Dependency „hell&quot; (solvable)</li>
+<li>Architecture decisions are more complex</li>
+<li>Performance (solvable)</li>
+<li>Release complexity (solvable)</li>
+<li>Cost of maintenance per app (partially solvable)</li>
+</ul>
+</li>
+</ul>
+<p>We can discuss if the apps are re-usable (we already touched this). But most of the CONs are solvable by using correct tools (partial records etc.) and automatic processes (release pipelines, powershell etc.).</p>
+<h3 id="all-in-one">All-in-one</h3>
+<ul>
+<li><strong>PRO</strong>:
+<ul>
+<li>Simplified Architecture</li>
+<li>Simplified release to Customer</li>
+<li>Cost of maintenance per app</li>
+<li>Performance (! not because technical issues, but because mindset of the developers - <em>&ldquo;it is in one app, why bother with performance?&quot;</em>)</li>
+</ul>
+</li>
+<li><strong>CONS</strong>:
+<ul>
+<li>Developers conflicts (solvable)</li>
+<li>Release Planning (solvable)</li>
+<li>Installation times (? in history, deploying big app took more time)</li>
+<li>Impossible to re-use without refactoring</li>
+<li>What is inside (solvable)</li>
+<li>Shared responsibilities</li>
+</ul>
+</li>
+</ul>
+<p>And again, you can see that most of the CONs could be solved by tools (AL Object ID Ninja, documentation etc.) and processes (Azure DevOps planning etc.)</p>
+<p>Still: <strong>Split or not to split?</strong></p>
+<h3 id="comparing">Comparing</h3>
+<p>Ok, compare the PROs and CONs of both methods when we remove the solvable items:</p>
+<p><img src="https://blog.kine.cz/assets/SplitProCons.png" alt="SplitProCons"></p>
+<p>Items I think are most interesting are in <strong>bold</strong>.</p>
+<p>All depends on priorities you have in your company or team. If your priority is e.g. &ldquo;Simpler maintenance&rdquo; and &ldquo;Clear responsibility&rdquo; 
+and you sacrifice the &ldquo;easy architecture decisions&rdquo;, go and split the apps.</p>
+<p>If your prioroty is simpler &ldquo;architecture decisions&rdquo; and you sacrifice &ldquo;shared responsibility&rdquo; (who is responsible for the content of big, all-in-one app?), go and do not split.</p>
+<p>Ok, does it mean <strong>split or not to split?</strong></p>
+<h2 id="smart-architecture">SMART Architecture</h2>
+<p>For me, both ways are valid. But you need to do it SMART.</p>
+<ul>
+<li><strong>S</strong>IMPLE</li>
+<li><strong>M</strong>ANAGABLE</li>
+<li><strong>A</strong>RCHITECTURE</li>
+<li><strong>R</strong>EACHING</li>
+<li><strong>T</strong>ARGET</li>
+</ul>
+<p>And to do it, you need to know what the target is for you, your team, your company, your customers.</p>
+<p>What it could mean? For example this:</p>
+<ul>
+<li>Keep TOOL/LIBRARIES and CONNECTOR apps separate</li>
+<li>Use Dependency Inversion principles (interfaces etc.) where you want to &ldquo;reverse&rdquo; the dependency</li>
+<li>Try to keep the responsibilities clear. Boundary of App is boundary of responsibility. Public interface of App is contract between apps.</li>
+<li>When you need to depend on new App (3rd party etc.), try to create CONNECTOR as separate app to prevent adding the dependency into the &ldquo;core&rdquo; app if possible.</li>
+<li>When you need to switch the app to „OnPrem&rdquo;, create CONNECTOR (working with local files etc.) - leave rest of the logic in „Cloud&quot; (<strong>and best is to not use OnPrem at all - it will cost you, literally</strong>)</li>
+<li>Content of the app must be in line with app name. If the change is not in line with the app name, may be it should be somewhere else. Choose wise the name of the app.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>May be you have still questions, what is THE BEST way. But I think there is no silver bullet for this. The answer could be different, depending on who you ask.
+But if you already go some way, do not switch just because someone tells you that it is better in another way. May be he/she is solving different problems than you
+and your solution in your situation is the best for you.</p>
+<p>I hope that this article helps someone to think about the architecture of Business Central PTEs from different angles, and I am open to discussion about the architecture at all.
+What I see now as biggest gap in our community, is lack of architects and discussion about the architecture itself. And this my session and article is for me starter for the discussion
+we will have next years.</p>
+<p>Be safe! See you online/onprem!</p>
+
+      </div>
+      <footer>
+        <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/architecture/">Architecture</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/pte/">PTE</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/architecture/">Architecture</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/pte/">PTE</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+      </footer>
+    </div>
+    
+      
+
+    
+  </article>
+  <div class="pagination">
+    
+    
+      <a href="https://blog.kine.cz/posts/newblog/" class="button right"><span>My new blog</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/ptearchitecture1/">Architecture of PTE</a></h2>
+          <time class="published" datetime="2021-11-18 16:51:00 &#43;0100 &#43;0100">November 18, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/newblog/">My new blog</a></h2>
+          <time class="published" datetime="2021-11-16 10:00:10 &#43;0100 &#43;0100">November 16, 2021</time>
+        </header>
+      </article>
+      
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="https://blog.kine.cz/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/architecture/">architecture<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/business-central/">business-central<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/general/">general<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/pte/">pte<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I have more than 35 years of experience with SW development and everything around IT. I have got my first MVP award in 2004.</p>
+      <footer>
+        <a href="https://blog.kine.cz/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+  
+  <p class="copyright">
+    © 2021 Kine&#39;s info
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.89.4' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="https://blog.kine.cz/js/highlight.js"></script>
+    
+    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.b927b4ae1d425c5c46e10424559caa0f0658bc16268e81229223e9c6993d3b0b.js" integrity="sha256-uSe0rh1CXFxG4QQkVZyqDwZYvBYmjoEikiPpxpk9Ows="></script>
+    <script src="https://blog.kine.cz/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-92839335-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

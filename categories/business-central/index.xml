@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Business Central on Kine&#39;s info</title>
+    <link>https://blog.kine.cz/categories/business-central/</link>
+    <description>Recent content in Business Central on Kine&#39;s info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Nov 2021 16:51:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/categories/business-central/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Architecture of PTE</title>
+      <link>https://blog.kine.cz/posts/ptearchitecture1/</link>
+      <pubDate>Thu, 18 Nov 2021 16:51:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/ptearchitecture1/</guid>
+      <description>On Directions EMEA in Milan I delivered session about Architecture of PTE for Business Central. I was trying to find some rules when or why you should or shouldn&amp;rsquo;t split your PTE into multiple apps. Now I will try to catch this into this article.
+Split or not to split Some partners are putting everything into one app per customer. Some are splitting all to separate apps based on different rules like per process, per area etc.</description>
+    </item>
+    
+  </channel>
+</rss>
