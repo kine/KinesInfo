@@ -1,21 +1,20 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Categories - Category - Kine&#39;s info</title>
-        <link>https://blog.kine.cz/categories/</link>
-        <description>Categories - Category - Kine&#39;s info</description>
-        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 16 Nov 2021 10:00:10 &#43;0100</lastBuildDate><atom:link href="https://blog.kine.cz/categories/" rel="self" type="application/rss+xml" /><item>
-    <title>General</title>
-    <link>https://blog.kine.cz/categories/general/</link>
-    <pubDate>Tue, 16 Nov 2021 10:00:10 &#43;0100</pubDate><author>
-        <name>Author</name>
-    </author><guid>https://blog.kine.cz/categories/general/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Welcome</title>
-    <link>https://blog.kine.cz/categories/welcome/</link>
-    <pubDate>Tue, 16 Nov 2021 10:00:10 &#43;0100</pubDate><author>
-        <name>Author</name>
-    </author><guid>https://blog.kine.cz/categories/welcome/</guid>
-    <description><![CDATA[]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Kine&#39;s info</title>
+    <link>https://blog.kine.cz/categories/</link>
+    <description>Recent content in Categories on Kine&#39;s info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Nov 2021 10:00:10 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>General</title>
+      <link>https://blog.kine.cz/categories/general/</link>
+      <pubDate>Tue, 16 Nov 2021 10:00:10 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/categories/general/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
 </rss>

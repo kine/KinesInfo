@@ -1,17 +1,40 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Kine&#39;s info</title>
-        <link>https://blog.kine.cz/</link>
-        <description>All around Microsoft Dynamics 365 Business Central</description>
-        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 16 Nov 2021 10:00:10 &#43;0100</lastBuildDate>
-            <atom:link href="https://blog.kine.cz/index.xml" rel="self" type="application/rss+xml" />
-        <item>
-    <title>My new blog</title>
-    <link>https://blog.kine.cz/posts/newblog/</link>
-    <pubDate>Tue, 16 Nov 2021 10:00:10 &#43;0100</pubDate><author>
-        <name>Author</name>
-    </author><guid>https://blog.kine.cz/posts/newblog/</guid>
-    <description><![CDATA[New blog May be you already noticed that my original blog on dynamicsusers is gone. I am building new one from scratch. May be it is time to begin something new and cut off the Dynamics NAV history. I hope that you will find it worth to read it.
-Enjoy it!]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kine&#39;s info</title>
+    <link>https://blog.kine.cz/</link>
+    <description>Recent content on Kine&#39;s info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Nov 2021 10:00:10 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My new blog</title>
+      <link>https://blog.kine.cz/posts/newblog/</link>
+      <pubDate>Tue, 16 Nov 2021 10:00:10 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/newblog/</guid>
+      <description>New blog May be you already noticed that my original blog on dynamicsusers.net (original URL was https://www.dynamicsuser.net/nav/b/kine) is gone. I am building new one from scratch. May be it is time to begin something new and cut off the Dynamics NAV history.
+Because todays it is easy to use GitHub as a platform for the blog (and thus using git and vscode to &amp;ldquo;post&amp;rdquo; the articles), I decided to use HUGO as the framework.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.kine.cz/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.kine.cz/about/</guid>
+      <description>About me I have more than 35 years of experience with software development and IT in general. In the year 2001, after finishing university, I joined the NAV world in NAVERTICA company as NAV developer. Having a wide area of knowledge in programming languages and connected areas is helping me to understand “how it works” and is giving me background for solving different tasks. For the last years, I am working more with GIT, Powershell, and Azure DevOps.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.kine.cz/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.kine.cz/contact/</guid>
+      <description>If you need professional services from me, contact NAVERTICA a.s. sales. I am employee in the company and I am not able to serve you directly.
+If you want to support me personally, you can use the BuyMeCoffee tipping system.</description>
+    </item>
+    
+  </channel>
 </rss>
