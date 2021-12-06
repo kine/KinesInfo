@@ -447,107 +447,109 @@ we will have next years.</p>
     </div>
     
       
-    <section id="comments" class='comments-container'>
-        
-        <h3 class="title"><a href="#comments">&#9997; Comments</a></h3>
-        <section class="staticman-comments post-comments">
-            
-            
-            
+  <div class='post'>
     
-            
-            
-                
-                
-                    
-            
-                    
+    <div>
+      <h2 id='say-something'>Say Something</h2>
+        <form id='comment-form' class='new-comment' method='POST'>
+          
+          <h3 class='reply-notice hidden'>
+            <span class='reply-name'></span>
+            <a class='reply-close-btn button'><i class='fas fa-times'></i></a>
+          </h3>
+
+          
+          <input type='hidden' name='options[entryId]' value='2bf6b0e6c6387f1ba26b201229c69d1f'>
+          <input type='hidden' name='fields[replyThread]' value=''>
+          <input type='hidden' name='fields[replyID]' value=''>
+          <input type='hidden' name='fields[replyName]' value=''>
+
+          
+          <input required name='fields[name]' type='text' placeholder='Your Name'>
+          <input name='fields[website]' type='text' placeholder='Your Website'>
+          <input required name='fields[email]' type='email' placeholder='Your Email'>
+          <textarea required name='fields[body]' placeholder='Your Message' rows='10'></textarea>
+
+          
+          
+          
+            <input hidden name='options[reCaptcha][siteKey]' value='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'>
+            <input hidden name='options[reCaptcha][secret]' value='FdlTy3aVy1SZfJ3h9aKAOgqeyZIFjV6Tjk3yN9BXxz5WB6FcmGlafyM&#43;hvBpDzOTstLDgQvBnWIn0T96nMLzI6bUyJL50tfeMuVpkYZhS9VkOhmPq7YEFmZCO7hVYkQkE4hh8JvVtyAmI9WKE5gOHBnRIrLWAFNLz7kUJRu7riOJtj8mNNMlpnfANVaiPQZ6xFykxG2X8RnJRW4dMV/335SiI5QcgB7fZzm0ntYZc1WsnYOUegqgw1z2ttJdB4J0xclKFcowrgKvq1LPn0P7H47EriVwt0QHz9NfK65CA6nJPQ8S487TI635IeXJ8HLOJkYeQnIyMeQZGKavlqDFFA=='>
+            <div class='g-recaptcha' data-sitekey='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'></div>
+          
+          
+
+          
+          <div class='submit-notice'>
+            <strong class='submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+            <strong class='submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again.</strong>
+          </div>
+
+          
+          <button type='button' id="comment-form-submit" class='button'>Submit</button>
+          <button type='button' id="comment-form-submitted" class='hidden button' disabled>Submitted</button>
+          <button type='reset' id="comment-form-reset" class='button'>Reset</button>
+        </form>
+    </div>
+
     
-                    <div id="8a392c20-4940-11ec-9c59-07d4d35a6afc" class="comment">
-                        <div class="post-comment-header">
-                        <img class="post-comment-avatar" src="https://www.gravatar.com/avatar/8ee43edc442df502e2e9211d120afa94?s=70&r=pg&d=identicon">
-                            <p class="post-comment-info">
-                                <span class="post-comment-name">M.Hartung</span>
-                                <br>
-                                <a href="#commentid-8a392c20-4940-11ec-9c59-07d4d35a6afc" title="Permalink to this comment">
-                                <time class="post-time">Friday, Nov 19, 2021 at     13:56 UTC</time>
-                                </a>
-                            </p>
+    <div class='comments-container'>
+      <h2>Comments</h2>
+          
+                  <article id='8022ced0-4adf-11ec-a4ea-e3f59ea9fb11' class='comment comment-reply' data-reply-thread='8a392c20-4940-11ec-9c59-07d4d35a6afc'>
+                    <header>
+                      <img class='comment-avatar circle' src='https://www.gravatar.com/avatar/37afc764593134d0b1be5e208a65a60d?s=100' alt="Kamil Sacek's Gravatar">
+                      <div>
+                        <div class='comment-author-container'>
+                          <h3 class='comment-author'><a rel='external nofollow' href='https://blog.kine.cz'>Kamil Sacek</a></h3>
+                          <a class='comment-date' href='#8022ced0-4adf-11ec-a4ea-e3f59ea9fb11' title='Permalink to this comment'>
+                            <time datetime='2021-11-21T15:27:13.285Z'>21 Nov 21 15:27</time>
+                          </a>
                         </div>
-                        <div class="comment-message">
-                            <p>Hi.
+                        
+                        
+                        <a class='comment-reply-btn' href='#say-something'>Reply</a>
+                      </div>
+                    </header>
+                    <div class='comment-content'>
+                      If you use partial records, it will make big difference. If you load only fields from your extension, it will be like when there is only your extension. Will not impact inserts (still insert into all companion tables, if I am not wrong), but reading&hellip;
+                    </div>
+                  </article>
+                
+              
+                  <article id='8a392c20-4940-11ec-9c59-07d4d35a6afc' class='comment' data-reply-thread='8a392c20-4940-11ec-9c59-07d4d35a6afc'>
+                    <header>
+                      <img class='comment-avatar circle' src='https://www.gravatar.com/avatar/8ee43edc442df502e2e9211d120afa94?s=100' alt="M.Hartung's Gravatar">
+                      <div>
+                        <div class='comment-author-container'>
+                          <h3 class='comment-author'><a rel='external nofollow' href='www.comsol.ag'>M.Hartung</a></h3>
+                          <a class='comment-date' href='#8a392c20-4940-11ec-9c59-07d4d35a6afc' title='Permalink to this comment'>
+                            <time datetime='2021-11-19T13:56:49.063Z'>19 Nov 21 13:56</time>
+                          </a>
+                        </div>
+                        
+                        
+                        <a class='comment-reply-btn' href='#say-something'>Reply</a>
+                      </div>
+                    </header>
+                    <div class='comment-content'>
+                      <p>Hi.
 &ldquo;Performance (solvable)&rdquo;
 I think to many Extension on one elementar table (item / item ledger entry) is not solvable.
 The Sql - join will decrease the access with every new Extension on one tabel.</p>
 <p>Beside your own extension you have external extension which extend perhabs also the elementar tables.</p>
 
-                        </div>
-                        <div class="comment-reply-btn2">
-                        <a id="8a392c20-4940-11ec-9c59-07d4d35a6afc" class="comment-reply-btn" href="#comment-form">Reply to M.Hartung</a>
-                        </div>
                     </div>
-                        
-  
-    <div id="8022ced0-4adf-11ec-a4ea-e3f59ea9fb11" class="comment reply" style ="margin-left: 40px;">
-        <div class="arrow-up"></div>
-        <div class="post-comment-header">
-            <img class="post-comment-avatar" src="https://www.gravatar.com/avatar/37afc764593134d0b1be5e208a65a60d?s=70&r=pg&d=identicon">
-            <p class="post-comment-info">
-                <span class="post-comment-name">Kamil Sacek<br><i><small>In reply to M.Hartung</i></small></span>
-                <br>
-                <a href="#commentid-8022ced0-4adf-11ec-a4ea-e3f59ea9fb11" title="Permalink to this comment">
-                    <time class="post-time">Sunday, Nov 21, 2021 at 15:27 UTC</time>
-                </a>
-            </p>
-        </div>
-        <div class="comment-message">
-            If you use partial records, it will make big difference. If you load only fields from your extension, it will be like when there is only your extension. Will not impact inserts (still insert into all companion tables, if I am not wrong), but reading&hellip;
-        </div>
-        <div class="comment-reply-btn2">
-            <a id="8022ced0-4adf-11ec-a4ea-e3f59ea9fb11" class="comment-reply-btn" href="#comment-form" >Reply to thread</a>
-        </div>
-    </div>
-  
-
-  
-
-    
-                    
+                  </article>
+                
+              
             
+          
         
-    
+      
+    </div>
+  </div>
 
-        <form id="comment-form" class="new-comment" method="post">
-            
-            <h3 class="prompt">Say something</h3>
-            <input type="hidden" name="options[redirect]" value="https://blog.kine.cz/posts/ptearchitecture1/#comment-submitted">
-            <input type="hidden" name="options[slug]" value="PTEArchitecture1">
-            <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
-            <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
-            <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
-            <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *" required rows="10"></textarea>
-            
-            
-            
-              <input hidden name='options[reCaptcha][siteKey]' value='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'>
-              <input hidden name='options[reCaptcha][secret]' value='FdlTy3aVy1SZfJ3h9aKAOgqeyZIFjV6Tjk3yN9BXxz5WB6FcmGlafyM&#43;hvBpDzOTstLDgQvBnWIn0T96nMLzI6bUyJL50tfeMuVpkYZhS9VkOhmPq7YEFmZCO7hVYkQkE4hh8JvVtyAmI9WKE5gOHBnRIrLWAFNLz7kUJRu7riOJtj8mNNMlpnfANVaiPQZ6xFykxG2X8RnJRW4dMV/335SiI5QcgB7fZzm0ntYZc1WsnYOUegqgw1z2ttJdB4J0xclKFcowrgKvq1LPn0P7H47EriVwt0QHz9NfK65CA6nJPQ8S487TI635IeXJ8HLOJkYeQnIyMeQZGKavlqDFFA=='>
-              <div class='g-recaptcha' data-sitekey='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'></div>
-            
-            
-              
-              <div class='submit-notice'>
-                <strong class='submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
-                <strong class='submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again.</strong>
-              </div>
-    
-              
-              <button type='button' id="comment-form-submit" class='button'>Submit</button>
-              <button type='button' id="comment-form-submitted" class='hidden button' disabled>Submitted</button>
-            </form>
-    </section>
-
-    
-</section>
 
     
   </article>
@@ -686,7 +688,7 @@ The Sql - join will decrease the access with every new Extension on one tabel.</
 
       <script src="https://blog.kine.cz/js/highlight.js"></script>
     
-    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.dc1d5c91a890d36d8dddc3f8e55a35b629fd5424dde1878406e22e2899b98c35.js" integrity="sha256-3B1ckaiQ022N3cP45Vo1tin9VCTd4YeEBuIuKJm5jDU="></script>
+    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.7fa7686a5d93aed71bcabba16f09e75d3ed8fab3f908ed325939aae94f1b91c7.js" integrity="sha256-f6doal2TrtcbyruhbwnnXT7Y&#43;rP5CO0yWTmq6U8bkcc="></script>
     <script src="https://blog.kine.cz/js/add-on.js"></script>
   <script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="application/javascript">

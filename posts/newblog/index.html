@@ -256,51 +256,58 @@ my blog is &ldquo;opensourced&rdquo;, thus you can see everything what is there 
     </div>
     
       
-    <section id="comments" class='comments-container'>
-        
-        <h3 class="title"><a href="#comments">&#9997; Comments</a></h3>
-        <section class="staticman-comments post-comments">
-            
-            
-            
+  <div class='post'>
     
-            
-            
-    
+    <div>
+      <h2 id='say-something'>Say Something</h2>
+        <form id='comment-form' class='new-comment' method='POST'>
+          
+          <h3 class='reply-notice hidden'>
+            <span class='reply-name'></span>
+            <a class='reply-close-btn button'><i class='fas fa-times'></i></a>
+          </h3>
 
-        <form id="comment-form" class="new-comment" method="post">
-            
-                <p>Be the first to leave a comment! 🎉</p>
-            
-            <h3 class="prompt">Say something</h3>
-            <input type="hidden" name="options[redirect]" value="https://blog.kine.cz/posts/newblog/#comment-submitted">
-            <input type="hidden" name="options[slug]" value="NewBlog">
-            <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required/>
-            <input type="email" name="fields[email]" class="post-comment-field" placeholder="Email address (will not be public) *" required/>
-            <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
-            <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *" required rows="10"></textarea>
-            
-            
-            
-              <input hidden name='options[reCaptcha][siteKey]' value='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'>
-              <input hidden name='options[reCaptcha][secret]' value='FdlTy3aVy1SZfJ3h9aKAOgqeyZIFjV6Tjk3yN9BXxz5WB6FcmGlafyM&#43;hvBpDzOTstLDgQvBnWIn0T96nMLzI6bUyJL50tfeMuVpkYZhS9VkOhmPq7YEFmZCO7hVYkQkE4hh8JvVtyAmI9WKE5gOHBnRIrLWAFNLz7kUJRu7riOJtj8mNNMlpnfANVaiPQZ6xFykxG2X8RnJRW4dMV/335SiI5QcgB7fZzm0ntYZc1WsnYOUegqgw1z2ttJdB4J0xclKFcowrgKvq1LPn0P7H47EriVwt0QHz9NfK65CA6nJPQ8S487TI635IeXJ8HLOJkYeQnIyMeQZGKavlqDFFA=='>
-              <div class='g-recaptcha' data-sitekey='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'></div>
-            
-            
-              
-              <div class='submit-notice'>
-                <strong class='submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
-                <strong class='submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again.</strong>
-              </div>
-    
-              
-              <button type='button' id="comment-form-submit" class='button'>Submit</button>
-              <button type='button' id="comment-form-submitted" class='hidden button' disabled>Submitted</button>
-            </form>
-    </section>
+          
+          <input type='hidden' name='options[entryId]' value='ef1ab04b0f5a6551924eae2373cb1671'>
+          <input type='hidden' name='fields[replyThread]' value=''>
+          <input type='hidden' name='fields[replyID]' value=''>
+          <input type='hidden' name='fields[replyName]' value=''>
+
+          
+          <input required name='fields[name]' type='text' placeholder='Your Name'>
+          <input name='fields[website]' type='text' placeholder='Your Website'>
+          <input required name='fields[email]' type='email' placeholder='Your Email'>
+          <textarea required name='fields[body]' placeholder='Your Message' rows='10'></textarea>
+
+          
+          
+          
+            <input hidden name='options[reCaptcha][siteKey]' value='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'>
+            <input hidden name='options[reCaptcha][secret]' value='FdlTy3aVy1SZfJ3h9aKAOgqeyZIFjV6Tjk3yN9BXxz5WB6FcmGlafyM&#43;hvBpDzOTstLDgQvBnWIn0T96nMLzI6bUyJL50tfeMuVpkYZhS9VkOhmPq7YEFmZCO7hVYkQkE4hh8JvVtyAmI9WKE5gOHBnRIrLWAFNLz7kUJRu7riOJtj8mNNMlpnfANVaiPQZ6xFykxG2X8RnJRW4dMV/335SiI5QcgB7fZzm0ntYZc1WsnYOUegqgw1z2ttJdB4J0xclKFcowrgKvq1LPn0P7H47EriVwt0QHz9NfK65CA6nJPQ8S487TI635IeXJ8HLOJkYeQnIyMeQZGKavlqDFFA=='>
+            <div class='g-recaptcha' data-sitekey='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'></div>
+          
+          
+
+          
+          <div class='submit-notice'>
+            <strong class='submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+            <strong class='submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again.</strong>
+          </div>
+
+          
+          <button type='button' id="comment-form-submit" class='button'>Submit</button>
+          <button type='button' id="comment-form-submitted" class='hidden button' disabled>Submitted</button>
+          <button type='reset' id="comment-form-reset" class='button'>Reset</button>
+        </form>
+    </div>
 
     
-</section>
+    <div class='comments-container'>
+      <h2>Comments</h2><p>Nothing yet.</p>
+      
+    </div>
+  </div>
+
 
     
   </article>
@@ -439,7 +446,7 @@ my blog is &ldquo;opensourced&rdquo;, thus you can see everything what is there 
 
       <script src="https://blog.kine.cz/js/highlight.js"></script>
     
-    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.dc1d5c91a890d36d8dddc3f8e55a35b629fd5424dde1878406e22e2899b98c35.js" integrity="sha256-3B1ckaiQ022N3cP45Vo1tin9VCTd4YeEBuIuKJm5jDU="></script>
+    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.7fa7686a5d93aed71bcabba16f09e75d3ed8fab3f908ed325939aae94f1b91c7.js" integrity="sha256-f6doal2TrtcbyruhbwnnXT7Y&#43;rP5CO0yWTmq6U8bkcc="></script>
     <script src="https://blog.kine.cz/js/add-on.js"></script>
   <script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="application/javascript">
