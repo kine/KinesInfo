@@ -6,7 +6,18 @@
     <description>Recent content in Business Central on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Nov 2021 16:51:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/tags/business-central/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Feb 2022 11:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/tags/business-central/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Snapshot debugger on OnPrem - what you need to know to set it up</title>
+      <link>https://blog.kine.cz/posts/snapshotdebuggeronprem/</link>
+      <pubDate>Tue, 15 Feb 2022 11:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/snapshotdebuggeronprem/</guid>
+      <description>When you want to use Snapshot Debugging on your OnPrem environment, may be you can hit this error when trying to initialize it:
+Error: The SSL connection could not be established, see inner exception....In some cirumstances you can even have problem to start the BC Service when you enable the Snapshot Debugger endpoint.
+What is the problem? For standard endpoint, which we are using for longer time already, like client endpoint (default port 7046), OData (7048) and Dev (7049), the Management console for BC Server is automatically setting some things in background when you save the settings in it.</description>
+    </item>
+    
     <item>
       <title>Architecture of PTE - Split or not to Split?</title>
       <link>https://blog.kine.cz/posts/ptearchitecture1/</link>
