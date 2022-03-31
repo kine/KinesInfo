@@ -2,40 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.kine.cz/tags/al/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/al/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/api/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/business-central/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/business-central/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/local-resources/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/posts/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/pte/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/pte/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/posts/localfs/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/webservices/</loc>
+    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
+  </url><url>
     <loc>https://blog.kine.cz/tags/administration/</loc>
     <lastmod>2022-02-15T11:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/categories/administration/</loc>
     <lastmod>2022-02-15T11:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://blog.kine.cz/tags/al/</loc>
-    <lastmod>2022-02-15T11:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/categories/al/</loc>
-    <lastmod>2022-02-15T11:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/tags/business-central/</loc>
-    <lastmod>2022-02-15T11:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/categories/business-central/</loc>
-    <lastmod>2022-02-15T11:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/categories/</loc>
-    <lastmod>2022-02-15T11:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/</loc>
-    <lastmod>2022-02-15T11:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/posts/</loc>
-    <lastmod>2022-02-15T11:00:00+01:00</lastmod>
-  </url><url>
     <loc>https://blog.kine.cz/posts/snapshotdebuggeronprem/</loc>
     <lastmod>2022-02-15T11:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/ssl/</loc>
-    <lastmod>2022-02-15T11:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/tags/</loc>
     <lastmod>2022-02-15T11:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/architecture/</loc>
@@ -45,12 +63,6 @@
     <lastmod>2021-11-18T16:51:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/posts/ptearchitecture1/</loc>
-    <lastmod>2021-11-18T16:51:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/tags/pte/</loc>
-    <lastmod>2021-11-18T16:51:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/categories/pte/</loc>
     <lastmod>2021-11-18T16:51:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/general/</loc>

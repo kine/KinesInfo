@@ -6,7 +6,17 @@
     <description>Recent content in Business Central on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Feb 2022 11:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/categories/business-central/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 31 Mar 2022 00:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/categories/business-central/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unattended access to local resources - WCF Relay</title>
+      <link>https://blog.kine.cz/posts/localfs/</link>
+      <pubDate>Thu, 31 Mar 2022 00:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/localfs/</guid>
+      <description>In many cases you need to work with resources (files, scales, card readers etc.), which are available on local network/PC, from within Microsoft Dynamics 365 Business Central which runs somewhere in the Cloud. I will show you one way how to solve these things.
+What is the problem? Different processes in Business Central can need some local resources of yours. In a simples case it could be some file on your disk on your PC (or server on local network).</description>
+    </item>
+    
     <item>
       <title>Snapshot debugger on OnPrem - what you need to know to set it up</title>
       <link>https://blog.kine.cz/posts/snapshotdebuggeronprem/</link>
@@ -14,7 +24,7 @@
       
       <guid>https://blog.kine.cz/posts/snapshotdebuggeronprem/</guid>
       <description>When you want to use Snapshot Debugging on your OnPrem environment, may be you can hit this error when trying to initialize it:
-Error: The SSL connection could not be established, see inner exception....In some cirumstances you can even have problem to start the BC Service when you enable the Snapshot Debugger endpoint.
+Error: The SSL connection could not be established, see inner exception.... In some cirumstances you can even have problem to start the BC Service when you enable the Snapshot Debugger endpoint.
 What is the problem? For standard endpoint, which we are using for longer time already, like client endpoint (default port 7046), OData (7048) and Dev (7049), the Management console for BC Server is automatically setting some things in background when you save the settings in it.</description>
     </item>
     

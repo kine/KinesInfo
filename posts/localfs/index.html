@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Unattended access to local resources - WCF Relay - Kine&#39;s info</title>
+<meta name="description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Kine&#39;s info">
+<meta property="og:title" content="Unattended access to local resources - WCF Relay">
+<meta property="og:description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.kine.cz/posts/localfs/">
+  <meta property="og:image" content="https://blog.kine.cz/assets/KSCSmall.png">
+
+
+
+  <link rel="shortcut icon" href="https://blog.kine.cz/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.96.0" />
+  <link rel="stylesheet" href="https://blog.kine.cz/css/bundle.min.5233f2a4cd515395301b4154f6c1c621695e8cf53faa0935b76ac52fed7f4585.css" integrity="sha256-UjPypM1RU5UwG0FU9sHGIWlejPU/qgk1t2rFL&#43;1/RYU="><link rel="stylesheet" href="https://blog.kine.cz/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="https://blog.kine.cz/" class="nav">
+        
+          Unattended access to local resources - WCF Relay
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/about" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/categories" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/tags" class="nav link"><i class='fas fa-tags'></i> Tags</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active"> (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Unattended%20access%20to%20local%20resources%20-%20WCF%20Relay&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2flocalfs%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2flocalfs%2f&amp;title=Unattended%20access%20to%20local%20resources%20-%20WCF%20Relay" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2flocalfs%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="https://blog.kine.cz/"><img src="https://blog.kine.cz/assets/KSCSmall.png" class="circle" width="100" alt="Kine&#39;s Info" /></a>
+  <header>
+    <h1>Kine's Info</h1>
+  </header>
+  <main>
+    <p>Another blog about Microsoft Dynamics 365 Business Central (AL, Powershell, Azure DevOps etc.)<center><a href='https://mvp.microsoft.com/en-us/mvp/kamil%20sacek-21590'><img src='https://blog.kine.cz/assets/MVP_Logo_Horizontal_Secondary_Blue286_CMYK_72ppi.png' width='50%'></a></center></p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article>
+    <div class="post">
+      <header>
+  <div class="title">
+    
+      <h2><a href="https://blog.kine.cz/posts/localfs/">Unattended access to local resources - WCF Relay</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time datetime="2022-03-31 00:00:00 &#43;0100 &#43;0100">March 31, 2022</time>
+    
+    <p>6-Minute Read</p>
+  </div>
+</header>
+
+      <div id="socnet-share">
+        
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Unattended%20access%20to%20local%20resources%20-%20WCF%20Relay&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2flocalfs%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2flocalfs%2f&amp;title=Unattended%20access%20to%20local%20resources%20-%20WCF%20Relay" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2flocalfs%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+      </div>
+      <div class="content">
+        
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-the-problem">What is the problem?</a></li>
+    <li><a href="#hybrid-solution">Hybrid solution</a></li>
+    <li><a href="#implementation">Implementation</a>
+      <ul>
+        <li><a href="#windows-service-with-rest-api">Windows Service with Rest API</a></li>
+        <li><a href="#wcf-relay">WCF Relay</a></li>
+        <li><a href="#business-central-connector">Business Central connector</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        
+        <p>In many cases you need to work with resources (files, scales, card readers etc.), which are available on local network/PC, from within Microsoft Dynamics 365 Business Central which runs somewhere in the Cloud.
+I will show you one way how to solve these things.</p>
+<h2 id="what-is-the-problem">What is the problem?</h2>
+<p>Different processes in Business Central can need some local resources of yours. In a simples case it could be some file on your disk on your PC (or server on local network). Standard way is, that
+BC client will ask user to select the file which should be uploaded or select where to save downloaded file. It needs user interaction. But many automatic processes needs to run without this user interaction. E.g. to monitor some local folder for new files, read them, process them and move them to archive. You can use some Azure Storage to be able to do that in compatible way, but in some cases it is not possible, for example when the file is generated by some ancient technology or some local hardware. Still you have possibility to &ldquo;synchronize&rdquo; these local files to the cloud storage by some technology, but it have own problems (we were using OneDrive synchronization for this, but the reliability was very low, mainly because we needed pseudo-online updates).</p>
+<h2 id="hybrid-solution">Hybrid solution</h2>
+<p>To solve this problem, we can use some local running component, which have access to the local resource, and somehow connect it with the Cloud. &ldquo;Standard&rdquo; solution will be to have service, which offer some API. But because you need to connect from Cloud (from internet), you will need to somehow tunnel the outside incoming traffic to the local service. It will mean to create &ldquo;hole&rdquo; in your firewall to allow this. To limit possible security issues you can try to limit this hole for specific IPs from which the traffic will be allowed, but it is hard to do that for Business Central, because I do not know any specific IPs which are used for the BC services.
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <figure>
+    <a data-fancybox="LocalFS" href="https://blog.kine.cz/assets/LocalFS/Diagram.png" data-caption="Hybrid connection diagram"><img src="https://blog.kine.cz/assets/LocalFS/Diagram.png"></a>
+    <figcaption>Hybrid connection diagram</figcaption>
+  </figure>
+
+</p>
+<p>Luckily we have different Azure Services, and one of them is solving this issue - <strong><a href="https://docs.microsoft.com/en-us/azure/azure-relay/relay-what-is-it">Service Bus</a></strong> (specifically <strong>WCF Relay</strong>). This service is allowing your service to work in &ldquo;opposite&rdquo; direction - your service is connecting to the cloud from inside your network. It means you only need to allow outgoing connection in your local network which is much easier (and mostly is not limited, because it is standard connection to https endpoint on internet). Azure Relay will create the public endpoint on which you can consume the API you defined in your locally running service. To implement this you need only few settings in the app.</p>
+<p>Of course, it have some cost. You are paying some small amounts per each &ldquo;relay hour&rdquo; - it means for each hour your service is running and is connected to the Azure Relay (I can see standard cost 0.0090 EUR per 100 relay hours and 0.009 EUR per 10 000 messages).</p>
+<h2 id="implementation">Implementation</h2>
+<p>To implement this solution, you need to follow these steps:</p>
+<ol>
+<li>Implement Windows Service with Rest API with local endpoint</li>
+<li>Implement WCF Relay to have public endpoint</li>
+<li>Implement BC connector for this service</li>
+</ol>
+<h3 id="windows-service-with-rest-api">Windows Service with Rest API</h3>
+<p>How it could look like you can see here: <strong><a href="https://github.com/kine/LocalFSService">LocalFS Service</a></strong></p>
+<p>I am not expert in c#, thus take it as a work of beginner based on examples found on internet (like <a href="https://docs.microsoft.com/en-us/azure/azure-relay/service-bus-relay-rest-tutorial">this</a>).</p>
+<p>This windows service will open one local endpoint on port selected in the config. Second endpoint will be created through Azure WCF Relay.</p>
+<p>Service have 3 main areas:</p>
+<ol>
+<li>REST API (contract and implementation of the API)</li>
+<li>Windows service handling (main program and actions to register/start/stop the service)</li>
+<li>Using the WCF Relay to create public endpoint</li>
+</ol>
+<h3 id="wcf-relay">WCF Relay</h3>
+<p>To be able to connect to the locally running service from outside your local network, you need to connect it to Azure Service Bus. To be able to do this, you need to create the Relay namespace in Azure portal.
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <figure>
+    <a data-fancybox="LocalFS" href="https://blog.kine.cz/assets/LocalFS/RelayCreation.png" data-caption="Creating Relay namespace"><img src="https://blog.kine.cz/assets/LocalFS/RelayCreation.png"></a>
+    <figcaption>Creating Relay namespace</figcaption>
+  </figure>
+
+</p>
+<p>The namespace is creating the URL which is unique for your relay. The public endpoint you will need to connect to, will have name like this:</p>
+<blockquote>
+<p>https://{RelayNameSpace}.servicebus.windows.net/{RelayServicePrefix}/{something}</p>
+</blockquote>
+<p>WCF Relays could be of two types: Dynamics or Static. Static can be created on the portal, but we will rather use the dynamic ones. They are created and removed automatically when you start/stop your service. RelayServicePrefix in the URL is any string you will choose. In this way you can group multiple different services together. The last part of the URL is again text you choose to make the URL unique. In my example code I am using computer name and domain name to create this part (like &ldquo;PC0123.mydomain.local or &ldquo;PC0123.&rdquo; if there is no domain).</p>
+<p>To be able to register the service into the relay, you need to use Shared access policy key. You can get it on the Azure portal in the Shared access policies section.
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <figure>
+    <a data-fancybox="LocalFS" href="https://blog.kine.cz/assets/LocalFS/RelaySAS.png" data-caption="Getting SAS key"><img src="https://blog.kine.cz/assets/LocalFS/RelaySAS.png"></a>
+    <figcaption>Getting SAS key</figcaption>
+  </figure>
+
+</p>
+<p>When you set the values and run the service, you should see the service in the WCF Relay list on the Azure portal.</p>
+<h3 id="business-central-connector">Business Central connector</h3>
+<p>To connect to the service from Business Central, use standard HTTPClient to connect to the relay address. It is standard REST API, thus it should not be a problem for you to do that. If you want to use this LocalFS service, you can use our AppSource app <strong><a href="https://appsource.microsoft.com/en-us/product/dynamics-365-business-central/PUBID.navertica%7CAID.nvr-localfs%7CPAPPID.fac5be3a-24b3-4b2f-8756-86056f111858?flightCodes=CFBSMRO&amp;tab=Overview">Navertica Local FS Connector</a></strong>.</p>
+<p>I am sure that you will find many examples how to implement REST API client in AL on internet.</p>
+<h3 id="security">Security</h3>
+<p>The WCF Relay is transparent and it means it is on your service to make the authentication of the caller. In the example I am using just basic mechanism which checks that the used user name and password is same as configured one.</p>
+<p>I am sure that there is some possibility to add security on the WCF Relay, but have not time to dig into it yet. If you have some tips, you can use the comments to share them.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>I wanted to show you possible way how to handle things which were <em>blockers</em> some time ago for using Business Central Online. You can easily modify the service to not handle local files access but e.g. communicate with some locally connected hardware (special printers, scanners, scales etc.). Such a things should not prevent you now from going to cloud. It have some cost (cost of the WCF Relay), but I think it is really small cost which is overweighed by what you will get.</p>
+<p>I know that there are other ways how you can solve such a cases, but this one is for me easy to use even with my limited knowledge. I hope it will help you to think outside the box and unblock your way.</p>
+<p>See you in the Cloud!</p>
+
+      </div>
+      <footer>
+        <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/al/">AL</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/pte/">PTE</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/al/">AL</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/pte/">PTE</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/webservices/">WebServices</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/api/">API</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/local-resources/">Local resources</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+      </footer>
+    </div>
+    
+      
+<div class='post'>
+<section id="comments" class='comments-container'>
+    
+    <h3 class="title"><a href="#comments">Comments</a></h3>
+    <section class="staticman-comments post-comments">
+        
+        
+        
+
+        
+        
+        
+
+        <form id="comment-form" class="new-comment" method="post">
+            
+            <p>Be the first to leave a comment! 🎉</p>
+            
+            <h3 class="prompt">Say something</h3>
+            
+            <h3 class='reply-notice hidden'>
+              <span class='reply-name'></span>
+              <a class='reply-close-btn button'><i class='fas fa-times'></i></a>
+            </h3>
+ 
+            <input type='hidden' name='fields[replyName]' value=''>
+            <input type="hidden" name="options[slug]" value="LocalFS">
+            <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required />
+            <input type="email" name="fields[email]" class="post-comment-field"
+                placeholder="Email address (will not be public) *" required />
+            <input type='text' name='fields[website]' class="post-comment-field"
+                placeholder='Your Website (include https://)'>
+            <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
+            <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *"
+                required rows="10"></textarea>
+            
+            
+            
+            <input hidden name='options[reCaptcha][siteKey]' value='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'>
+            <input hidden name='options[reCaptcha][secret]' value='FdlTy3aVy1SZfJ3h9aKAOgqeyZIFjV6Tjk3yN9BXxz5WB6FcmGlafyM&#43;hvBpDzOTstLDgQvBnWIn0T96nMLzI6bUyJL50tfeMuVpkYZhS9VkOhmPq7YEFmZCO7hVYkQkE4hh8JvVtyAmI9WKE5gOHBnRIrLWAFNLz7kUJRu7riOJtj8mNNMlpnfANVaiPQZ6xFykxG2X8RnJRW4dMV/335SiI5QcgB7fZzm0ntYZc1WsnYOUegqgw1z2ttJdB4J0xclKFcowrgKvq1LPn0P7H47EriVwt0QHz9NfK65CA6nJPQ8S487TI635IeXJ8HLOJkYeQnIyMeQZGKavlqDFFA=='>
+            <div class='g-recaptcha' data-sitekey='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'></div>
+            
+            
+            
+            <div class='submit-notice'>
+                <strong class='submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+                <strong class='submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again.</strong>
+            </div>
+
+            
+            <button type='button' id="comment-form-submit" class='button'>Submit</button>
+            <button type='button' id="comment-form-submitted" class='hidden button' disabled>Submitted</button>
+            <button type='reset' id="comment-form-reset" class='button'>Reset</button>
+
+        </form>
+    </section>
+
+    
+</section>
+</div>
+
+    
+  </article>
+  <div class="pagination">
+    
+    
+      <a href="https://blog.kine.cz/posts/snapshotdebuggeronprem/" class="button right"><span>Snapshot debugger on OnPrem - what you need to know to set it up</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/localfs/">Unattended access to local resources - WCF Relay</a></h2>
+          <time class="published" datetime="2022-03-31 00:00:00 &#43;0100 &#43;0100">March 31, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/snapshotdebuggeronprem/">Snapshot debugger on OnPrem - what you need to know to set it up</a></h2>
+          <time class="published" datetime="2022-02-15 11:00:00 &#43;0100 &#43;0100">February 15, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/ptearchitecture1/">Architecture of PTE - Split or not to Split?</a></h2>
+          <time class="published" datetime="2021-11-18 16:51:00 &#43;0100 &#43;0100">November 18, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/newblog/">My new blog</a></h2>
+          <time class="published" datetime="2021-11-16 10:00:10 &#43;0100 &#43;0100">November 16, 2021</time>
+        </header>
+      </article>
+      
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="https://blog.kine.cz/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/business-central/">business-central<span class="count">3</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/al/">al<span class="count">2</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/pte/">pte<span class="count">2</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/administration/">administration<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/architecture/">architecture<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/general/">general<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I have more than 35 years of experience with SW development and everything around IT. I have got my first MVP award in 2005.</p>
+      <footer>
+        <a href="https://blog.kine.cz/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+  
+  <p class="copyright">
+    © 2022 Kine&#39;s info
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.96.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="https://blog.kine.cz/js/highlight.js"></script>
+    
+    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.4cdeaecc410692b05b5efee23d99d6ad1014512aeb1929c44c049a5e1f6367ee.js" integrity="sha256-TN6uzEEGkrBbXv7iPZnWrRAUUSrrGSnETASaXh9jZ&#43;4="></script>
+    <script src="https://blog.kine.cz/js/add-on.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-92839335-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

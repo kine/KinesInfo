@@ -20,7 +20,7 @@
   <link rel="shortcut icon" href="https://blog.kine.cz/favicon.ico?v=1">
 
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <link rel="stylesheet" href="https://blog.kine.cz/css/bundle.min.5233f2a4cd515395301b4154f6c1c621695e8cf53faa0935b76ac52fed7f4585.css" integrity="sha256-UjPypM1RU5UwG0FU9sHGIWlejPU/qgk1t2rFL&#43;1/RYU="><link rel="stylesheet" href="https://blog.kine.cz/css/add-on.css">
 </head>
 
@@ -239,22 +239,22 @@
 <p>For standard endpoint, which we are using for longer time already, like client endpoint (default port 7046), OData (7048) and Dev (7049), the Management console for BC Server is automatically setting some things in background when you save the settings in it. But for the Snapshot debugger, this is not done and you need to do it yourselfs.</p>
 <h2 id="urlacl">URLACL</h2>
 <p>First thing is, that for the user account, under which is BC Server running, usage of the HTTP address is reserved <a href="https://docs.microsoft.com/en-us/windows/win32/http/add-urlacl">(see this)</a>. Manually it could be done by running this command as admin on the server:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">netsh http add urlacl url=https://+:7083/BC/  user=&#39;NT AUTHORITY\NETWORK SERVICE&#39;
-</code></pre></div><p>You need to modify the URL if you are not using SSL (use http instead https) and port number/instance name. User needs to be the one under which the service is running.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>netsh http add urlacl url=https://+:7083/BC/  user=&#39;NT AUTHORITY\NETWORK SERVICE&#39;
+</span></span></code></pre></div><p>You need to modify the URL if you are not using SSL (use http instead https) and port number/instance name. User needs to be the one under which the service is running.</p>
 <p>To list existing urlacl you can use this command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">netsh http show urlacl
-</code></pre></div><p>If this is not done, you will ger some error about &ldquo;unable to listen&rdquo; on the specified address in your event log.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>netsh http show urlacl
+</span></span></code></pre></div><p>If this is not done, you will ger some error about &ldquo;unable to listen&rdquo; on the specified address in your event log.</p>
 <h2 id="sslcert">SSLCERT</h2>
 <p>Second step is to assign certificate to the address, if you are using SSL for the endpoint.</p>
 <p>To use SSL it is not enough to set the certificate in the BC Service Management console (in the BC Service configuration), but the certificate must be assigned to the address.</p>
 <p>This is done again through netsh command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">netsh http add sslcert certhash=&lt;thumbprint&gt; appid=&#39;{00112233-4455-6677-8899-AABBCCDDEEFF}&#39; ipport=0.0.0.0:7083
-</code></pre></div><p>Use the thumbrint of the certificate you want to use (e.g. same like in the BC Service configuration), appid could be any GUID (e.g. like in th example), and ipport must be the port for which you are assigning the certificate.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>netsh http add sslcert certhash=&lt;thumbprint&gt; appid=&#39;{00112233-4455-6677-8899-AABBCCDDEEFF}&#39; ipport=0.0.0.0:7083
+</span></span></code></pre></div><p>Use the thumbrint of the certificate you want to use (e.g. same like in the BC Service configuration), appid could be any GUID (e.g. like in th example), and ipport must be the port for which you are assigning the certificate.</p>
 <p>To list existing assignments you can use this command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">netsh http show sslcert
-</code></pre></div><p>If you want to assign certificate to port, where already is certificate assigned (e.g. when renewing expiring certificate), you need to delete the sslcert first:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">netsh http del sslcert ipport=0.0.0.0:7083
-</code></pre></div><h2 id="some-hicups">Some hicups</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>netsh http show sslcert
+</span></span></code></pre></div><p>If you want to assign certificate to port, where already is certificate assigned (e.g. when renewing expiring certificate), you need to delete the sslcert first:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>netsh http del sslcert ipport=0.0.0.0:7083
+</span></span></code></pre></div><h2 id="some-hicups">Some hicups</h2>
 <p>Sometimes, when you are changing the SSL settings on the BC server, you can get into issues that when saving the configuration you get some errors that Certificate cannot be registered or something similar. It is mostly in situations, when the settings and the current state of the SSLCERT is not in line - it means, you are disabling SSL but SSLCERT is not registered (e.g. after you have copied configuration from another instance having SSL enabled and you current instance had it disabled) or vice versa. In this case you need to fix this discrepancy (when disabling SSL, create the SSLCERT assignment first, when enabling, remove the existing assignemnt first).</p>
 
       </div>
@@ -358,6 +358,8 @@
   </article>
   <div class="pagination">
     
+      <a href="https://blog.kine.cz/posts/localfs/" class="button left"><span>Unattended access to local resources - WCF Relay</span></a>
+    
     
       <a href="https://blog.kine.cz/posts/ptearchitecture1/" class="button right"><span>Architecture of PTE - Split or not to Split?</span></a>
     
@@ -370,6 +372,14 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/localfs/">Unattended access to local resources - WCF Relay</a></h2>
+          <time class="published" datetime="2022-03-31 00:00:00 &#43;0100 &#43;0100">March 31, 2022</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           
@@ -410,22 +420,22 @@
           
           
           <li>
-              <a href="https://blog.kine.cz/categories/business-central/">business-central<span class="count">2</span></a>
+              <a href="https://blog.kine.cz/categories/business-central/">business-central<span class="count">3</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/al/">al<span class="count">2</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/pte/">pte<span class="count">2</span></a>
           
           <li>
               <a href="https://blog.kine.cz/categories/administration/">administration<span class="count">1</span></a>
-          
-          <li>
-              <a href="https://blog.kine.cz/categories/al/">al<span class="count">1</span></a>
           
           <li>
               <a href="https://blog.kine.cz/categories/architecture/">architecture<span class="count">1</span></a>
           
           <li>
               <a href="https://blog.kine.cz/categories/general/">general<span class="count">1</span></a>
-          
-          <li>
-              <a href="https://blog.kine.cz/categories/pte/">pte<span class="count">1</span></a>
           
           </li>
         </ul>
@@ -498,14 +508,14 @@
   <p class="copyright">
     © 2022 Kine&#39;s info
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.96.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="https://blog.kine.cz/js/highlight.js"></script>
     
-    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.7fc9b44101bf6bff774e7a7cf929630d5a6bcf46d88f4b1e6b8dacf3c96dfcc6.js" integrity="sha256-f8m0QQG/a/93Tnp8&#43;SljDVprz0bYj0sea42s88lt/MY="></script>
+    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.4cdeaecc410692b05b5efee23d99d6ad1014512aeb1929c44c049a5e1f6367ee.js" integrity="sha256-TN6uzEEGkrBbXv7iPZnWrRAUUSrrGSnETASaXh9jZ&#43;4="></script>
     <script src="https://blog.kine.cz/js/add-on.js"></script>
   <script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="application/javascript">

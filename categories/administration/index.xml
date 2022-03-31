@@ -14,7 +14,7 @@
       
       <guid>https://blog.kine.cz/posts/snapshotdebuggeronprem/</guid>
       <description>When you want to use Snapshot Debugging on your OnPrem environment, may be you can hit this error when trying to initialize it:
-Error: The SSL connection could not be established, see inner exception....In some cirumstances you can even have problem to start the BC Service when you enable the Snapshot Debugger endpoint.
+Error: The SSL connection could not be established, see inner exception.... In some cirumstances you can even have problem to start the BC Service when you enable the Snapshot Debugger endpoint.
 What is the problem? For standard endpoint, which we are using for longer time already, like client endpoint (default port 7046), OData (7048) and Dev (7049), the Management console for BC Server is automatically setting some things in background when you save the settings in it.</description>
     </item>
     
