@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 May 2022 00:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 May 2022 00:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using BCLicese file from powershell</title>
+      <link>https://blog.kine.cz/posts/bclicensestructure/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/bclicensestructure/</guid>
+      <description>New License format .bclicense If you are working with OnPrem customers having Microsoft Dynamics 365 Business Central, you have already noticed the new license file format .bclicense. It was created by Microsoft to have modern way how to pass the licensing info without limits of the old .flf format (limited max size etc.). It had some side-effect (bugs) on beginning but I hope that they are solved (never tested yet). But today I am not writing about this file format because Customers, but because it could be handy for Partners/Developers and their CI/CD pipelines.</description>
+    </item>
+    
     <item>
       <title>How to translate your AL app from Devglish to Endglish</title>
       <link>https://blog.kine.cz/posts/whytowriteenutranslation/</link>

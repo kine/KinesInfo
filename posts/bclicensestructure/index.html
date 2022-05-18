@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Using BCLicese file from powershell - Kine&#39;s info</title>
+<meta name="description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Kine&#39;s info">
+<meta property="og:title" content="Using BCLicese file from powershell">
+<meta property="og:description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.kine.cz/posts/bclicensestructure/">
+  <meta property="og:image" content="https://blog.kine.cz/assets/KSCSmall.png">
+
+
+
+  <link rel="shortcut icon" href="https://blog.kine.cz/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.99.0" />
+  <link rel="stylesheet" href="https://blog.kine.cz/css/bundle.min.5233f2a4cd515395301b4154f6c1c621695e8cf53faa0935b76ac52fed7f4585.css" integrity="sha256-UjPypM1RU5UwG0FU9sHGIWlejPU/qgk1t2rFL&#43;1/RYU="><link rel="stylesheet" href="https://blog.kine.cz/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="https://blog.kine.cz/" class="nav">
+        
+          Using BCLicese file from powershell
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/about" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/categories" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/tags" class="nav link"><i class='fas fa-tags'></i> Tags</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active"> (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Using%20BCLicese%20file%20from%20powershell&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fbclicensestructure%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fbclicensestructure%2f&amp;title=Using%20BCLicese%20file%20from%20powershell" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fbclicensestructure%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="https://blog.kine.cz/"><img src="https://blog.kine.cz/assets/KSCSmall.png" class="circle" width="100" alt="Kine&#39;s Info" /></a>
+  <header>
+    <h1>Kine's Info</h1>
+  </header>
+  <main>
+    <p>Another blog about Microsoft Dynamics 365 Business Central (AL, Powershell, Azure DevOps etc.)<center><a href='https://mvp.microsoft.com/en-us/mvp/kamil%20sacek-21590'><img src='https://blog.kine.cz/assets/MVP_Logo_Horizontal_Secondary_Blue286_CMYK_72ppi.png' width='50%'></a></center></p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article>
+    <div class="post">
+      <header>
+  <div class="title">
+    
+      <h2><a href="https://blog.kine.cz/posts/bclicensestructure/">Using BCLicese file from powershell</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time datetime="2022-05-18 00:00:00 &#43;0100 &#43;0100">May 18, 2022</time>
+    
+    <p>6-Minute Read</p>
+  </div>
+</header>
+
+      <div id="socnet-share">
+        
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Using%20BCLicese%20file%20from%20powershell&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fbclicensestructure%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fbclicensestructure%2f&amp;title=Using%20BCLicese%20file%20from%20powershell" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fbclicensestructure%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+      </div>
+      <div class="content">
+        
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#new-license-format-bclicense">New License format .bclicense</a></li>
+    <li><a href="#why-developers-should-look-at-bclicense-file">Why developers should look at .bclicense file</a></li>
+    <li><a href="#how-to-use-bclicense-to-check-permissions">How to use .bclicense to check permissions</a>
+      <ul>
+        <li><a href="#permissionmask-value-meaning">PermissionMask value meaning</a></li>
+      </ul>
+    </li>
+    <li><a href="#cicd-process">CI/CD process</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+        
+        <h2 id="new-license-format-bclicense">New License format .bclicense</h2>
+<p>If you are working with OnPrem customers having Microsoft Dynamics 365 Business Central, you have already noticed the new license file format .bclicense. It was created by Microsoft to have modern way how to pass the licensing info without limits of the old .flf format (limited max size etc.). It had some side-effect (bugs) on beginning but I hope that they are solved (never tested yet). But today I am not writing about this file format because Customers, but because it could be handy for Partners/Developers and their CI/CD pipelines.</p>
+<h2 id="why-developers-should-look-at-bclicense-file">Why developers should look at .bclicense file</h2>
+<p>Because you need to test that all your objects in your app are assigned in the Customer&rsquo;s license. Because world is not ideal, still there are plenty of customers using OnPrem for running their BC environments. And it means you need to assign object IDs into the license when you are developing some PTE. Forgetting to do so is one of the top reasons of problems during or after releasing new version of PTE into customer&rsquo;s environment.</p>
+<p>One way is to use the customer&rsquo;s license during running your Automated Tests. You can do that easily by importing the customers license into your container/environment and run the tests. But if you want to fail fast if something is missing, and you want to be sure that everything is ok, it will not be enough. Waiting for the container to be created and the test finish will take time, and if there is not enough code covered by tests, you can still have problems. But it is still good to use the customer&rsquo;s license for the tests, because you can catch the missing object permissions e.g. when doing something with tables which are limited in access by default (ledger entries etc.).</p>
+<h2 id="how-to-use-bclicense-to-check-permissions">How to use .bclicense to check permissions</h2>
+<p>If you take look at .bclicense file, you will see that it have text header as old .flf file, and rest is XML. We are interested in the XML itself, because it keeps all the info we need to work with. If we will be able to read it and work with it as with xml document, we can go through the permissions and compare them e.g. with objects we have in our AL app. But how we can access the xml part of the file in powershell? It is not so hard. Just use this PowerShell script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$filecontent = get-content -Path my.bclicense
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[xml]</span>$xml=($filecontent[$filecontent.count-1]).Remove(0,2)  
+</span></span></code></pre></div><p>After that, we have the license as XML in our $xml variable. The expression will take last line from the file (the whole XML is one-liner at the end) and remove the beginning two characters (2x U+feff).</p>
+<p>And now you can do just the standard XML tricks with the variable to check what you want. The structure looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;License&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Properties&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;xxx&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;yyy&#34;</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;nnn&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#75715e">&lt;![CDATA[datadatadata]]&gt;</span><span style="color:#f92672">&lt;/Property&gt;</span>
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/Properties&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;PermissionCollections&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;pl</span> <span style="color:#a6e22e">t=</span><span style="color:#e6db74">&#34;ObjectType&#34;</span> <span style="color:#a6e22e">c=</span><span style="color:#e6db74">&#34;count&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;ps&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;p</span> <span style="color:#a6e22e">f=</span><span style="color:#e6db74">&#34;from&#34;</span> <span style="color:#a6e22e">t=</span><span style="color:#e6db74">&#34;to&#34;</span> <span style="color:#a6e22e">pbm=</span><span style="color:#e6db74">&#34;PermissionMask&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>                ...
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/ps&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/pl&gt;</span>&gt;
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/PermissionCollections&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Signature&gt;</span>
+</span></span><span style="display:flex;"><span>      ...digital signature of the file...
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/Signature&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/License&gt;</span>
+</span></span></code></pre></div><p>As you can see, it is simple XML. We are interested in the node <em>/License/PermissionCollections</em>. There we can find node for each license Object Type (TableDescription, TableData, System, MenuSuite, Codeunit, Page, FieldNo, Report, Query, XMLPort, Dataport, Form, LimitedUsageTable). In the <em>ps</em> (permission set?) node we can find the <em>p</em> node (permission?) for all the ranges in your license. It includes even ranges which you do not have in your license assigned, because such a ranges could have still some permissions in the license assigned, like &ldquo;-MD-&rdquo; permissions to be able to remove old unnecessary objects.</p>
+<h3 id="permissionmask-value-meaning">PermissionMask value meaning</h3>
+<p>Based on analysis of the file I found this bitmap mask for the PermissionMask value:</p>
+<pre tabindex="0"><code>d mirX DMIR
+</code></pre><p>Lowest bit of the value is on the right. It means the R permission is assigned if the value is odd and is not assigned if value is even.</p>
+<p>Examples:</p>
+<pre tabindex="0"><code>d mirX DMIR
+------------
+0 0000 1000 - ---D- - 8
+0 0000 1100 - --MD- - 12
+0 0000 1111 - RIMD- - 15
+0 0001 0000 - ----X - 16
+0 0001 0001 - R---X - 17
+0 0001 0010 - -I--X - 18
+0 0001 1000 - ---DX - 24
+0 0001 1001 - R--DX - 25
+0 0001 1010 - -I-DX - 26
+0 0001 1101 - R-MDX - 29
+0 0001 1111 - RIMDX - 31
+0 1100 0001 - Rim-- - 193
+0 1100 1001 - RimD- - 201
+1 0100 0101 - RiMd- - 325
+1 1000 0011 - RImd- - 387
+1 1100 0001 - Rimd- - 449
+1 1110 0000 - rimd- - 480
+</code></pre><p>Thus you need to be aware that it is not enough to test if the ID of your object is included in some range, but you need to check if there is X permission to execute it on the range, M and I permission to be able to modify or create the object by publishing standard APP package (if these permissions are missing, you can only publish such an object by Runtime Package) etc.</p>
+<p>You can test the permission e.g. by this function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> Check-PermissionMask
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">param</span>(
+</span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">Parameter</span>(<span style="color:#66d9ef">Mandatory</span>=$true,
+</span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">ValueFromPipeline</span>=$true,
+</span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">ValueFromPipelineByPropertyName</span>=$true,
+</span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">HelpMessage</span>=<span style="color:#e6db74">&#34;Permission value&#34;</span>)]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">[int]</span>$PermValue,
+</span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">Parameter</span>(<span style="color:#66d9ef">Mandatory</span>=$true,
+</span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">ValueFromPipeline</span>=$true,
+</span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">ValueFromPipelineByPropertyName</span>=$true,
+</span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">HelpMessage</span>=<span style="color:#e6db74">&#34;Permission to test&#34;</span>)]
+</span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">validateset</span>(<span style="color:#e6db74">&#39;r&#39;</span>,<span style="color:#e6db74">&#39;m&#39;</span>,<span style="color:#e6db74">&#39;i&#39;</span>,<span style="color:#e6db74">&#39;d&#39;</span>,<span style="color:#e6db74">&#39;X&#39;</span>,<span style="color:#e6db74">&#39;R&#39;</span>,<span style="color:#e6db74">&#39;M&#39;</span>,<span style="color:#e6db74">&#39;I&#39;</span>,<span style="color:#e6db74">&#39;D&#39;</span>)]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">[string]</span>$PermToTest
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    $PermMask = <span style="color:#e6db74">&#39;RIMDXrimd&#39;</span>
+</span></span><span style="display:flex;"><span>    $TestValue = 1 -shl $PermMask.IndexOf($PermToTest)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">Return</span> <span style="color:#66d9ef">[bool]</span>($PermValue <span style="color:#f92672">-band</span> $TestValue)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Test of the function:</span>
+</span></span><span style="display:flex;"><span>Check-PermissionMask -PermValue 15 -PermToTest <span style="color:#e6db74">&#39;R&#39;</span>
+</span></span><span style="display:flex;"><span>True
+</span></span></code></pre></div><h2 id="cicd-process">CI/CD process</h2>
+<p>Thanks to the .bclicense you can extend your pipelines to test if license was correctly extended with new objects and you do not need to wait for the container (and fail as early as possible). You still need to solve one thing which is out of scope of this post - how to get the list of objects in your app without creating the container and publishing the app first. I am sure there will be some way (like going through all .al files and do some basic text parsing to find all the object headers, but it still could be complex e.g. to cover correctly temporary tables etc.). If you have some tip regarding that, do not hesitate to share it in comments. If I will create something regarding that, I will try to share it.</p>
+<h2 id="summary">Summary</h2>
+<p>You can use the new .bclicense format to work with the data inside the license easily. But you need to solve few things first, like where the actual license for the customer will be stored, how to get the list of objects in app etc. Use the knowledge as you need, I hope that this article will save you some time you will need to spend on analysis of the file yourself. I am sure that there will be plenty things you can thing out around this.</p>
+
+      </div>
+      <footer>
+        <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/al/">AL</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/onprem/">OnPrem</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/pte/">PTE</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/powershell/">PowerShell</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/al/">AL</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/onprem/">OnPrem</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/license/">License</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/pte/">PTE</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/powershell/">PowerShell</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+      </footer>
+    </div>
+    
+      
+<div class='post'>
+<section id="comments" class='comments-container'>
+    
+    <h3 class="title"><a href="#comments">Comments</a></h3>
+    <section class="staticman-comments post-comments">
+        
+        
+        
+
+        
+        
+        
+
+        <form id="comment-form" class="new-comment" method="post">
+            
+            <p>Be the first to leave a comment! 🎉</p>
+            
+            <h3 class="prompt">Say something</h3>
+            
+            <h3 class='reply-notice hidden'>
+              <span class='reply-name'></span>
+              <a class='reply-close-btn button'><i class='fas fa-times'></i></a>
+            </h3>
+ 
+            <input type='hidden' name='fields[replyName]' value=''>
+            <input type="hidden" name="options[slug]" value="BClicenseStructure">
+            <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required />
+            <input type="email" name="fields[email]" class="post-comment-field"
+                placeholder="Email address (will not be public) *" required />
+            <input type='text' name='fields[website]' class="post-comment-field"
+                placeholder='Your Website (include https://)'>
+            <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
+            <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *"
+                required rows="10"></textarea>
+            
+            
+            
+            <input hidden name='options[reCaptcha][siteKey]' value='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'>
+            <input hidden name='options[reCaptcha][secret]' value='FdlTy3aVy1SZfJ3h9aKAOgqeyZIFjV6Tjk3yN9BXxz5WB6FcmGlafyM&#43;hvBpDzOTstLDgQvBnWIn0T96nMLzI6bUyJL50tfeMuVpkYZhS9VkOhmPq7YEFmZCO7hVYkQkE4hh8JvVtyAmI9WKE5gOHBnRIrLWAFNLz7kUJRu7riOJtj8mNNMlpnfANVaiPQZ6xFykxG2X8RnJRW4dMV/335SiI5QcgB7fZzm0ntYZc1WsnYOUegqgw1z2ttJdB4J0xclKFcowrgKvq1LPn0P7H47EriVwt0QHz9NfK65CA6nJPQ8S487TI635IeXJ8HLOJkYeQnIyMeQZGKavlqDFFA=='>
+            <div class='g-recaptcha' data-sitekey='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'></div>
+            
+            
+            
+            <div class='submit-notice'>
+                <strong class='submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+                <strong class='submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again.</strong>
+            </div>
+
+            
+            <button type='button' id="comment-form-submit" class='button'>Submit</button>
+            <button type='button' id="comment-form-submitted" class='hidden button' disabled>Submitted</button>
+            <button type='reset' id="comment-form-reset" class='button'>Reset</button>
+
+        </form>
+    </section>
+
+    
+</section>
+</div>
+
+    
+  </article>
+  <div class="pagination">
+    
+    
+      <a href="https://blog.kine.cz/posts/whytowriteenutranslation/" class="button right"><span>How to translate your AL app from Devglish to Endglish</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/bclicensestructure/">Using BCLicese file from powershell</a></h2>
+          <time class="published" datetime="2022-05-18 00:00:00 &#43;0100 &#43;0100">May 18, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/whytowriteenutranslation/">How to translate your AL app from Devglish to Endglish</a></h2>
+          <time class="published" datetime="2022-05-05 00:00:00 &#43;0100 &#43;0100">May 5, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/localfs/">Unattended access to local resources - WCF Relay</a></h2>
+          <time class="published" datetime="2022-03-31 00:00:00 &#43;0100 &#43;0100">March 31, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/snapshotdebuggeronprem/">Snapshot debugger on OnPrem - what you need to know to set it up</a></h2>
+          <time class="published" datetime="2022-02-15 11:00:00 &#43;0100 &#43;0100">February 15, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/ptearchitecture1/">Architecture of PTE - Split or not to Split?</a></h2>
+          <time class="published" datetime="2021-11-18 16:51:00 &#43;0100 &#43;0100">November 18, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="https://blog.kine.cz/blog" class="button">See More</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="https://blog.kine.cz/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/business-central/">business-central<span class="count">5</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/al/">al<span class="count">4</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/pte/">pte<span class="count">3</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/administration/">administration<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/architecture/">architecture<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/general/">general<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/onprem/">onprem<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/powershell/">powershell<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I have more than 35 years of experience with SW development and everything around IT. I have got my first MVP award in 2005.</p>
+      <footer>
+        <a href="https://blog.kine.cz/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+  
+  <p class="copyright">
+    © 2022 Kine&#39;s info
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.99.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="https://blog.kine.cz/js/highlight.js"></script>
+    
+    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.89cac7b25a3d92ec8509866dc3adc301a82b230a63386f1aa166b4d73ba8dc8a.js" integrity="sha256-icrHslo9kuyFCYZtw63DAagrIwpjOG8aoWa01zuo3Io="></script>
+    <script src="https://blog.kine.cz/js/add-on.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-92839335-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

@@ -3,36 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.kine.cz/tags/al/</loc>
-    <lastmod>2022-05-05T00:00:00+01:00</lastmod>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/categories/al/</loc>
-    <lastmod>2022-05-05T00:00:00+01:00</lastmod>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/business-central/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/business-central/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/license/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/onprem/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/onprem/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/posts/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/powershell/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/powershell/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/pte/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/pte/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/posts/bclicensestructure/</loc>
+    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/appsource/</loc>
     <lastmod>2022-05-05T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://blog.kine.cz/tags/business-central/</loc>
-    <lastmod>2022-05-05T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/categories/business-central/</loc>
-    <lastmod>2022-05-05T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/categories/</loc>
-    <lastmod>2022-05-05T00:00:00+01:00</lastmod>
-  </url><url>
     <loc>https://blog.kine.cz/posts/whytowriteenutranslation/</loc>
-    <lastmod>2022-05-05T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/</loc>
-    <lastmod>2022-05-05T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/posts/</loc>
-    <lastmod>2022-05-05T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/tags/pte/</loc>
-    <lastmod>2022-05-05T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/tags/</loc>
     <lastmod>2022-05-05T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/translation/</loc>
@@ -42,9 +63,6 @@
     <lastmod>2022-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/local-resources/</loc>
-    <lastmod>2022-03-31T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/categories/pte/</loc>
     <lastmod>2022-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/posts/localfs/</loc>

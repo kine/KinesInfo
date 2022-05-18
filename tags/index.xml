@@ -6,13 +6,58 @@
     <description>Recent content in Tags on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 May 2022 00:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 May 2022 00:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AL</title>
       <link>https://blog.kine.cz/tags/al/</link>
-      <pubDate>Thu, 05 May 2022 00:00:00 +0100</pubDate>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate>
       
       <guid>https://blog.kine.cz/tags/al/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Business Central</title>
+      <link>https://blog.kine.cz/tags/business-central/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/tags/business-central/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>License</title>
+      <link>https://blog.kine.cz/tags/license/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/tags/license/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OnPrem</title>
+      <link>https://blog.kine.cz/tags/onprem/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/tags/onprem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PowerShell</title>
+      <link>https://blog.kine.cz/tags/powershell/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/tags/powershell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PTE</title>
+      <link>https://blog.kine.cz/tags/pte/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/tags/pte/</guid>
       <description></description>
     </item>
     
@@ -22,24 +67,6 @@
       <pubDate>Thu, 05 May 2022 00:00:00 +0100</pubDate>
       
       <guid>https://blog.kine.cz/tags/appsource/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Business Central</title>
-      <link>https://blog.kine.cz/tags/business-central/</link>
-      <pubDate>Thu, 05 May 2022 00:00:00 +0100</pubDate>
-      
-      <guid>https://blog.kine.cz/tags/business-central/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PTE</title>
-      <link>https://blog.kine.cz/tags/pte/</link>
-      <pubDate>Thu, 05 May 2022 00:00:00 +0100</pubDate>
-      
-      <guid>https://blog.kine.cz/tags/pte/</guid>
       <description></description>
     </item>
     
