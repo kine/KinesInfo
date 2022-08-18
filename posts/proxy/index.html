@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>How to publish your local BC containers to internet using IIS - Kine&#39;s info</title>
+<meta name="description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Kine&#39;s info">
+<meta property="og:title" content="How to publish your local BC containers to internet using IIS">
+<meta property="og:description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.kine.cz/posts/proxy/">
+    <meta property="og:image" content="https://blog.kine.cz/images/ProxyDesign.png">
+    <meta property="og:image:alt" content="ProxyDesign">
+
+
+  <link rel="shortcut icon" href="https://blog.kine.cz/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.101.0" />
+  <link rel="stylesheet" href="https://blog.kine.cz/css/bundle.min.5233f2a4cd515395301b4154f6c1c621695e8cf53faa0935b76ac52fed7f4585.css" integrity="sha256-UjPypM1RU5UwG0FU9sHGIWlejPU/qgk1t2rFL&#43;1/RYU="><link rel="stylesheet" href="https://blog.kine.cz/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="https://blog.kine.cz/" class="nav">
+        
+          How to publish your local BC containers to internet using IIS
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/about" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/categories" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/tags" class="nav link"><i class='fas fa-tags'></i> Tags</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active"> (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=How%20to%20publish%20your%20local%20BC%20containers%20to%20internet%20using%20IIS&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fproxy%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fproxy%2f&amp;title=How%20to%20publish%20your%20local%20BC%20containers%20to%20internet%20using%20IIS" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fproxy%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="https://blog.kine.cz/"><img src="https://blog.kine.cz/assets/KSCSmall.png" class="circle" width="100" alt="Kine&#39;s Info" /></a>
+  <header>
+    <h1>Kine's Info</h1>
+  </header>
+  <main>
+    <p>Another blog about Microsoft Dynamics 365 Business Central (AL, Powershell, Azure DevOps etc.)<center><a href='https://mvp.microsoft.com/en-us/mvp/kamil%20sacek-21590'><img src='https://blog.kine.cz/assets/MVP_Logo_Horizontal_Secondary_Blue286_CMYK_72ppi.png' width='50%'></a></center></p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article>
+    <div class="post">
+      <header>
+  <div class="title">
+    
+      <h2><a href="https://blog.kine.cz/posts/proxy/">How to publish your local BC containers to internet using IIS</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time datetime="2022-08-18 12:00:00 &#43;0100 &#43;0100">August 18, 2022</time>
+    
+    <p>4-Minute Read</p>
+  </div>
+</header>
+
+      <div id="socnet-share">
+        
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=How%20to%20publish%20your%20local%20BC%20containers%20to%20internet%20using%20IIS&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fproxy%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fproxy%2f&amp;title=How%20to%20publish%20your%20local%20BC%20containers%20to%20internet%20using%20IIS" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fproxy%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+      </div>
+      <div class="content">
+        <a href="https://blog.kine.cz/posts/proxy/" class="image">
+    <img class="" src="https://blog.kine.cz/images/ProxyDesign.png" alt="ProxyDesign">
+  </a>
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#needed-components">Needed components</a>
+      <ul>
+        <li><a href="#external-dns-entry">External DNS Entry</a></li>
+        <li><a href="#internal-dns-entries">Internal DNS Entries</a></li>
+        <li><a href="#forward-proxy">Forward Proxy</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+        
+        <p>If you are doing Dynamics 365 Business Central development on your local (not Azure) containers, may be you want to have access to them from outside your local network without using VPN. And not only to BC Web Client, but even to API/OData and development endpoint. And of course you want to have them published with some trusted certificate to be able to use all the functionality like Business Central application, connection from Power BI connectors etc. It is handy when you are working with external workers like freelancers, because you do not need to setup VPN etc. for them. When using AAD authentication, just invite them as guest users to your tenant and you are ready to give them access as needed.</p>
+<p>Different tools exists for solving that like <a href="https://traefik.io">Traefik</a>.</p>
+<p>But if you want just easy solution using Windows IIS, you can use the Application Request Routing (ARR) feature of IIS for that.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>When we create the proxy server (server with Windows and IIS installed) and we put it somewhere into our DMZ (zone which is accessible from internet and can access local network), we can setup DNS server to send our requests for some specified subdomain with our &ldquo;BC Environments&rdquo; to that proxy. The proxy takes the request and will forward it to correct internal server/container and will transfer the response back to the sender. In my case, all our internal development environments are running as part of our dev. subdomain, thus I am able to forward everything going to <em>xxx.dev.ourdomain.com</em> to our local <em>xxx.dev.ourdomain.com</em>.</p>
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <figure>
+    <a data-fancybox="Proxy" href="https://blog.kine.cz/assets/Proxy/ProxyDesign.png" data-caption="Proxy architecture"><img src="https://blog.kine.cz/assets/Proxy/ProxyDesign.png"></a>
+    <figcaption>Proxy architecture</figcaption>
+  </figure>
+
+
+<p>And if I set the proxy to listen on port 443, 7047, 7048, 7049 and 7085, I will make the web client, SOAP, OData/API, Development and Snapshot debugging available for people from outside.</p>
+<h2 id="needed-components">Needed components</h2>
+<h3 id="external-dns-entry">External DNS Entry</h3>
+<p>On your external DNS for your dev.ourdomain.com zone, you need to create wildcard entry of type CNAME leading to the external interface of your PROXY. It will translate anything in format xxx.dev.ourdomain.com to the proxy server address.</p>
+<h3 id="internal-dns-entries">Internal DNS Entries</h3>
+<p>On your internal DNS you need to translate same address as you want to use from outside, to local address of the server/container. It means, on your internal network the address xxx.dev.ourdomain.com should be translated to the local address of the server/container. In this way we do not need any &ldquo;translation&rdquo; table which will transform the external name to internal one and we can just maintain the local DNS entries. Having same external and internal address is even good thing when you want to use AAD authentication in BC.</p>
+<h3 id="forward-proxy">Forward Proxy</h3>
+<p>On the proxy, install IIS feature with ARR and URL Rewrite. You can use <a href="https://docs.microsoft.com/en-us/iis/extensions/configuring-application-request-routing-arr/creating-a-forward-proxy-using-application-request-routing">this documentation</a> to install and setup what is needed. Enable the SSL offloading to be able to have different internal and external SSL certificate. When the offloading is enabled, the proxy will act as man-in-the-middle. It means the external client is communicating with the external https endpoint of the proxy, which have some externally trusted certificate installed on it. The proxy then takes the request and will create new connection to the local resource and send the request there. The local resource could have internally trusted certificate, or could use http protocol without certificate if you want.</p>
+<p>Set the rules like this:</p>
+<ul>
+<li>Global forward rule
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <figure>
+    <a data-fancybox="Proxy" href="https://blog.kine.cz/assets/Proxy/ProxyRule1.png" data-caption="Proxy rule 1"><img src="https://blog.kine.cz/assets/Proxy/ProxyRule1.png"></a>
+    <figcaption>Proxy rule 1</figcaption>
+  </figure>
+
+</li>
+<li>Rule to handle OAuth request correctly (without this the OAuth will end on the container instead the Microsoft site)
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <figure>
+    <a data-fancybox="Proxy" href="https://blog.kine.cz/assets/Proxy/ProxyRule2.png" data-caption="Proxy rule 2"><img src="https://blog.kine.cz/assets/Proxy/ProxyRule2.png"></a>
+    <figcaption>Proxy rule 2</figcaption>
+  </figure>
+
+</li>
+<li>Rule to handle OAuth request correctly (without this the OAuth will end on the container instead the Microsoft site)
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <figure>
+    <a data-fancybox="Proxy" href="https://blog.kine.cz/assets/Proxy/ProxyRule3.png" data-caption="Proxy rule 3"><img src="https://blog.kine.cz/assets/Proxy/ProxyRule3.png"></a>
+    <figcaption>Proxy rule 3</figcaption>
+  </figure>
+
+</li>
+</ul>
+<p>Set the default web site on the IIS to listen on the required ports like 443, 7048, 7049 and 7085. Open these ports for access from internet on the firewall.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>If everything is working correctly, you should be able:</p>
+<ul>
+<li>connect to the xxx.ourdomain.com web client and other endpoints from local network</li>
+<li>connect to the xxx.ourdomain.com web client and other endpoints from internet without using VPN</li>
+<li>have trusted certificate placed only on the proxy server on the default site</li>
+<li>have internal certificate on your environments (proxy server must trust them)</li>
+</ul>
+<p>If you are missing some info here, let me know and I will update the article as needed.</p>
+<p>Warning! This setup is forwarding everything going to the *.dev.ourdomain.com to the proxy, thus it could be used for attack to your internal infrastructure, if you have more services available than just the BC containers on your internal dev.ourdomain.com domain. You need to be aware of that and you can somehow limit this by modifying the rules e.g. to forward only request having format of the names of your BC environments etc. Best is to use subdomain where is nothing else than the environments.</p>
+<p>Enjoy work with the environments withouth VPN!</p>
+
+      </div>
+      <footer>
+        <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/infrastructure/">Infrastructure</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/infrastructure/">Infrastructure</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/iis/">IIS</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+      </footer>
+    </div>
+    
+      
+<div class='post'>
+<section id="comments" class='comments-container'>
+    
+    <h3 class="title"><a href="#comments">Comments</a></h3>
+    <section class="staticman-comments post-comments">
+        
+        
+        
+
+        
+        
+        
+
+        <form id="comment-form" class="new-comment" method="post">
+            
+            <p>Be the first to leave a comment! 🎉</p>
+            
+            <h3 class="prompt">Say something</h3>
+            
+            <h3 class='reply-notice hidden'>
+              <span class='reply-name'></span>
+              <a class='reply-close-btn button'><i class='fas fa-times'></i></a>
+            </h3>
+ 
+            <input type='hidden' name='fields[replyName]' value=''>
+            <input type="hidden" name="options[slug]" value="Proxy">
+            <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required />
+            <input type="email" name="fields[email]" class="post-comment-field"
+                placeholder="Email address (will not be public) *" required />
+            <input type='text' name='fields[website]' class="post-comment-field"
+                placeholder='Your Website (include https://)'>
+            <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
+            <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *"
+                required rows="10"></textarea>
+            
+            
+            
+            <input hidden name='options[reCaptcha][siteKey]' value='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'>
+            <input hidden name='options[reCaptcha][secret]' value='FdlTy3aVy1SZfJ3h9aKAOgqeyZIFjV6Tjk3yN9BXxz5WB6FcmGlafyM&#43;hvBpDzOTstLDgQvBnWIn0T96nMLzI6bUyJL50tfeMuVpkYZhS9VkOhmPq7YEFmZCO7hVYkQkE4hh8JvVtyAmI9WKE5gOHBnRIrLWAFNLz7kUJRu7riOJtj8mNNMlpnfANVaiPQZ6xFykxG2X8RnJRW4dMV/335SiI5QcgB7fZzm0ntYZc1WsnYOUegqgw1z2ttJdB4J0xclKFcowrgKvq1LPn0P7H47EriVwt0QHz9NfK65CA6nJPQ8S487TI635IeXJ8HLOJkYeQnIyMeQZGKavlqDFFA=='>
+            <div class='g-recaptcha' data-sitekey='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'></div>
+            
+            
+            
+            <div class='submit-notice'>
+                <strong class='submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+                <strong class='submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again.</strong>
+            </div>
+
+            
+            <button type='button' id="comment-form-submit" class='button'>Submit</button>
+            <button type='button' id="comment-form-submitted" class='hidden button' disabled>Submitted</button>
+            <button type='reset' id="comment-form-reset" class='button'>Reset</button>
+
+        </form>
+    </section>
+
+    
+</section>
+</div>
+
+    
+  </article>
+  <div class="pagination">
+    
+    
+      <a href="https://blog.kine.cz/posts/bclicensestructure/" class="button right"><span>Using BCLicese file from powershell</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/proxy/" class="image">
+    <img class="" src="https://blog.kine.cz/images/ProxyDesign.png" alt="ProxyDesign">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/proxy/">How to publish your local BC containers to internet using IIS</a></h2>
+          <time class="published" datetime="2022-08-18 12:00:00 &#43;0100 &#43;0100">August 18, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/bclicensestructure/">Using BCLicese file from powershell</a></h2>
+          <time class="published" datetime="2022-05-18 00:00:00 &#43;0100 &#43;0100">May 18, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/whytowriteenutranslation/">How to translate your AL app from Devglish to Endglish</a></h2>
+          <time class="published" datetime="2022-05-05 00:00:00 &#43;0100 &#43;0100">May 5, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/localfs/">Unattended access to local resources - WCF Relay</a></h2>
+          <time class="published" datetime="2022-03-31 00:00:00 &#43;0100 &#43;0100">March 31, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/snapshotdebuggeronprem/">Snapshot debugger on OnPrem - what you need to know to set it up</a></h2>
+          <time class="published" datetime="2022-02-15 11:00:00 &#43;0100 &#43;0100">February 15, 2022</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="https://blog.kine.cz/blog" class="button">See More</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="https://blog.kine.cz/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/business-central/">business-central<span class="count">6</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/al/">al<span class="count">4</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/pte/">pte<span class="count">3</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/administration/">administration<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/architecture/">architecture<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/general/">general<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/infrastructure/">infrastructure<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/onprem/">onprem<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/powershell/">powershell<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I have more than 35 years of experience with SW development and everything around IT. I have got my first MVP award in 2005.</p>
+      <footer>
+        <a href="https://blog.kine.cz/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+  
+  <p class="copyright">
+    © 2022 Kine&#39;s info
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.101.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="https://blog.kine.cz/js/highlight.js"></script>
+    
+    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.d74e45d6a7031b09ff76bb1bfcee45240414918cdbec910300817dd7ec6e4e5a.js" integrity="sha256-105F1qcDGwn/drsb/O5FJAQUkYzb7JEDAIF91&#43;xuTlo="></script>
+    <script src="https://blog.kine.cz/js/add-on.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-92839335-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

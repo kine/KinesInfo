@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 May 2022 00:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Aug 2022 12:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to publish your local BC containers to internet using IIS</title>
+      <link>https://blog.kine.cz/posts/proxy/</link>
+      <pubDate>Thu, 18 Aug 2022 12:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/proxy/</guid>
+      <description>If you are doing Dynamics 365 Business Central development on your local (not Azure) containers, may be you want to have access to them from outside your local network without using VPN. And not only to BC Web Client, but even to API/OData and development endpoint. And of course you want to have them published with some trusted certificate to be able to use all the functionality like Business Central application, connection from Power BI connectors etc.</description>
+    </item>
+    
     <item>
       <title>Using BCLicese file from powershell</title>
       <link>https://blog.kine.cz/posts/bclicensestructure/</link>
