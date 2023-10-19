@@ -6,7 +6,16 @@
     <description>Recent content on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Aug 2022 12:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Oct 2023 16:30:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SaLi architecture for Microsoft Dynamics 365 Business Central, part 1</title>
+      <link>https://blog.kine.cz/posts/sali_part1/</link>
+      <pubDate>Tue, 17 Oct 2023 16:30:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/sali_part1/</guid>
+      <description>If you are developing solutions for Microsoft Dynamics 365 Business Central and you are building them from multiple applications (see Split or not to split), may be you are now experiencing some problems with the dependencies between your apps, chaos made by development withouth rules. We were there too and this is example of dependency chart of one our solution: Dependencies before SaLi And because my coleague Jakub Linhart is smart and tried to analyze our existing solutions to find some ways how to make them and our new solutions better, we have noticed some patterns and we tried to make some rules based on these patterns.</description>
+    </item>
+    
     <item>
       <title>How to publish your local BC containers to internet using IIS</title>
       <link>https://blog.kine.cz/posts/proxy/</link>
@@ -17,7 +26,7 @@
     </item>
     
     <item>
-      <title>Using BCLicese file from powershell</title>
+      <title>Using BCLicense file from powershell</title>
       <link>https://blog.kine.cz/posts/bclicensestructure/</link>
       <pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate>
       

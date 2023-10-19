@@ -6,13 +6,40 @@
     <description>Recent content in Categories on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Aug 2022 12:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Oct 2023 16:30:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AppSource</title>
+      <link>https://blog.kine.cz/categories/appsource/</link>
+      <pubDate>Tue, 17 Oct 2023 16:30:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/categories/appsource/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Architecture</title>
+      <link>https://blog.kine.cz/categories/architecture/</link>
+      <pubDate>Tue, 17 Oct 2023 16:30:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/categories/architecture/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Business Central</title>
       <link>https://blog.kine.cz/categories/business-central/</link>
-      <pubDate>Thu, 18 Aug 2022 12:00:00 +0100</pubDate>
+      <pubDate>Tue, 17 Oct 2023 16:30:00 +0200</pubDate>
       
       <guid>https://blog.kine.cz/categories/business-central/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PTE</title>
+      <link>https://blog.kine.cz/categories/pte/</link>
+      <pubDate>Tue, 17 Oct 2023 16:30:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/categories/pte/</guid>
       <description></description>
     </item>
     
@@ -53,29 +80,11 @@
     </item>
     
     <item>
-      <title>PTE</title>
-      <link>https://blog.kine.cz/categories/pte/</link>
-      <pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate>
-      
-      <guid>https://blog.kine.cz/categories/pte/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Administration</title>
       <link>https://blog.kine.cz/categories/administration/</link>
       <pubDate>Tue, 15 Feb 2022 11:00:00 +0100</pubDate>
       
       <guid>https://blog.kine.cz/categories/administration/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Architecture</title>
-      <link>https://blog.kine.cz/categories/architecture/</link>
-      <pubDate>Thu, 18 Nov 2021 16:51:00 +0100</pubDate>
-      
-      <guid>https://blog.kine.cz/categories/architecture/</guid>
       <description></description>
     </item>
     

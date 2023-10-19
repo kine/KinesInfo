@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AppSource on Kine&#39;s info</title>
+    <link>https://blog.kine.cz/categories/appsource/</link>
+    <description>Recent content in AppSource on Kine&#39;s info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 17 Oct 2023 16:30:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/categories/appsource/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SaLi architecture for Microsoft Dynamics 365 Business Central, part 1</title>
+      <link>https://blog.kine.cz/posts/sali_part1/</link>
+      <pubDate>Tue, 17 Oct 2023 16:30:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/sali_part1/</guid>
+      <description>If you are developing solutions for Microsoft Dynamics 365 Business Central and you are building them from multiple applications (see Split or not to split), may be you are now experiencing some problems with the dependencies between your apps, chaos made by development withouth rules. We were there too and this is example of dependency chart of one our solution: Dependencies before SaLi And because my coleague Jakub Linhart is smart and tried to analyze our existing solutions to find some ways how to make them and our new solutions better, we have noticed some patterns and we tried to make some rules based on these patterns.</description>
+    </item>
+    
+  </channel>
+</rss>
