@@ -6,7 +6,18 @@
     <description>Recent content in Business Central on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Oct 2023 16:30:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/tags/business-central/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Jan 2024 14:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/tags/business-central/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SaLi architecture for Microsoft Dynamics 365 Business Central, part 2</title>
+      <link>https://blog.kine.cz/posts/sali_part2/</link>
+      <pubDate>Thu, 04 Jan 2024 14:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/sali_part2/</guid>
+      <description>See previous part first - SaLi architecture for Microsoft Dynamics 365 Business Central, part 1
+In previous part we were talking about inter-application Dependencies and their layering which helps with correct dependency structure. But still we have a problem how to decide, which new requested feature will go into which application to keep the architecture clean. To help with this decision making, we created few rules regarding this.
+SaLi Naming rule Is there a unique and concise name for the app that describes the functionality?</description>
+    </item>
+    
     <item>
       <title>SaLi architecture for Microsoft Dynamics 365 Business Central, part 1</title>
       <link>https://blog.kine.cz/posts/sali_part1/</link>
