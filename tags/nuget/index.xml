@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NuGet on Kine&#39;s info</title>
+    <link>https://blog.kine.cz/tags/nuget/</link>
+    <description>Recent content in NuGet on Kine&#39;s info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Jul 2024 10:00:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/tags/nuget/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NuGet-izing Business Central: Current status</title>
+      <link>https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/</link>
+      <pubDate>Fri, 12 Jul 2024 10:00:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/</guid>
+      <description>In my last sessions on different conferences and webcasts I was talking about my dream regarding using NuGet technology to distribute and consume Business Central .app files. These sessions were starter point for make the whole dream reality. But we are not there yet. We just started the trip. This blog article want to summarize current status of this trip.
+Requirements To make the dream reality, we need multiple things to happen:</description>
+    </item>
+    
+  </channel>
+</rss>

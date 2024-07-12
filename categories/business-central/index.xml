@@ -6,7 +6,17 @@
     <description>Recent content in Business Central on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Jan 2024 14:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/categories/business-central/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Jul 2024 10:00:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/categories/business-central/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NuGet-izing Business Central: Current status</title>
+      <link>https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/</link>
+      <pubDate>Fri, 12 Jul 2024 10:00:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/</guid>
+      <description>In my last sessions on different conferences and webcasts I was talking about my dream regarding using NuGet technology to distribute and consume Business Central .app files. These sessions were starter point for make the whole dream reality. But we are not there yet. We just started the trip. This blog article want to summarize current status of this trip.
+Requirements To make the dream reality, we need multiple things to happen:</description>
+    </item>
+    
     <item>
       <title>SaLi architecture for Microsoft Dynamics 365 Business Central, part 2</title>
       <link>https://blog.kine.cz/posts/sali_part2/</link>
