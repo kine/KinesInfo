@@ -6,11 +6,11 @@
     <description>Recent content in Tags on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Jul 2024 10:00:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Jul 2024 15:00:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Business Central</title>
       <link>https://blog.kine.cz/tags/business-central/</link>
-      <pubDate>Fri, 12 Jul 2024 10:00:00 +0200</pubDate>
+      <pubDate>Mon, 15 Jul 2024 15:00:00 +0200</pubDate>
       
       <guid>https://blog.kine.cz/tags/business-central/</guid>
       <description></description>
@@ -19,9 +19,27 @@
     <item>
       <title>NuGet</title>
       <link>https://blog.kine.cz/tags/nuget/</link>
-      <pubDate>Fri, 12 Jul 2024 10:00:00 +0200</pubDate>
+      <pubDate>Mon, 15 Jul 2024 15:00:00 +0200</pubDate>
       
       <guid>https://blog.kine.cz/tags/nuget/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NVRAppDevOps</title>
+      <link>https://blog.kine.cz/tags/nvrappdevops/</link>
+      <pubDate>Mon, 15 Jul 2024 15:00:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/tags/nvrappdevops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Paket</title>
+      <link>https://blog.kine.cz/tags/paket/</link>
+      <pubDate>Mon, 15 Jul 2024 15:00:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/tags/paket/</guid>
       <description></description>
     </item>
     

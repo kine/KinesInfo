@@ -6,7 +6,17 @@
     <description>Recent content on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Jul 2024 10:00:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Jul 2024 15:00:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using Paket CLI for Business Central</title>
+      <link>https://blog.kine.cz/posts/paketforbc/</link>
+      <pubDate>Mon, 15 Jul 2024 15:00:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/paketforbc/</guid>
+      <description>In my previous article NuGet-izing Business Central: Current Status I have mentioned NVRAppDevOps powershell module we are using in our DevOps and that it supports using NuGet packages together with Microsoft Dynamics 365 Business Central. This article will be about how it works.
+Paket CLI When we were starting to use NuGet packages for our BC apps, I was using nuget.exe tool only. Later, when we had some additional requirements, I have found Paket CLI and learned that it is much easier to use for my purpose.</description>
+    </item>
+    
     <item>
       <title>NuGet-izing Business Central: Current status</title>
       <link>https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/</link>

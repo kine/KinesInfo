@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Using Paket CLI for Business Central - Kine&#39;s info</title>
+<meta name="description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Kine&#39;s info">
+<meta property="og:title" content="Using Paket CLI for Business Central">
+<meta property="og:description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.kine.cz/posts/paketforbc/">
+    <meta property="og:image" content="https://blog.kine.cz/assets/NuGet/PaketLogo.png">
+    <meta property="og:image:alt" content="Paket Logo">
+
+
+  <link rel="shortcut icon" href="https://blog.kine.cz/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.101.0" />
+  <link rel="stylesheet" href="https://blog.kine.cz/css/bundle.min.5233f2a4cd515395301b4154f6c1c621695e8cf53faa0935b76ac52fed7f4585.css" integrity="sha256-UjPypM1RU5UwG0FU9sHGIWlejPU/qgk1t2rFL&#43;1/RYU="><link rel="stylesheet" href="https://blog.kine.cz/css/add-on.css">
+        <link rel="stylesheet" href="https://blog.kine.cz/assets/css/copy-code-button.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="https://blog.kine.cz/" class="nav">
+        
+          Using Paket CLI for Business Central
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/about" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/categories" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/tags" class="nav link"><i class='fas fa-tags'></i> Tags</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active"> (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Using%20Paket%20CLI%20for%20Business%20Central&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fpaketforbc%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fpaketforbc%2f&amp;title=Using%20Paket%20CLI%20for%20Business%20Central" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fpaketforbc%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="https://blog.kine.cz/"><img src="https://blog.kine.cz/assets/KSCSmall.png" class="circle" width="100" alt="Kine&#39;s Info" /></a>
+  <header>
+    <h1>Kine's Info</h1>
+  </header>
+  <main>
+    <p>Another blog about Microsoft Dynamics 365 Business Central (AL, Powershell, Azure DevOps etc.)<center><a href='https://mvp.microsoft.com/en-us/mvp/kamil%20sacek-21590'><img src='https://blog.kine.cz/assets/MVP_Logo_Horizontal_Secondary_Blue286_CMYK_72ppi.png' width='50%'></a></center></p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article>
+    <div class="post">
+      <header>
+  <div class="title">
+    
+      <h2><a href="https://blog.kine.cz/posts/paketforbc/">Using Paket CLI for Business Central</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time datetime="2024-07-15 15:00:00 &#43;0200 &#43;0200">July 15, 2024</time>
+    
+    <p>8-Minute Read</p>
+  </div>
+</header>
+
+      <div id="socnet-share">
+        
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Using%20Paket%20CLI%20for%20Business%20Central&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fpaketforbc%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fpaketforbc%2f&amp;title=Using%20Paket%20CLI%20for%20Business%20Central" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fpaketforbc%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+      </div>
+      <div class="content">
+        <a href="https://blog.kine.cz/posts/paketforbc/" class="image" style="--bg-image: url('/assets/NuGet/PaketLogo.png');">
+    <img class="" src="https://blog.kine.cz/assets/NuGet/PaketLogo.png" alt="Paket Logo">
+  </a>
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#paket-cli">Paket CLI</a>
+      <ul>
+        <li><a href="#how-paket-works">How Paket works</a></li>
+        <li><a href="#paketdependencies-file">Paket.dependencies file</a></li>
+        <li><a href="#paketlock-file">Paket.lock file</a></li>
+        <li><a href="#paket-commands">Paket commands</a></li>
+        <li><a href="#workflow-with-paket">Workflow with Paket</a></li>
+      </ul>
+    </li>
+    <li><a href="#nvrappdevops-and-paket">NVRAppDevOps and Paket</a>
+      <ul>
+        <li><a href="#usage-from-vscode">Usage from VSCode</a></li>
+        <li><a href="#usag-from-devops-cicd-pipeline">Usag from DevOps CI/CD pipeline</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+        
+        <p>In my previous article <a href="https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/">NuGet-izing Business Central: Current Status</a> I have mentioned <a href="https://github.com/kine/NVRAppDevOps">NVRAppDevOps</a> powershell module we are using in our DevOps and that it supports using NuGet packages together with Microsoft Dynamics 365 Business Central. This article will be about how it works.</p>
+<h2 id="paket-cli">Paket CLI</h2>
+<p>When we were starting to use NuGet packages for our BC apps, I was using nuget.exe tool only. Later, when we had some additional requirements, I have found <a href="https://fsprojects.github.io/Paket/index.html">Paket CLI</a> and learned that it is much easier to use for my purpose. Thus we migrated to this tool for the consuming part of our pipeline (the process, when we need to download the dependencies to be able to compile our app or deploy it to new contianer etc.). It is much easier to use than nuget.exe, because it is not so tightly coupled with Visual Studio project like nuget.exe is.</p>
+<p>And by using existing tool, developed by and for community which is much bigger and &ldquo;older&rdquo; (in using NuGet) than BC community, I can use the know-how already encoded into this tool for free and right now. Downloading the NuGet packages is not so simple as it can look on the first sight. Why to reinvent the wheel?</p>
+<h3 id="how-paket-works">How Paket works</h3>
+<h3 id="paketdependencies-file">Paket.dependencies file</h3>
+<p>To use Paket, you need only the paket.exe and one text file with name &ldquo;paket.dependencies&rdquo;. This file is describing all what you need to be able to download the dependencies. Description of the file is documented <a href="https://fsprojects.github.io/Paket/dependencies-file.html">here</a>.</p>
+<p>Example could look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>strategy: min           # use the minimum version of transitive dependencies
+</span></span><span style="display:flex;"><span>lowest_matching: true   # use the lowest matching version of a direct dependency
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>source https://myaccount.pkgs.visualstudio.com/_packaging/myfeedname/nuget/v3/index.json username:&#34;&#34; password:&#34;%PAT%&#34; authmethod:basic
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>nuget NAVERTICAas.NaverticaMeters.71971f57-xxxx-xxxx-xxxx-5e0886784631 &gt;= 21.0.0.0
+</span></span><span style="display:flex;"><span>nuget Microsoft.Application  &gt;= 23.3.0.0  strategy:min, lowest_matching:true
+</span></span><span style="display:flex;"><span>nuget Microsoft.Platform  &gt;= 23.0.0.0  strategy:min, lowest_matching:true
+</span></span></code></pre></div><p>Source in our case is some Azure DevOps artifact feed. The URL could be found on the &ldquo;Connect to Feed&rdquo; info on your feed in Azure DevOps. After you click on this button, just select that you want to connect to NuGet e.g. frm Visual Studio and on the opened page you will see the Source where the URL is ready to copy. When using private feed, you need to set even the authentication mode to Basic and set password to some PAT. You can use system environment variable to get the value to not include it directly in your file, because the paket.dependencies could be commited as part of your source code. Just set the PAT environment variable to the PAT value and you will be able to use this source to download your packags.</p>
+<p><em>Strategy</em> and <em>lowest_matching</em> are options which sets version policy when resolving the dependency tree (if you want min or max versions for transitive dependencies and direct dependencies). Do not forget that you should use both policies in your pipelines, because both are valid and are testing or giving you different aspect of your application (see <a href="https://youtu.be/u-XCDwS4Vw0?si=YyaaKfOO_CcS5KHY">this Areopa webinar</a> for more info).</p>
+<p>Last lines are telling Paket which dependencies we want to download. Paket will automatically resolve whole dependency tree and versions of all the dependencies based on the requirements you set here. Paket is able to work even with other packages than NuGet, but we will be using only the NuGet packages for now.</p>
+<p>You can see that it is not hard to generate this file based on the app.json of your app and we need only somehow add the sources. How we will generate the package names are given by the Rules we have defined. The rule is simple:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>- pattern: &lt;Publisher&gt;.&lt;AppName&gt;.&lt;Tag&gt;.&lt;AppId&gt;
+</span></span><span style="display:flex;"><span>- max length: 100 chars. If longer, cut &lt;AppName&gt; to fit
+</span></span><span style="display:flex;"><span>- allowed characters (except separator &#39;.&#39;): a-zA-Z0-9_\-
+</span></span></code></pre></div><p>Tag could be localization tag when the app exists with same AppId in multiple &ldquo;flawors&rdquo; (mostly only MS Apps will use this) or it could be &lsquo;symbols&rsquo; if the package container only symbols or &lsquo;runtime&rsquo; if it is runtime package. Else it is not used at all.</p>
+<h3 id="paketlock-file">Paket.lock file</h3>
+<p>During usage of Paket, the Paket.lock file is created. This file describe which versions of dependencies were used last time you resolved them. If you include this file as part of your repository and you will use only &ldquo;Paket restore&rdquo; command (see next section), you will get same versions of the dependencies every time. This can help you to make the process consistent and free from side effect of using different versions of dependencies every time you resolve them.</p>
+<h3 id="paket-commands">Paket commands</h3>
+<p>When running Paket, you need to choose which command you want to run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>Paket &lt;command&gt;
+</span></span></code></pre></div><p><!-- raw HTML omitted --> is one from this list:</p>
+<ul>
+<li>Install - Compute dependency graph, download dependencies and update the folder. Will resolve new packages in the paket.dependencies and use already used versions for already resolved dependencies. Only new packages are added into paket.lock file, if exists.</li>
+<li>Update - Update dependencies to their latest version - use this when you want update the dependencies. Process will resolve the versions again and will store the new versions into paket.lock file. You can update only selected package if you want.</li>
+<li>Restore - will donwload the computed dependency graph as described by the paket.lock file. It means it will use same versions as when the paket.lock file was updated last time. No new versions will be resolved or updated.</li>
+<li>clear-cache - could be used to clear the local cache, e.g. when you unlist some packages on the source etc.</li>
+</ul>
+<p>and there are other commands, but we do not need them right now.</p>
+<h3 id="workflow-with-paket">Workflow with Paket</h3>
+<ul>
+<li>create paket.dependencies based on the app.json and add the source for the feed you want to use</li>
+<li>run &ldquo;Paket install&rdquo; to resolve the dependency graph when there are new dependencies in the file</li>
+<li>run &ldquo;Paket update&rdquo; when you want to update version of some/all dependencies and download them</li>
+<li>run &ldquo;Paket restore&rdquo; when you want to download same versions of dependencies as described by paket.lock file (restore the last state)</li>
+</ul>
+<h2 id="nvrappdevops-and-paket">NVRAppDevOps and Paket</h2>
+<h3 id="usage-from-vscode">Usage from VSCode</h3>
+<p>In Powershell module NVRAppDevOps, there is cmdlet &ldquo;Invoke-PaketForAL&rdquo; which pack all the functionality into one command. You can use it like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>Invoke-PaketForAL -Sources &#39;https://myaccount.pkgs.visualstudio.com/_packaging/myfeedname/nuget/v3/index.json username:<span style="color:#e6db74">&#34;&#34;</span> password:<span style="color:#e6db74">&#34;</span>%PAT%<span style="color:#e6db74">&#34;</span> authmethod:basic&#39;
+</span></span></code></pre></div><p>This is good e.g. for usage from VSCode, when you need to download AL symbols. Instead downloading symbols from some existing environment, you can download them as NuGet packages from your source feed.</p>
+<p>If you run the command in same folder as app.json of your app is and the module will be able to run Paket.exe from default path, it should convert the info from app.json and create the paket.dependencies file for you, add the one source and will call Install paket command.</p>
+<p>The internal flow of this cmdlet is this:</p>
+<ol>
+<li>If <em>paket.dependencies</em> exists, read the content</li>
+<li>If no -Sources are passed as parameter, use the Sources already existing in the <em>paket.dependencies</em> file</li>
+<li>Update the <em>paket.dependencies</em> file with actual dependencies from app.json
+<ul>
+<li>When creating NuGet package ID for Business Central application, first look through sources for package with the AppId in name. If Found, use this package name</li>
+<li>If no package with the AppId found on the sources, generate the NuGet package id based on the rules</li>
+<li>Add the dependency into the paket.dependencies file with the version limits from <em>app.json</em></li>
+</ul>
+</li>
+<li>Run the &ldquo;Paket install&rdquo; command. if system environment with name <em>PaketExePath</em> is set or the path is passed through <em>PaketExePath</em> parameter, use the value as path for the <em>Paket.exe</em>.</li>
+<li>If <em>UsePackagesAsCache</em> is specified, the folder Packages is added into <em>al.packageCachePath</em> setting in <em>.vscode/settings.json</em> file. ALC then will use the .app files inside this folder automatically as it is using <em>.alpackages</em> by default.</li>
+</ol>
+<p>It is good to add the <em>Packages</em> folder into <em>.gitignore</em> file, because it should not be part of the repository. Only the <em>paket.dependencies</em> and <em>paket.lock</em> should be commited into the repository.</p>
+<p>Later you can use only simpler version without source parameter, if the paket.dependecies already exists:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>Invoke-PaketForAL 
+</span></span></code></pre></div><p>This will reuse existing <em>paket.dependencies</em> file with sources and will just regenerate the dependecies package IDs and version limits. Then it will issue the &ldquo;paket install&rdquo; command.</p>
+<h3 id="usag-from-devops-cicd-pipeline">Usag from DevOps CI/CD pipeline</h3>
+<p>Same cmdlet from the NVRAppDevOps module could be used to download the .app files as part of your CI/CD. In this case, you will mostly use the &ldquo;restore&rdquo; command to restore the dependencies to state described in the paket.lock file. Or you can do other commands in connection with different <em>policy</em> parameter to download minimum or maximum versions of the dependencies.</p>
+<p>You will probabbly reuse the sources already defined in the paket.dependencies file. You just need to set the environment variable used e.g. for defining password (when using e.g. %PAT% value as password) to authenticate correctly.</p>
+<p>After NuGet packages are downloaded, you can use the package folder as source of symbols for the <em>alc</em> to compile your app, or as source of apps to deploy to target BC environment (probabbly skipping the MS apps because they will be already in the environment).</p>
+<h2 id="summary">Summary</h2>
+<p>I have created the Invoke-PaketForAl cmdlet to make the process of using NuGet packages in connection with Microsoft Dynamics 365 Business Central as easy as possible. Still, there is enough parameter to customize the result. I hope that i twill be the starting point to use the NuGet packages with BC instead downlaoding the symbols from existing environment. But still, we need at least the Microsoft NuGet feed for MS apps to have simple experience. See the <a href="https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/">&ldquo;NuGet-izing Business Central: Current status&rdquo;</a> article about current status of the whole story. It could take some time, but I am ready for the future&hellip; ;-) Whole process is compatible with standard usage of the <em>Paket CLI</em> and is just automatizing some aspects of this. It means you can use <em>Paket</em> directly if you need some specific features which are not covered by the cmdlet. Creating of <em>paket.dependencies</em> fiel could be called as separate cmdlet <em>ConvertTo-PaketDependencies</em> if you need like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>ConvertTo-PaketDependencies -ProjectPath $ProjectPath -NuGetSources $Sources -Policy $Policy -MaxApplicationVersion $MaxApplicationVersion -MaxPlatformVersion $MaxPlatformVersion
+</span></span></code></pre></div><p>In case of some problems or requests, do not hesitate to creaet issue on the <strong><a href="https://github.com/kine/NVRAppDevOps/issues">NVRAppDevOps GitHub repo</a></strong>.</p>
+
+      </div>
+      <footer>
+        <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/architecture/">Architecture</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/nuget/">NuGet</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/nvrappdevops/">NVRAppDevOps</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/nuget/">NuGet</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/paket/">Paket</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/nvrappdevops/">NVRAppDevOps</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+      </footer>
+    </div>
+    
+      
+<div class='post'>
+<section id="comments" class='comments-container'>
+    
+    <h3 class="title"><a href="#comments">Comments</a></h3>
+    <section class="staticman-comments post-comments">
+        
+        
+        
+
+        
+        
+        
+        
+        
+
+        <form id="comment-form" class="new-comment" method="post">
+            
+            <p>Be the first to leave a comment! 🎉</p>
+            
+            <h3 class="prompt">Say something</h3>
+            
+            <h3 class='reply-notice hidden'>
+              <span class='reply-name'></span>
+              <a class='reply-close-btn button'><i class='fas fa-times'></i></a>
+            </h3>
+ 
+            <input type='hidden' name='fields[replyName]' value=''>
+            <input type="hidden" name="options[slug]" value="PaketForBC">
+            <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required />
+            <input type="email" name="fields[email]" class="post-comment-field"
+                placeholder="Email address (will not be public) *" required />
+            <input type='text' name='fields[website]' class="post-comment-field"
+                placeholder='Your Website (include https://)'>
+            <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
+            <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *"
+                required rows="10"></textarea>
+            
+            
+            
+            <input hidden name='options[reCaptcha][siteKey]' value='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'>
+            <input hidden name='options[reCaptcha][secret]' value='FdlTy3aVy1SZfJ3h9aKAOgqeyZIFjV6Tjk3yN9BXxz5WB6FcmGlafyM&#43;hvBpDzOTstLDgQvBnWIn0T96nMLzI6bUyJL50tfeMuVpkYZhS9VkOhmPq7YEFmZCO7hVYkQkE4hh8JvVtyAmI9WKE5gOHBnRIrLWAFNLz7kUJRu7riOJtj8mNNMlpnfANVaiPQZ6xFykxG2X8RnJRW4dMV/335SiI5QcgB7fZzm0ntYZc1WsnYOUegqgw1z2ttJdB4J0xclKFcowrgKvq1LPn0P7H47EriVwt0QHz9NfK65CA6nJPQ8S487TI635IeXJ8HLOJkYeQnIyMeQZGKavlqDFFA=='>
+            <div class='g-recaptcha' data-sitekey='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'></div>
+            
+            
+            
+            <div class='submit-notice'>
+                <strong class='submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+                <strong class='submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again.</strong>
+            </div>
+
+            
+            <button type='button' id="comment-form-submit" class='button'>Submit</button>
+            <button type='button' id="comment-form-submitted" class='hidden button' disabled>Submitted</button>
+            <button type='reset' id="comment-form-reset" class='button'>Reset</button>
+
+        </form>
+    </section>
+
+    
+</section>
+</div>
+
+    
+  </article>
+  <div class="pagination">
+    
+    
+      <a href="https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/" class="button right"><span>NuGet-izing Business Central: Current status</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/paketforbc/" class="image" style="--bg-image: url('/assets/NuGet/PaketLogo.png');">
+    <img class="" src="https://blog.kine.cz/assets/NuGet/PaketLogo.png" alt="Paket Logo">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/paketforbc/">Using Paket CLI for Business Central</a></h2>
+          <time class="published" datetime="2024-07-15 15:00:00 &#43;0200 &#43;0200">July 15, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/" class="image" style="--bg-image: url('/assets/NuGet/NuGetDelivery.jpeg');">
+    <img class="" src="https://blog.kine.cz/assets/NuGet/NuGetDelivery.jpeg" alt="NuGet delivery">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/">NuGet-izing Business Central: Current status</a></h2>
+          <time class="published" datetime="2024-07-12 10:00:00 &#43;0200 &#43;0200">July 12, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/sali_part2/" class="image" style="--bg-image: url('/assets/SaLi/SaLiArchitectureHeadline.jpeg');">
+    <img class="" src="https://blog.kine.cz/assets/SaLi/SaLiArchitectureHeadline.jpeg" alt="SaLi Architecture">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/sali_part2/">SaLi architecture for Microsoft Dynamics 365 Business Central, part 2</a></h2>
+          <time class="published" datetime="2024-01-04 14:00:00 &#43;0100 &#43;0100">January 4, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/sali_part1/" class="image" style="--bg-image: url('/assets/SaLi/SaLiArchitectureHeadline.jpeg');">
+    <img class="" src="https://blog.kine.cz/assets/SaLi/SaLiArchitectureHeadline.jpeg" alt="SaLi Architecture">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/sali_part1/">SaLi architecture for Microsoft Dynamics 365 Business Central, part 1</a></h2>
+          <time class="published" datetime="2023-10-17 16:30:00 &#43;0200 &#43;0200">October 17, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/proxy/" class="image">
+    <img class="" src="https://blog.kine.cz/images/ProxyDesign.png" alt="ProxyDesign">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/proxy/">How to publish your local BC containers to internet using IIS</a></h2>
+          <time class="published" datetime="2022-08-18 12:00:00 &#43;0100 &#43;0100">August 18, 2022</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="https://blog.kine.cz/blog" class="button">See More</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="https://blog.kine.cz/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/business-central/">business-central<span class="count">10</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/architecture/">architecture<span class="count">5</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/pte/">pte<span class="count">5</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/al/">al<span class="count">4</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/appsource/">appsource<span class="count">2</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/nuget/">nuget<span class="count">2</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/administration/">administration<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/general/">general<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/infrastructure/">infrastructure<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/nvrappdevops/">nvrappdevops<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/onprem/">onprem<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/powershell/">powershell<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I have more than 35 years of experience with SW development and everything around IT. I have got my first MVP award in 2005.</p>
+      <footer>
+        <a href="https://blog.kine.cz/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+  
+  <p class="copyright">
+    © 2024 Kine&#39;s info
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.101.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="https://blog.kine.cz/js/highlight.js"></script>
+    
+    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.d74e45d6a7031b09ff76bb1bfcee45240414918cdbec910300817dd7ec6e4e5a.js" integrity="sha256-105F1qcDGwn/drsb/O5FJAQUkYzb7JEDAIF91&#43;xuTlo="></script>
+    <script src="https://blog.kine.cz/js/add-on.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-92839335-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>
