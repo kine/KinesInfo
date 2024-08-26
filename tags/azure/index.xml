@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Azure on Kine&#39;s info</title>
+    <link>https://blog.kine.cz/tags/azure/</link>
+    <description>Recent content in Azure on Kine&#39;s info</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 26 Aug 2024 14:00:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/tags/azure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Accessing Azure Blob Storage with Service Principal from Business Central AL</title>
+      <link>https://blog.kine.cz/posts/azureblobstoragewithserviceprincipalinal/</link>
+      <pubDate>Mon, 26 Aug 2024 14:00:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/azureblobstoragewithserviceprincipalinal/</guid>
+      <description>Azure Blob Storage from AL After long time I needed to solve some AL problem for my colleagues and I was not able to find the solution on internet and even from other MVPs. Today I had some time to dig into the problem and I have solved it. I want to share the solution with you. But first, we need some introduction into the problem.
+It is common to use Azure Blob Storage to store data and work with them from Dynamics 365 Business Central.</description>
+    </item>
+    
+  </channel>
+</rss>

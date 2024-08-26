@@ -6,7 +6,17 @@
     <description>Recent content in AL on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 May 2022 00:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/tags/al/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Aug 2024 14:00:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/tags/al/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Accessing Azure Blob Storage with Service Principal from Business Central AL</title>
+      <link>https://blog.kine.cz/posts/azureblobstoragewithserviceprincipalinal/</link>
+      <pubDate>Mon, 26 Aug 2024 14:00:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/azureblobstoragewithserviceprincipalinal/</guid>
+      <description>Azure Blob Storage from AL After long time I needed to solve some AL problem for my colleagues and I was not able to find the solution on internet and even from other MVPs. Today I had some time to dig into the problem and I have solved it. I want to share the solution with you. But first, we need some introduction into the problem.
+It is common to use Azure Blob Storage to store data and work with them from Dynamics 365 Business Central.</description>
+    </item>
+    
     <item>
       <title>Using BCLicense file from powershell</title>
       <link>https://blog.kine.cz/posts/bclicensestructure/</link>

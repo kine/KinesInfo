@@ -6,11 +6,29 @@
     <description>Recent content in Tags on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jul 2024 15:00:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Aug 2024 14:00:00 +0200</lastBuildDate><atom:link href="https://blog.kine.cz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AL</title>
+      <link>https://blog.kine.cz/tags/al/</link>
+      <pubDate>Mon, 26 Aug 2024 14:00:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/tags/al/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure</title>
+      <link>https://blog.kine.cz/tags/azure/</link>
+      <pubDate>Mon, 26 Aug 2024 14:00:00 +0200</pubDate>
+      
+      <guid>https://blog.kine.cz/tags/azure/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Business Central</title>
       <link>https://blog.kine.cz/tags/business-central/</link>
-      <pubDate>Mon, 15 Jul 2024 15:00:00 +0200</pubDate>
+      <pubDate>Mon, 26 Aug 2024 14:00:00 +0200</pubDate>
       
       <guid>https://blog.kine.cz/tags/business-central/</guid>
       <description></description>
@@ -94,15 +112,6 @@
       <pubDate>Thu, 18 Aug 2022 12:00:00 +0100</pubDate>
       
       <guid>https://blog.kine.cz/tags/infrastructure/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>AL</title>
-      <link>https://blog.kine.cz/tags/al/</link>
-      <pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate>
-      
-      <guid>https://blog.kine.cz/tags/al/</guid>
       <description></description>
     </item>
     

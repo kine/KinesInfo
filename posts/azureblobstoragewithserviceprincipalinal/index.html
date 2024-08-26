@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Accessing Azure Blob Storage with Service Principal from Business Central AL - Kine&#39;s info</title>
+<meta name="description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Kine&#39;s info">
+<meta property="og:title" content="Accessing Azure Blob Storage with Service Principal from Business Central AL">
+<meta property="og:description" content="Kamil Sacek blog about not only Microsoft Dynamics 365 Business Central but all around like Powershell, Azure DevOps etc.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.kine.cz/posts/azureblobstoragewithserviceprincipalinal/">
+  <meta property="og:image" content="https://blog.kine.cz/assets/KSCSmall.png">
+
+
+
+  <link rel="shortcut icon" href="https://blog.kine.cz/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.101.0" />
+  <link rel="stylesheet" href="https://blog.kine.cz/css/bundle.min.5233f2a4cd515395301b4154f6c1c621695e8cf53faa0935b76ac52fed7f4585.css" integrity="sha256-UjPypM1RU5UwG0FU9sHGIWlejPU/qgk1t2rFL&#43;1/RYU="><link rel="stylesheet" href="https://blog.kine.cz/css/add-on.css">
+        <link rel="stylesheet" href="https://blog.kine.cz/assets/css/copy-code-button.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="https://blog.kine.cz/" class="nav">
+        
+          Accessing Azure Blob Storage with Service Principal from Business Central AL
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/about" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/categories" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/tags" class="nav link"><i class='fas fa-tags'></i> Tags</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active"> (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Accessing%20Azure%20Blob%20Storage%20with%20Service%20Principal%20from%20Business%20Central%20AL&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fazureblobstoragewithserviceprincipalinal%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fazureblobstoragewithserviceprincipalinal%2f&amp;title=Accessing%20Azure%20Blob%20Storage%20with%20Service%20Principal%20from%20Business%20Central%20AL" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fazureblobstoragewithserviceprincipalinal%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="https://blog.kine.cz/"><img src="https://blog.kine.cz/assets/KSCSmall.png" class="circle" width="100" alt="Kine&#39;s Info" /></a>
+  <header>
+    <h1>Kine's Info</h1>
+  </header>
+  <main>
+    <p>Another blog about Microsoft Dynamics 365 Business Central (AL, Powershell, Azure DevOps etc.)<center><a href='https://mvp.microsoft.com/en-us/mvp/kamil%20sacek-21590'><img src='https://blog.kine.cz/assets/MVP_Logo_Horizontal_Secondary_Blue286_CMYK_72ppi.png' width='50%'></a></center></p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article>
+    <div class="post">
+      <header>
+  <div class="title">
+    
+      <h2><a href="https://blog.kine.cz/posts/azureblobstoragewithserviceprincipalinal/">Accessing Azure Blob Storage with Service Principal from Business Central AL</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time datetime="2024-08-26 14:00:00 &#43;0200 &#43;0200">August 26, 2024</time>
+    
+    <p>3-Minute Read</p>
+  </div>
+</header>
+
+      <div id="socnet-share">
+        
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Accessing%20Azure%20Blob%20Storage%20with%20Service%20Principal%20from%20Business%20Central%20AL&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fazureblobstoragewithserviceprincipalinal%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fazureblobstoragewithserviceprincipalinal%2f&amp;title=Accessing%20Azure%20Blob%20Storage%20with%20Service%20Principal%20from%20Business%20Central%20AL" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fazureblobstoragewithserviceprincipalinal%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+      </div>
+      <div class="content">
+        
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#azure-blob-storage-from-al">Azure Blob Storage from AL</a></li>
+    <li><a href="#managed-identity-auth-for-storage-service">Managed Identity auth for Storage Service</a></li>
+  </ul>
+</nav>
+        
+        <h2 id="azure-blob-storage-from-al">Azure Blob Storage from AL</h2>
+<p>After long time I needed to solve some AL problem for my colleagues and I was not able to find the solution on internet and even from other MVPs. Today I had some time to dig into the problem and I have solved it.
+I want to share the solution with you. But first, we need some introduction into the problem.</p>
+<p>It is common to use Azure Blob Storage to store data and work with them from Dynamics 365 Business Central. Developers can use system app codeunit <em>&ldquo;ABS Blob Client&rdquo;</em> to call different methods of the storage. But this library implements only <strong>Shared Key</strong> (mostly used because it is the simples one) and <strong>SAS</strong> authorization. But the most recommended method is to use <strong>Microsoft Entra ID with managed identities</strong> to authorize the calls. And because our customers are taking the security seriously, we wanted to change the code from <strong>Shared Key</strong> auth to <strong>Service Principal</strong> (managed identity). I started to search for some example for AL regarding this, but very example is using just Shared Key auth.</p>
+<p>Ok, time to do own research and learn something new. During the search I found some example in Python and based on this example it looked like easy task. When I connected the example with my knowledge about OAuth, the solution started to crystalize.</p>
+<h2 id="managed-identity-auth-for-storage-service">Managed Identity auth for Storage Service</h2>
+<p>During analysis of the <em>&ldquo;Azure Storage Service&rdquo;</em> implementation in System application I hit the interface <em>&ldquo;Storage Service Authorization&rdquo;</em> which is used to do the authorization of the API calls. This interface defines only one procedure which needs to be implemented:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-AL" data-lang="AL"><span style="display:flex;"><span><span style="color:#66d9ef">procedure</span> Authorize<span style="color:#f92672">(</span><span style="color:#66d9ef">var</span> HttpRequest: <span style="color:#66d9ef">HttpRequestMessage</span>; StorageAccount: <span style="color:#66d9ef">Text</span><span style="color:#f92672">)</span>;
+</span></span></code></pre></div><p>When I looked on existing implementations, this method needs to set the HTTP Attributes of the request as needed to authorize the request. In our case, we need to set the <em>Authorization</em> header to <em>&ldquo;Bearer token&rdquo;</em>, where the Token is OAuth token for our Managed Identity for accessing the resource we need to access. Based on the examples I found it is just standard authorize OAuth call with client credentials where:</p>
+<ul>
+<li>ClientID is the ID of the managed identity (Entra ID app we registered for this purpose)</li>
+<li>ClientSecret is the secret for he managed identity</li>
+<li>AuthorizationURL is e.g. <code>https://login.microsoftonline.com/tenantid/oauth2/authorize/</code></li>
+<li>RedirectURL could be empty (we are not using delegation)</li>
+<li>ResourceURL is <code>https://&lt;accountname&gt;.blob.core.windows.net/</code></li>
+</ul>
+<p>Thanks to codeunit OAuth2 it is easy to do this call by using this code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-AL" data-lang="AL"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> OAuth2<span style="color:#f92672">.</span>AcquireTokenWithClientCredentials<span style="color:#f92672">(</span>ClientId, ClientSecret, AuthURL, RedirectURL, ResourceUrl, Token<span style="color:#f92672">) </span><span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    Error<span style="color:#f92672">(</span>TokenNotAcquiredErr<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">exit</span><span style="color:#f92672">(</span>Token<span style="color:#f92672">)</span>;
+</span></span></code></pre></div><p>Then we can create own implementation of the <em>&ldquo;Storage Service Athorization&rdquo;</em> interface:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-AL" data-lang="AL"><span style="display:flex;"><span><span style="color:#66d9ef">codeunit</span> <span style="color:#ae81ff">50100</span> ServicePrincipalAuth <span style="color:#66d9ef">implements</span> &#34;Storage Service Authorization&#34;
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span>
+</span></span><span style="display:flex;"><span>        Token: SecretText;
+</span></span><span style="display:flex;"><span>        ClientId: <span style="color:#66d9ef">Text</span>;
+</span></span><span style="display:flex;"><span>        ClientSecret: SecretText;
+</span></span><span style="display:flex;"><span>        AuthURL: <span style="color:#66d9ef">Text</span>;
+</span></span><span style="display:flex;"><span>        RedirectUrl: <span style="color:#66d9ef">Text</span>;
+</span></span><span style="display:flex;"><span>        ResourceUrl: <span style="color:#66d9ef">Text</span>;
+</span></span><span style="display:flex;"><span>        TokenNotAcquiredErr: <span style="color:#66d9ef">label</span> <span style="color:#e6db74">&#39;Failed to acquire token&#39;</span>;
+</span></span><span style="display:flex;"><span>​
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">procedure</span> Authorize<span style="color:#f92672">(</span><span style="color:#66d9ef">var</span> HttpRequest: <span style="color:#66d9ef">HttpRequestMessage</span>; StorageAccount: <span style="color:#66d9ef">Text</span><span style="color:#f92672">)
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672">    </span><span style="color:#66d9ef">var</span>
+</span></span><span style="display:flex;"><span>        Headers: <span style="color:#66d9ef">HttpHeaders</span>;
+</span></span><span style="display:flex;"><span>        AuthToken: SecretText;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> Token<span style="color:#f92672">.</span>IsEmpty<span style="color:#f92672">() </span><span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>            Token <span style="color:#f92672">:=</span> GetToken<span style="color:#f92672">(</span>ClientId, ClientSecret, AuthURL, RedirectUrl, ResourceUrl<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>        HttpRequest<span style="color:#f92672">.</span>GetHeaders<span style="color:#f92672">(</span>Headers<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> Headers<span style="color:#f92672">.</span>Contains<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">) </span><span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>            Headers<span style="color:#f92672">.</span>Remove<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>        AuthToken <span style="color:#f92672">:=</span> SecretStrSubstNo<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Bearer %1&#39;</span>, Token<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>        Headers<span style="color:#f92672">.</span><span style="color:#66d9ef">Add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;Authorization&#39;</span>, AuthToken<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>;
+</span></span><span style="display:flex;"><span>​
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">procedure</span> SetPrincipalData<span style="color:#f92672">(</span>_ClientId: <span style="color:#66d9ef">Text</span>; _ClientSecret: SecretText; _AuthURL: <span style="color:#66d9ef">Text</span>; _RedirectURL: <span style="color:#66d9ef">Text</span>; _ResourceUrl: <span style="color:#66d9ef">Text</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>        ClientId <span style="color:#f92672">:=</span> _ClientId;
+</span></span><span style="display:flex;"><span>        ClientSecret <span style="color:#f92672">:=</span> _ClientSecret;
+</span></span><span style="display:flex;"><span>        AuthURL <span style="color:#f92672">:=</span> _AuthURL;
+</span></span><span style="display:flex;"><span>        RedirectUrl <span style="color:#f92672">:=</span> _RedirectURL;
+</span></span><span style="display:flex;"><span>        ResourceUrl <span style="color:#f92672">:=</span> _ResourceUrl;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>;
+</span></span><span style="display:flex;"><span>​
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">local</span> <span style="color:#66d9ef">procedure</span> GetToken<span style="color:#f92672">(</span>ClientId: <span style="color:#66d9ef">Text</span>; ClientSecret: SecretText; AuthURL: <span style="color:#66d9ef">Text</span>; RedirectUrl: <span style="color:#66d9ef">Text</span>; ResourceUrl: <span style="color:#66d9ef">Text</span><span style="color:#f92672">)</span>: SecretText
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span>
+</span></span><span style="display:flex;"><span>        OAuth2: <span style="color:#66d9ef">Codeunit</span> OAuth2;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> OAuth2<span style="color:#f92672">.</span>AcquireTokenWithClientCredentials<span style="color:#f92672">(</span>ClientId, ClientSecret, AuthURL, RedirectURL, ResourceUrl, Token<span style="color:#f92672">) </span><span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>            Error<span style="color:#f92672">(</span>TokenNotAcquiredErr<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">exit</span><span style="color:#f92672">(</span>Token<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>When we have this implementation, the code for e.g. listing the Blobs is just few lines of code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-AL" data-lang="AL"><span style="display:flex;"><span>ServicePrincipalAuth<span style="color:#f92672">.</span>SetPrincipalData<span style="color:#f92672">(</span>ClientId, ClientSecret, AuthURL, RedirectURL, ResourceUrl<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>ABSBlobClient<span style="color:#f92672">.</span>Initialize<span style="color:#f92672">(</span>AccountName, ContainerName, ServicePrincipalAuth<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>ABSOperationResponse <span style="color:#f92672">:=</span> ABSBlobClient<span style="color:#f92672">.</span>ListBlobs<span style="color:#f92672">(</span>ABSContainerContentTemp<span style="color:#f92672">)</span>;
+</span></span></code></pre></div><p>This implementation is not handling expiration of the token, it is bare minimum to do the call at least once.</p>
+
+      </div>
+      <footer>
+        <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/al/">AL</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/azure/">Azure</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/al/">AL</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/azure/">Azure</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+      </footer>
+    </div>
+    
+      
+<div class='post'>
+<section id="comments" class='comments-container'>
+    
+    <h3 class="title"><a href="#comments">Comments</a></h3>
+    <section class="staticman-comments post-comments">
+        
+        
+        
+
+        
+        
+        
+        
+        
+
+        <form id="comment-form" class="new-comment" method="post">
+            
+            <p>Be the first to leave a comment! 🎉</p>
+            
+            <h3 class="prompt">Say something</h3>
+            
+            <h3 class='reply-notice hidden'>
+              <span class='reply-name'></span>
+              <a class='reply-close-btn button'><i class='fas fa-times'></i></a>
+            </h3>
+ 
+            <input type='hidden' name='fields[replyName]' value=''>
+            <input type="hidden" name="options[slug]" value="AzureBlobStorageWithServicePrincipalInAL">
+            <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required />
+            <input type="email" name="fields[email]" class="post-comment-field"
+                placeholder="Email address (will not be public) *" required />
+            <input type='text' name='fields[website]' class="post-comment-field"
+                placeholder='Your Website (include https://)'>
+            <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
+            <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *"
+                required rows="10"></textarea>
+            
+            
+            
+            <input hidden name='options[reCaptcha][siteKey]' value='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'>
+            <input hidden name='options[reCaptcha][secret]' value='FdlTy3aVy1SZfJ3h9aKAOgqeyZIFjV6Tjk3yN9BXxz5WB6FcmGlafyM&#43;hvBpDzOTstLDgQvBnWIn0T96nMLzI6bUyJL50tfeMuVpkYZhS9VkOhmPq7YEFmZCO7hVYkQkE4hh8JvVtyAmI9WKE5gOHBnRIrLWAFNLz7kUJRu7riOJtj8mNNMlpnfANVaiPQZ6xFykxG2X8RnJRW4dMV/335SiI5QcgB7fZzm0ntYZc1WsnYOUegqgw1z2ttJdB4J0xclKFcowrgKvq1LPn0P7H47EriVwt0QHz9NfK65CA6nJPQ8S487TI635IeXJ8HLOJkYeQnIyMeQZGKavlqDFFA=='>
+            <div class='g-recaptcha' data-sitekey='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'></div>
+            
+            
+            
+            <div class='submit-notice'>
+                <strong class='submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+                <strong class='submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again.</strong>
+            </div>
+
+            
+            <button type='button' id="comment-form-submit" class='button'>Submit</button>
+            <button type='button' id="comment-form-submitted" class='hidden button' disabled>Submitted</button>
+            <button type='reset' id="comment-form-reset" class='button'>Reset</button>
+
+        </form>
+    </section>
+
+    
+</section>
+</div>
+
+    
+  </article>
+  <div class="pagination">
+    
+    
+      <a href="https://blog.kine.cz/posts/paketforbc/" class="button right"><span>Using Paket CLI for Business Central</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/azureblobstoragewithserviceprincipalinal/">Accessing Azure Blob Storage with Service Principal from Business Central AL</a></h2>
+          <time class="published" datetime="2024-08-26 14:00:00 &#43;0200 &#43;0200">August 26, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/paketforbc/" class="image" style="--bg-image: url('/assets/NuGet/PaketLogo.png');">
+    <img class="" src="https://blog.kine.cz/assets/NuGet/PaketLogo.png" alt="Paket Logo">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/paketforbc/">Using Paket CLI for Business Central</a></h2>
+          <time class="published" datetime="2024-07-15 15:00:00 &#43;0200 &#43;0200">July 15, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/" class="image" style="--bg-image: url('/assets/NuGet/NuGetDelivery.jpeg');">
+    <img class="" src="https://blog.kine.cz/assets/NuGet/NuGetDelivery.jpeg" alt="NuGet delivery">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/nugetizingbusinesscentralstatus/">NuGet-izing Business Central: Current status</a></h2>
+          <time class="published" datetime="2024-07-12 10:00:00 &#43;0200 &#43;0200">July 12, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/sali_part2/" class="image" style="--bg-image: url('/assets/SaLi/SaLiArchitectureHeadline.jpeg');">
+    <img class="" src="https://blog.kine.cz/assets/SaLi/SaLiArchitectureHeadline.jpeg" alt="SaLi Architecture">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/sali_part2/">SaLi architecture for Microsoft Dynamics 365 Business Central, part 2</a></h2>
+          <time class="published" datetime="2024-01-04 14:00:00 &#43;0100 &#43;0100">January 4, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/sali_part1/" class="image" style="--bg-image: url('/assets/SaLi/SaLiArchitectureHeadline.jpeg');">
+    <img class="" src="https://blog.kine.cz/assets/SaLi/SaLiArchitectureHeadline.jpeg" alt="SaLi Architecture">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/sali_part1/">SaLi architecture for Microsoft Dynamics 365 Business Central, part 1</a></h2>
+          <time class="published" datetime="2023-10-17 16:30:00 &#43;0200 &#43;0200">October 17, 2023</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="https://blog.kine.cz/blog" class="button">See More</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="https://blog.kine.cz/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/business-central/">business-central<span class="count">11</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/al/">al<span class="count">5</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/architecture/">architecture<span class="count">5</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/pte/">pte<span class="count">5</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/appsource/">appsource<span class="count">2</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/nuget/">nuget<span class="count">2</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/administration/">administration<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/azure/">azure<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/general/">general<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/infrastructure/">infrastructure<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/nvrappdevops/">nvrappdevops<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/onprem/">onprem<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/powershell/">powershell<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I have more than 35 years of experience with SW development and everything around IT. I have got my first MVP award in 2005.</p>
+      <footer>
+        <a href="https://blog.kine.cz/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+  
+  <p class="copyright">
+    © 2024 Kine&#39;s info
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.101.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="https://blog.kine.cz/js/highlight.js"></script>
+    
+    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.d74e45d6a7031b09ff76bb1bfcee45240414918cdbec910300817dd7ec6e4e5a.js" integrity="sha256-105F1qcDGwn/drsb/O5FJAQUkYzb7JEDAIF91&#43;xuTlo="></script>
+    <script src="https://blog.kine.cz/js/add-on.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-92839335-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

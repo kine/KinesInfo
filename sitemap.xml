@@ -2,19 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.kine.cz/categories/architecture/</loc>
-    <lastmod>2024-07-15T15:00:00+02:00</lastmod>
+    <loc>https://blog.kine.cz/posts/azureblobstoragewithserviceprincipalinal/</loc>
+    <lastmod>2024-08-26T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/al/</loc>
+    <lastmod>2024-08-26T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/al/</loc>
+    <lastmod>2024-08-26T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/azure/</loc>
+    <lastmod>2024-08-26T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/azure/</loc>
+    <lastmod>2024-08-26T14:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/business-central/</loc>
-    <lastmod>2024-07-15T15:00:00+02:00</lastmod>
+    <lastmod>2024-08-26T14:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/categories/business-central/</loc>
-    <lastmod>2024-07-15T15:00:00+02:00</lastmod>
+    <lastmod>2024-08-26T14:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/categories/</loc>
-    <lastmod>2024-07-15T15:00:00+02:00</lastmod>
+    <lastmod>2024-08-26T14:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/</loc>
+    <lastmod>2024-08-26T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/posts/</loc>
+    <lastmod>2024-08-26T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/tags/</loc>
+    <lastmod>2024-08-26T14:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/categories/architecture/</loc>
     <lastmod>2024-07-15T15:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/nuget/</loc>
@@ -30,12 +51,6 @@
     <lastmod>2024-07-15T15:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/paket/</loc>
-    <lastmod>2024-07-15T15:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/posts/</loc>
-    <lastmod>2024-07-15T15:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/tags/</loc>
     <lastmod>2024-07-15T15:00:00+02:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/posts/paketforbc/</loc>
@@ -79,12 +94,6 @@
   </url><url>
     <loc>https://blog.kine.cz/categories/infrastructure/</loc>
     <lastmod>2022-08-18T12:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/tags/al/</loc>
-    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://blog.kine.cz/categories/al/</loc>
-    <lastmod>2022-05-18T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/license/</loc>
     <lastmod>2022-05-18T00:00:00+01:00</lastmod>
