@@ -239,8 +239,8 @@
 <p>To make the dream reality, we need multiple things to happen:</p>
 <ol>
 <li>Define rules for creating the NuGet packages in connection with Microsoft Dynamics 365 Business Central - status: <strong>DONE!</strong> (see e.g. <a href="https://youtu.be/JpmPqDM-hzU?si=FHoHB8qP4bpACzje">my and Freddy&rsquo;s BCTechDays session &ldquo;When a dream comes true&rdquo;</a>)</li>
-<li>Microsoft must publish their apps as NuGet packages on some public feed - status: <strong>Work in progress</strong> (partially done, packages are not updated and no final feed name is used yet)</li>
-<li>(optional) Microsoft need to publish AppSource apps symbols as public feed - status: <strong>Work in progress</strong></li>
+<li>Microsoft must publish their apps as NuGet packages on some public feed - status: <strong>Finished</strong> (updated 14.10.2024) - <a href="https://dynamicssmb2.visualstudio.com/DynamicsBCPublicFeeds/_artifacts/feed/MSApps">MS Apps public feed</a>, <a href="https://dynamicssmb2.visualstudio.com/DynamicsBCPublicFeeds/_artifacts/feed/MSSymbols">MS Apps Symbols feed</a></li>
+<li>(optional) Microsoft need to publish AppSource apps symbols as public feed - status: <strong>Finished</strong> (updated 14.10.2024) - <a href="https://dynamicssmb2.visualstudio.com/DynamicsBCPublicFeeds/_artifacts/feed/AppSourceSymbols">public Artifact feed</a> - updated when publisher publish new version of some app</li>
 <li>Partners need to publish their apps as NuGet packages on some feeds following the rules - status: <strong>Depends on partner</strong> (unknown)</li>
 <li>Partners need to be able to consume NuGet packages following the rules during CI/CD and development - status: <strong>Depends on used technology (see next chapter)</strong></li>
 </ol>
@@ -250,17 +250,18 @@
 <ul>
 <li><a href="https://www.cosmoconsult.com/cosmo-alpaca/">Alpaca</a>: On the roadmap (WIP)</li>
 <li><a href="https://alops.be/">ALOps</a>: On the roadmap (WIP)</li>
-<li><a href="https://github.com/microsoft/navcontainerhelper">BCCH (BCContainerHelper)</a>/<a href="https://github.com/microsoft/AL-Go">AL-Go for GitHub</a>: WIP</li>
+<li><a href="https://github.com/microsoft/navcontainerhelper">BCCH (BCContainerHelper)</a>: WIP</li>
+<li><a href="https://github.com/microsoft/AL-Go">AL-Go for GitHub</a>: WIP (updated 30.9.2024)</li>
 <li><a href="https://github.com/kine/NVRAppDevOps">NVRAppDevOps</a> (powershell module): Done! (since version 2.8.4-beta20, use the Invoke-PaketForAl)</li>
 </ul>
 <p>If you know any other DevOps solution for Business Central, let me know and I will add it here.</p>
 <h2 id="adoption-of-nugetizing-for-bc-in-vscode">Adoption of NuGetizing for BC in VSCode</h2>
 <p>Another aspect of NuGetizing Business Central is possibility to consume NuGet packages from VSCode to replace the &ldquo;AL: Download Symbols&rdquo; action.</p>
-<p>Here is list of tools which could help with this:</p>
+<p>Here is list of tools which could help with this (updated on 14.10.2024):</p>
 <ul>
 <li><a href="https://github.com/kine/NVRAppDevOps">NVRAppDevOps</a> (powershell module): Done! (since version v2.8.4-beta20, use the Invoke-PaketForAl)</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=PatrickSchiefer.al-nuget-helper">AL NuGet Helper</a> from Patrick Schiefer (VS Code extension): Released first version 10.10.2024, WIP, inside using Paket CLI</li>
 </ul>
-<p>I do not know about any extension for VSCode which will help with using NuGet packages for Business Central. If you know some, let me know and I will add it here.</p>
 <h2 id="summary">Summary</h2>
 <p>You can see, that tools are popping up, but without the feed infrastructure from Microsoft and other partners, it is hard to use them. In our company we are using NuGet packages whole time we created our CI/CD pipelines for Business Central. Thus we have even our internal fake packages for MS Applications and we are wrapping the 3rd party .app files as NuGet packages for our internal needs. But it is just complication and it is not part of the dream (it is rather nightmare). When the feed infrastructure from MS will be finished, it will be much easier to start using the tools to incorporate NuGet packages into your processes.</p>
 <p><strong>Regarding consuming the NuGet packages</strong> - if you are early adopter kind of person, you can start now and solve these things yourselfs. Rest needs to wait till the MS feeds are finished at least.</p>
