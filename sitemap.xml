@@ -2,49 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.kine.cz/tags/ai/</loc>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
+  </url><url>
     <loc>https://blog.kine.cz/tags/al/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/appsource/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/architecture/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/categories/architecture/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/best-practices/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/business-central/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/categories/business-central/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://blog.kine.cz/posts/bcdevelopmentserie-01/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <loc>https://blog.kine.cz/posts/bcdevelopmentserie-02b/</loc>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/categories/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/development/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/categories/development/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/posts/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/pte/</loc>
-    <lastmod>2026-03-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/tags/</loc>
+    <lastmod>2026-03-31T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/posts/bcdevelopmentserie-02/</loc>
+    <lastmod>2026-03-11T00:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.kine.cz/posts/bcdevelopmentserie-01/</loc>
     <lastmod>2026-03-04T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://blog.kine.cz/posts/azureblobstoragewithserviceprincipalinal/</loc>

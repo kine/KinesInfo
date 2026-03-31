@@ -6,7 +6,27 @@
     <description>Recent content in Architecture on Kine&#39;s info</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Mar 2026 00:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/categories/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0100</lastBuildDate><atom:link href="https://blog.kine.cz/categories/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Business Central Development Serie - Part 2b: AI for BC Development — The Knowledge Gap That Ships to Production</title>
+      <link>https://blog.kine.cz/posts/bcdevelopmentserie-02b/</link>
+      <pubDate>Tue, 31 Mar 2026 00:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/bcdevelopmentserie-02b/</guid>
+      <description>&amp;ldquo;We are drowning not in lies — but in plausible truths.&amp;rdquo;
+This article is the companion to Part 2 of this serie. Part 2 explains how to use AI tools for Business Central development — the tools, the workflow, the guidelines. This article is about something that must come before all of that: whether you are ready to use AI for BC development responsibly. And specifically — what you need to know to validate what AI produces, because AI will not validate itself.</description>
+    </item>
+    
+    <item>
+      <title>Business Central Development Serie - Part 2: Using AI for BC development</title>
+      <link>https://blog.kine.cz/posts/bcdevelopmentserie-02/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 +0100</pubDate>
+      
+      <guid>https://blog.kine.cz/posts/bcdevelopmentserie-02/</guid>
+      <description>Welcome to the second (or first? May be error by 1&amp;hellip;) part of the Business Central Development Serie! In the introduction (aka part 1) I explained why I started this serie and what I want to achieve with it. In this second part I will start with the first topic from the plan - Using AI for BC development.
+AI tools are becoming more and more popular among developers. They can help you to write code faster, to find bugs, to learn new things.</description>
+    </item>
+    
     <item>
       <title>Business Central Development Serie - Part 1: Introduction</title>
       <link>https://blog.kine.cz/posts/bcdevelopmentserie-01/</link>

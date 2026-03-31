@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Business Central Development Serie - Part 2b: AI for BC Development — The Knowledge Gap That Ships to Production - Kine&#39;s info</title>
+<meta name="description" content="Using AI to vibe-code Business Central extensions is easy. Shipping something that doesn&#39;t break your customer&#39;s ERP is not. This article is about the gap between the two.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Kine&#39;s info">
+<meta property="og:title" content="Business Central Development Serie - Part 2b: AI for BC Development — The Knowledge Gap That Ships to Production">
+<meta property="og:description" content="Using AI to vibe-code Business Central extensions is easy. Shipping something that doesn&#39;t break your customer&#39;s ERP is not. This article is about the gap between the two.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.kine.cz/posts/bcdevelopmentserie-02b/">
+    <meta property="og:image" content="https://blog.kine.cz/assets/BCDevSerie/BCDevSeriePart02b.svg">
+    <meta property="og:image:alt" content="Business Central Development Serie - Part 2b: AI for BC Development — The Knowledge Gap That Ships to Production">
+
+
+  <link rel="shortcut icon" href="https://blog.kine.cz/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.101.0" />
+  <link rel="stylesheet" href="https://blog.kine.cz/css/bundle.min.5233f2a4cd515395301b4154f6c1c621695e8cf53faa0935b76ac52fed7f4585.css" integrity="sha256-UjPypM1RU5UwG0FU9sHGIWlejPU/qgk1t2rFL&#43;1/RYU="><link rel="stylesheet" href="https://blog.kine.cz/css/add-on.css">
+        <link rel="stylesheet" href="https://blog.kine.cz/assets/css/copy-code-button.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="https://blog.kine.cz/" class="nav">
+        
+          Business Central Development Serie - Part 2b: AI for BC Development — The Knowledge Gap That Ships to Production
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/about" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/categories" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+        
+          
+          <a href="https://blog.kine.cz/tags" class="nav link"><i class='fas fa-tags'></i> Tags</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active"> (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Business%20Central%20Development%20Serie%20-%20Part%202b%3a%20AI%20for%20BC%20Development%20%e2%80%94%20The%20Knowledge%20Gap%20That%20Ships%20to%20Production&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fbcdevelopmentserie-02b%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fbcdevelopmentserie-02b%2f&amp;title=Business%20Central%20Development%20Serie%20-%20Part%202b%3a%20AI%20for%20BC%20Development%20%e2%80%94%20The%20Knowledge%20Gap%20That%20Ships%20to%20Production" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Kamil%20Sacek&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fbcdevelopmentserie-02b%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="https://blog.kine.cz/"><img src="https://blog.kine.cz/assets/KSCSmall.png" class="circle" width="100" alt="Kine&#39;s Info" /></a>
+  <header>
+    <h1>Kine's Info</h1>
+  </header>
+  <main>
+    <p>Another blog about Microsoft Dynamics 365 Business Central (AL, Powershell, Azure DevOps etc.)<center><a href='https://mvp.microsoft.com/en-us/mvp/kamil%20sacek-21590'><img src='https://blog.kine.cz/assets/MVP_Logo_Horizontal_Secondary_Blue286_CMYK_72ppi.png' width='50%'></a></center></p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article>
+    <div class="post">
+      <header>
+  <div class="title">
+    
+      <h2><a href="https://blog.kine.cz/posts/bcdevelopmentserie-02b/">Business Central Development Serie - Part 2b: AI for BC Development — The Knowledge Gap That Ships to Production</a></h2>
+    
+    
+      <p>Using AI to vibe-code Business Central extensions is easy. Shipping something that doesn&#39;t break your customer&#39;s ERP is not. This article is about the gap between the two.</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2026-03-31 00:00:00 &#43;0100 &#43;0100">March 31, 2026</time>
+    <p>Kamil Sacek</p>
+    <p>17-Minute Read</p>
+  </div>
+</header>
+
+      <div id="socnet-share">
+        
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Business%20Central%20Development%20Serie%20-%20Part%202b%3a%20AI%20for%20BC%20Development%20%e2%80%94%20The%20Knowledge%20Gap%20That%20Ships%20to%20Production&amp;url=https%3a%2f%2fblog.kine.cz%2fposts%2fbcdevelopmentserie-02b%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fblog.kine.cz%2fposts%2fbcdevelopmentserie-02b%2f&amp;title=Business%20Central%20Development%20Serie%20-%20Part%202b%3a%20AI%20for%20BC%20Development%20%e2%80%94%20The%20Knowledge%20Gap%20That%20Ships%20to%20Production" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Kamil%20Sacek&amp;body=https%3a%2f%2fblog.kine.cz%2fposts%2fbcdevelopmentserie-02b%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+      </div>
+      <div class="content">
+        <a href="https://blog.kine.cz/posts/bcdevelopmentserie-02b/" class="image" style="--bg-image: url('/assets/BCDevSerie/BCDevSeriePart02b.svg');">
+    <img class="" src="https://blog.kine.cz/assets/BCDevSerie/BCDevSeriePart02b.svg" alt="Business Central Development Serie - Part 2b: AI for BC Development — The Knowledge Gap That Ships to Production">
+  </a>
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-story-that-started-this-article">The story that started this article</a></li>
+    <li><a href="#the-illusion-of-working-code">The illusion of working code</a>
+      <ul>
+        <li><a href="#direct-field-assignment-instead-of-validate">Direct field assignment instead of Validate</a></li>
+        <li><a href="#logic-in-onaftergetrecord-on-a-page">Logic in <code>OnAfterGetRecord</code> on a page</a></li>
+        <li><a href="#filtering-on-a-field-without-a-key">Filtering on a field without a key</a></li>
+      </ul>
+    </li>
+    <li><a href="#standard-bc-libraries-ai-reimplements-you-pay-the-price">Standard BC libraries: AI reimplements, you pay the price</a>
+      <ul>
+        <li><a href="#item-tracking">Item Tracking</a></li>
+        <li><a href="#json-handling">JSON handling</a></li>
+        <li><a href="#the-general-principle">The general principle</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-you-need-to-know-to-validate-ai-output">What you need to know to validate AI output</a>
+      <ul>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#performance">Performance</a></li>
+        <li><a href="#standard-bc-processes-and-libraries">Standard BC processes and libraries</a></li>
+        <li><a href="#al-object-design">AL object design</a></li>
+        <li><a href="#installupgrade-code">Install/Upgrade code</a></li>
+        <li><a href="#locking-and-concurrency">Locking and concurrency</a></li>
+        <li><a href="#testing">Testing</a></li>
+        <li><a href="#cicd-and-source-control">CI/CD and source control</a></li>
+        <li><a href="#security-and-permissions">Security and permissions</a></li>
+        <li><a href="#telemetry-and-error-handling">Telemetry and error handling</a></li>
+        <li><a href="#api-consumption-and-external-integrations">API consumption and external integrations</a></li>
+        <li><a href="#localization">Localization</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-gate-should-be-at-the-input-not-the-output">The gate should be at the input, not the output</a></li>
+    <li><a href="#it-is-not-a-one-person-job">It is not a one-person job</a></li>
+    <li><a href="#when-is-it-acceptable">When is it acceptable?</a></li>
+    <li><a href="#self-assessment-are-you-ready">Self-assessment: are you ready?</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+        
+        <blockquote>
+<p><em>&ldquo;We are drowning not in lies — but in plausible truths.&rdquo;</em></p>
+</blockquote>
+<p>This article is the companion to <a href="https://blog.kine.cz/posts/bcdevelopmentserie-02/">Part 2</a> of this serie. Part 2 explains <em>how</em> to use AI tools for Business Central development — the tools, the workflow, the guidelines. This article is about something that must come before all of that: <strong>whether you are ready to use AI for BC development responsibly.</strong> And specifically — what you need to know to validate what AI produces, because AI will not validate itself.</p>
+<h2 id="the-story-that-started-this-article">The story that started this article</h2>
+<p>I recently visited a customer&rsquo;s production environment and checked installed extensions. Eight small Business Central extensions, all AI-generated, all in production. Not in test environment. Just only in production.</p>
+<p><em>&ldquo;It works&rdquo;</em>, they would said. And it did. Everything looked fine. Transactions were posting, data was flowing, users were happy.</p>
+<p>Then I looked at the code.</p>
+<p>Every single extension had at least one silent killer. Missing <code>Validate</code> calls — field values assigned directly, skipping business logic, trigger chains, recalculations, and half of the things that make Business Central work the way it does. Filtering on fields without keys. Logic placed in <code>OnAfterGetRecord</code> triggers on pages — a classic performance and correctness trap. Eight extensions, eight sets of problems, all invisible until the day a specific combination of data, load, or process would expose them.</p>
+<p>The scary part? The AI produced code that compiles perfectly. It passes the basic code analysis. It works in demos. It even handles the happy path in production — until it doesn&rsquo;t.</p>
+<h2 id="the-illusion-of-working-code">The illusion of working code</h2>
+<p>AI does not lie to you. It produces code that is <em>plausible</em>. It compiles. It follows the syntax. It handles the pattern correctly in most cases. The problem is the remaining cases — and in Business Central, those cases are where your customer&rsquo;s financial data lives.</p>
+<p>There is a specific trap in BC development that AI makes much more dangerous: <strong>code that looks correct, compiles, and works — until it doesn&rsquo;t.</strong></p>
+<p>In most development environments, a bug surfaces quickly. Wrong output, crash, test failure. In Business Central, the worst bugs are silent. They do not crash. They silently skip business logic. They silently corrupt ledger entries. They silently create performance problems that only appear under real data volume. And to fix them means much bigger cost than cost of correct development.</p>
+<p>Here are three examples from real code — the kind of code AI can produce when it doesn&rsquo;t fully understand Business Central&rsquo;s programming model:</p>
+<h3 id="direct-field-assignment-instead-of-validate">Direct field assignment instead of Validate</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-al" data-lang="al"><span style="display:flex;"><span>SalesLine<span style="color:#f92672">.</span>&#34;Unit Price&#34; <span style="color:#f92672">:=</span> NewPrice;
+</span></span><span style="display:flex;"><span>SalesLine<span style="color:#f92672">.</span><span style="color:#66d9ef">Modify</span><span style="color:#f92672">()</span>;
+</span></span></code></pre></div><p>This looks fine. It is not. The <code>Validate</code> trigger for <code>Unit Price</code> on Sales Line calculates discounts, line amount, VAT, and updates a chain of related fields. By assigning directly, you skip all of that. The price changes. Nothing else does. The line total is wrong. VAT is wrong. The order looks correct until it posts — and even then, the ledger entries may be wrong in ways that are hard to trace later.</p>
+<p>The correct code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-al" data-lang="al"><span style="display:flex;"><span>SalesLine<span style="color:#f92672">.</span>Validate<span style="color:#f92672">(</span>&#34;Unit Price&#34;, NewPrice<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>SalesLine<span style="color:#f92672">.</span><span style="color:#66d9ef">Modify</span><span style="color:#f92672">(</span>true<span style="color:#f92672">)</span>;
+</span></span></code></pre></div><p>AI can produce the correct version. It can also produce the wrong version, and it will not tell you which one it chose or why. Do you know enough to check every field assignment in the generated code?</p>
+<h3 id="logic-in-onaftergetrecord-on-a-page">Logic in <code>OnAfterGetRecord</code> on a page</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-al" data-lang="al"><span style="display:flex;"><span><span style="color:#66d9ef">trigger</span> OnAfterGetRecord<span style="color:#f92672">()
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>    Rec<span style="color:#f92672">.</span>&#34;Total Cost&#34; <span style="color:#f92672">:=</span> Rec<span style="color:#f92672">.</span>&#34;Material Cost&#34; + Rec<span style="color:#f92672">.</span>&#34;Service Cost&#34;;
+</span></span><span style="display:flex;"><span>    Rec<span style="color:#f92672">.</span><span style="color:#66d9ef">Modify</span><span style="color:#f92672">()</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>;
+</span></span></code></pre></div><p><code>OnAfterGetRecord</code> fires for every record shown in a list. On a page showing 50 Items, this executes 50 database queries — one per Item, every time you scroll, every time the page refreshes. On a customer with 100,000 Items, this is a performance disaster. The correct approach is to update the Total Cost when Material or Service cost changes.</p>
+<h3 id="filtering-on-a-field-without-a-key">Filtering on a field without a key</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-al" data-lang="al"><span style="display:flex;"><span>SalesLine<span style="color:#f92672">.</span>SetRange<span style="color:#f92672">(</span>&#34;Requested Delivery Date&#34;, StartDate, EndDate<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>SalesLine<span style="color:#f92672">.</span>FindSet<span style="color:#f92672">()</span>;
+</span></span></code></pre></div><p>This works. On a table with 100 rows it works fine. On a table with 500,000 rows it performs a full table scan on every execution. Business Central will not throw an error. The user will just experience the system as <em>&ldquo;slow&rdquo;</em>. Or it works &ldquo;fast enough&rdquo; but the load on the SQL backend is so high that other processes will struggle. A key on <code>Requested Delivery Date</code> (or a composite key including it) would turn this into an indexed lookup. AI does not automatically add keys when it adds filters. You have to know to check.</p>
+<p>These three examples share one property: <strong>they are not bugs AI will tell you about</strong>. They pass compilation. They pass basic testing. They are invisible without Business Central domain knowledge.</p>
+<h2 id="standard-bc-libraries-ai-reimplements-you-pay-the-price">Standard BC libraries: AI reimplements, you pay the price</h2>
+<p>Business Central&rsquo;s base application contains years of accumulated business logic. Not just functionality — but <em>correct</em> functionality. Tested against edge cases in real customer environments, updated with each major release, aligned with tax laws, warehouse flows, posting chains, and ledger integrity rules. When AI doesn&rsquo;t know this logic exists, it reimplements it. When it reimplements it, it gets it partially right. And partially right in an ERP is often worse than wrong.</p>
+<h3 id="item-tracking">Item Tracking</h3>
+<p>If you ask AI to implement a feature that involves items with serial or lot number tracking, and it doesn&rsquo;t have access to the base app source or sufficient context, it can create <code>Reservation Entry</code> records directly. The code will look reasonable. It will even work — as long as nobody tries to post a shipment, run availability checks, or transfer the items. The moment any standard posting routine touches those entries, it will either fail with a cryptic error or silently corrupt the item tracking state. Or it will work in all these processes, until someone starts to use Reservations.</p>
+<p>The correct approach is to use standard codeunits and the standard item tracking infrastructure. These exist precisely to handle the complex interactions between reservation entries, tracking specifications, warehouse entries, and ledger entries. They are not optional shortcuts. They are the contract that keeps item tracking consistent across the system.</p>
+<h3 id="json-handling">JSON handling</h3>
+<p>Business Central has <code>JsonObject</code>, <code>JsonArray</code>, <code>JsonToken</code>, <code>JsonValue</code> — a complete built-in JSON library. AI can sometimes build JSON by string concatenation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-al" data-lang="al"><span style="display:flex;"><span>JsonString <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#39;{&#34;name&#34;: &#34;&#39;</span> + CustomerName + <span style="color:#e6db74">&#39;&#34;, &#34;no&#34;: &#34;&#39;</span> + CustomerNo + <span style="color:#e6db74">&#39;&#34;}&#39;</span>;
+</span></span></code></pre></div><p>This is not just inelegant — it is a bug waiting to happen the moment a customer name contains a quote, a backslash, or a Unicode character. The built-in library handles all of this correctly and is the expected pattern. Do you know enough to verify every place JSON is constructed in the generated code?</p>
+<h3 id="the-general-principle">The general principle</h3>
+<p>Every time AI writes a function that touches a standard BC process — posting, item tracking, number assignment, approval workflows, warehouse management, manufacturing planning — you need to ask: <em>&ldquo;Is this calling the standard BC infrastructure or reimplementing it?&rdquo;</em> If it is reimplementing it, it is wrong. Not because the logic is necessarily incorrect at that moment, but because it will diverge from the standard behavior over time as BC evolves, and it will not integrate correctly with other extensions that rely on the standard events and interfaces. And to be able to answer this quesiton, you need to know what exists in the &ldquo;standard BC&rdquo;.</p>
+<h2 id="what-you-need-to-know-to-validate-ai-output">What you need to know to validate AI output</h2>
+<p>Vibe coding Business Central extensions responsibly is not a one-dimensional skill. It requires knowing enough across multiple domains to catch what AI gets wrong in each of them. The list below is not exhaustive — Business Central is a complex platform and there will always be areas not covered here. But it gives you an honest picture of the breadth of knowledge required.</p>
+<h3 id="architecture">Architecture</h3>
+<p>Do you know when to create a new table versus extend an existing one? When to create new application and when midify existing one? If you don&rsquo;t, AI will make these decisions for you — and it will make them based on the simplest interpretation of the request, not the best long-term design. The <a href="https://blog.kine.cz/posts/sali_part1/">SaLi architecture articles</a> describe the principles that apply directly here, and you need to validate AI output against them.</p>
+<h3 id="performance">Performance</h3>
+<ul>
+<li>Are all filters applied before <code>FindSet()</code>?</li>
+<li>Are <code>SetLoadFields()</code> used to load only necessary fields?</li>
+<li>Are keys defined for every field (or field combination) used in <code>SetRange</code>/<code>SetFilter</code>?</li>
+<li>Is <code>Query</code> used instead of nested record loops — the &ldquo;loopy-loopy&rdquo; code that looks fine and kills performance?</li>
+<li>Are page triggers (<code>OnAfterGetRecord</code>, <code>OnAfterGetCurrRecord</code>) free of database operations that run per row?</li>
+<li>Is <code>ReadIsolation</code> set correctly to avoid unnecessary locks on read operations?</li>
+</ul>
+<p>These are not advanced topics (and definitely not complete list). They are table stakes for BC development. If you cannot check these in AI-generated code, you will deliver performance problems.</p>
+<h3 id="standard-bc-processes-and-libraries">Standard BC processes and libraries</h3>
+<p>As discussed above: can you recognize when AI is reimplementing something that already exists? Do you know the key codeunits — <code>ItemTrackingManagement</code>, <code>ReservationEngineMgt</code>, <code>NoSeriesMgt</code>, <code>WhseManagement</code>, <code>GenJnlPostLine</code>, <code>SalesPost</code>, <code>PurchPost</code>? Do you know which process to call and when? If not, AI can reinvent them — incorrectly.</p>
+<h3 id="al-object-design">AL object design</h3>
+<p>Field numbering, object numbering, <code>ObsoleteState</code> handling, correct use of <code>TableRelation</code>, <code>CalcFormula</code>, FlowField versus regular fields — these details are invisible in demos but critical for upgrade compatibility and long-term maintainability.</p>
+<h3 id="installupgrade-code">Install/Upgrade code</h3>
+<p>In many cases you need to think about existing data or new fields/tables data when installing the application. Are you able to validate, if AI correctly created upgrade code to move data when you are obsoleting some field replaced with new one?</p>
+<h3 id="locking-and-concurrency">Locking and concurrency</h3>
+<p>Deadlocks in Business Central are not rare. They happen when multiple users or jobs access the same records in conflicting order or with incompatible lock modes. AI has no understanding of your customer&rsquo;s concurrent usage patterns. <code>ReadIsolation::ReadUncommitted</code> on reporting queries, <code>LockTable()</code> placement, <code>Commit()</code> placement — these require understanding of the transaction model that AI simply does not have.</p>
+<h3 id="testing">Testing</h3>
+<p>Can you tell if the generated tests actually test something meaningful? Are they isolated? Do they set up proper test data? Do they cover the error paths, not just the happy path? AI can write test codeunits that compile and run green while testing almost nothing useful. If you cannot evaluate test quality, you cannot trust the test coverage.</p>
+<p>And to be direct: <strong>creating an extension without automated tests is a road to hell for the future</strong>. It is not a time-saving shortcut. It is debt that compounds with every future change, every BC version upgrade, every new developer who touches the code. AI can write the tests — but someone needs to validate that the tests are actually testing the right things.</p>
+<h3 id="cicd-and-source-control">CI/CD and source control</h3>
+<p>If you do not have a build pipeline that compiles, runs tests, and enforces code analysis on every commit — AI-generated code is going straight to production with no gate. AI amplifies this problem: it can produce 10x more code, which means 10x more unchecked code in production if there is no automated gate. What you will do when the new version is not working? How you will fall back to previous version?</p>
+<h3 id="security-and-permissions">Security and permissions</h3>
+<p>Permission sets must be correct, minimal, and explicit. <code>InherentPermissions</code> must be used appropriately. Fields containing sensitive data must have <code>DataClassification</code> set correctly. AI can produce over-permissive permission sets and ignore data classification. Neither is acceptable in a production extension.</p>
+<h3 id="telemetry-and-error-handling">Telemetry and error handling</h3>
+<p>Proper <code>ErrorInfo</code> objects with action callbacks, <code>TryFunction</code> patterns, telemetry signals for key operations — these are what separate professional extensions from &ldquo;customizations&rdquo;.</p>
+<p>A few specific things AI can get wrong here:</p>
+<ul>
+<li>Using bare <code>Error()</code> calls instead of structured <code>ErrorInfo</code> with user-actionable messages where appropriate</li>
+<li>Overusing <code>TryFunction</code> as a shortcut for error handling, masking actual errors instead of handling them</li>
+<li>Adding no telemetry at all — leaving you with nothing to debug when something breaks in production</li>
+<li>Generating telemetry signals that flood Application Insights with unnecessary, non-actionable events — which not only obscures real signals but directly increases your Application Insights costs</li>
+</ul>
+<p>Good telemetry is deliberate. It signals meaningful state changes and errors. It is not a log dump.</p>
+<h3 id="api-consumption-and-external-integrations">API consumption and external integrations</h3>
+<p>When your extension calls external APIs, the code needs correct <code>HttpClient</code> usage, proper authentication (OAuth, API keys stored securely — not hardcoded), retry logic, timeout handling, bound actions where appropriate, and correct error handling for HTTP failures. AI can hardcode URLs and credentials, omit retry logic, and not handle HTTP error responses correctly. In the best case this is a maintenance problem. In the worst case it is a security vulnerability. And calling external API as part of posting? No problem for AI! But problem for end-users&hellip;</p>
+<h3 id="localization">Localization</h3>
+<p>Captions must be translatable. Reports must use AL translation files. Missing <code>Caption</code> properties, hardcoded string values, non-translatable labels — these are invisible until you deploy the extension in a language other than English. This is a particular trap for developers whose mother language is not English: AI will often generate strings in the developer&rsquo;s native language, producing an extension that is effectively localized to the wrong language from the start.</p>
+<h2 id="the-gate-should-be-at-the-input-not-the-output">The gate should be at the input, not the output</h2>
+<p>There is an important reframing of the validation problem: <strong>trying to catch AI mistakes in code review is already too late and too expensive.</strong> The right place to enforce quality is <em>before the agent writes a single line of code</em> — in the instructions, guidelines, guardrails, and skills you give it.</p>
+<p>A plain AI agent with no rules is the highest-risk configuration. And it is the most common one. Someone opens GitHub Copilot Agent or Claude Code, types a requirement, and accepts whatever comes out.</p>
+<p>The correct approach — described in detail in <a href="https://blog.kine.cz/posts/bcdevelopmentserie-02/">Part 2</a> — is to encode your quality standards into the agent&rsquo;s instructions: naming conventions, architecture rules, performance patterns, error handling requirements, permission set structure, event publishing expectations. When the agent follows these rules from the start, the output quality is fundamentally different from what a plain agent produces.</p>
+<p>This does not eliminate the need for review. But it shifts the review from &ldquo;find all the problems&rdquo; to &ldquo;verify the agent followed the rules&rdquo; — a much narrower and more tractable task.</p>
+<p>And create such an AI agent system is not simple job.</p>
+<h2 id="it-is-not-a-one-person-job">It is not a one-person job</h2>
+<p>Look at the validation dimensions above. Architecture. Performance. Standard BC processes. Events. Object design. Locking. Testing. CI/CD. Security. Upgrades. Telemetry. API patterns. Localization. Each of them requires real experience to validate correctly.</p>
+<p>No single person is expert in all of them. Not even the most experienced BC developer covers every dimension equally well.</p>
+<p>When you use AI to write code, you are implicitly committing to validate its output across all relevant dimensions before shipping. If there are gaps in your knowledge — and there will be — those gaps become risks. And unlike a junior developer who writes code slowly and predictably, AI produces large amounts of code quickly. The surface area for validation grows faster than most people realize.</p>
+<p>And here is a trend already visible in the market: the explosion of <strong>&ldquo;vibe-coding cleanup experts&rdquo;</strong> — developers whose primary work is fixing AI-generated extensions/applications that shipped to production without proper validation. It is a new job category created entirely by the gap between what AI produces and what production environments require. Do not create that work for someone else. Or for yourself.</p>
+<h2 id="when-is-it-acceptable">When is it acceptable?</h2>
+<p>This article is not saying <em>never use AI for Business Central development</em>. It is saying: know what you are committing to when you do.</p>
+<p><strong>Proof of Concept and learning</strong></p>
+<p>If you are building a PoC to demonstrate a concept to a customer, or to explore feasibility, or to learn — use AI freely. The code is not going to production. The goal is speed and exploration. Just be transparent about what it is and do not let a PoC silently become a production system (it happens more often than anyone admits).</p>
+<p><strong>Experienced teams with proper review and guardrails</strong></p>
+<p>If your team has the coverage to validate AI output — the architecture expertise, the BC domain knowledge, the automated testing infrastructure, the CI/CD pipeline, and the agent instructions that encode your quality standards — then AI is a powerful productivity multiplier. This is the right way to use it.</p>
+<p><strong>Isolated, well-defined, low-risk changes</strong></p>
+<p>Adding a caption, creating a simple report extension, adding a field to a page with no business logic — these are low-risk tasks where AI produces good results and validation is straightforward. The risk is proportional to the complexity of BC business logic involved.</p>
+<p><strong>What is not acceptable</strong></p>
+<ul>
+<li>Code going to production without review by someone who understands BC development</li>
+<li>Code involving posting, item tracking, warehouse management, approval workflows, or any other complex BC process without validation by someone who knows those processes deeply</li>
+<li>Extensions built without any automated tests, especially for anything touching financial data</li>
+<li>Any code where the author cannot explain what every generated function does and why</li>
+<li>Using a plain AI agent with no rules, instructions, or guardrails and treating its output as production-ready</li>
+</ul>
+<h2 id="self-assessment-are-you-ready">Self-assessment: are you ready?</h2>
+<p>Before you use AI to generate Business Central extensions for production, answer these questions honestly:</p>
+<ol>
+<li>Can you look at an AL codeunit and identify missing <code>Validate</code> calls?</li>
+<li>Do you know which standard BC codeunits should be called for item tracking, number series, posting, and warehouse management — and can you spot when AI reimplements them instead?</li>
+<li>Can you design (and validate) the correct table keys for the filtering patterns used in the extension?</li>
+<li>Can you identify page trigger misuse that causes per-row database queries?</li>
+<li>Do you know when <code>ReadIsolation</code> should be set and what the consequences of getting it wrong are?</li>
+<li>Can you recognize &ldquo;loopy-loopy&rdquo; code that should be rewritten as a Query?</li>
+<li>Can you evaluate whether a test codeunit actually tests something meaningful?</li>
+<li>Do you have a CI/CD pipeline that blocks merges on test failures or code analysis warnings?</li>
+<li>Do you know how to use BC&rsquo;s permission model correctly — inherent permissions, data classification, minimal privilege?</li>
+<li>Can you verify that JSON construction, API calls, and external integrations are implemented without hardcoded credentials and with proper error handling?</li>
+<li>Do you know what BC&rsquo;s deprecation notices mean?</li>
+<li>Have you encoded your quality standards as instructions and guardrails for your AI agent — before it writes the first line?</li>
+</ol>
+<p>The answers are for you. There is no passing score published here — you know better than anyone else where your gaps are. The goal of this list is to make those gaps visible, not to judge.</p>
+<p>There is no shame in having gaps. Everyone does. The danger is not having them — it is not knowing you have them.</p>
+<h2 id="summary">Summary</h2>
+<p>Part 2 of this serie explained <em>how</em> to use AI for Business Central development: the tools, the workflow, the guidelines, the prompting techniques. This article is about something that must come first: <strong>the honest self-assessment of whether you are ready to validate what AI produces.</strong></p>
+<p>AI is not a shortcut past expertise. It is an amplifier of expertise. In the hands of an experienced BC developer with proper guardrails and a proper process, it is a genuine productivity multiplier. In the hands of someone who doesn&rsquo;t yet have the domain knowledge to validate the output, it is a fast way to produce plausible-looking extensions full of silent problems.</p>
+<p><em>&ldquo;We are drowning not in lies — but in plausible truths.&rdquo;</em></p>
+<p>The eight extensions running in production — compiling, working, apparently fine — were plausible truths. Every one of them was a risk. None of them were malicious. The AI produced what it was asked for. The problem was that nobody had the knowledge to check whether what was asked for was what was actually needed — and no guardrails were in place to guide the agent toward what was correct.</p>
+<p>Business Central is not a generic platform where mistakes are cheap. It is an ERP system where your code runs inside your customer&rsquo;s financial processes. Mistakes have real consequences — wrong ledger entries, corrupted inventory, performance problems that affect entire companies during peak season. The standard of validation required is high, and it does not go down just because AI wrote the first draft.</p>
+<p><strong>The gate must be at the input.</strong> Encode your rules before the agent writes. Build your team&rsquo;s coverage so no validation dimension goes unchecked. Set up the infrastructure that catches problems before they reach production.</p>
+<p>And if you are not there yet — be honest about it. Use AI for learning and PoC. Build your expertise. Find someone who can review your work with the knowledge this article describes.</p>
+<p>The shortcut is not vibe coding. The shortcut is learning faster — with AI as your teacher and a real expert reviewing your work until you no longer need one.</p>
+<p>Do not hesitate to contact me if you have questions, disagreements, or experiences to share. This is a topic the whole BC community is working through together, and the discussion is more valuable than any single article.</p>
+
+      </div>
+      <footer>
+        <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/architecture/">Architecture</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/categories/development/">Development</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/business-central/">Business Central</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/ai/">AI</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/architecture/">Architecture</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/development/">Development</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/best-practices/">Best Practices</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/al/">AL</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/pte/">PTE</a></li>
+        
+          <li><a class="article-terms-link" href="https://blog.kine.cz/tags/appsource/">AppSource</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+      </footer>
+    </div>
+    
+      
+<div class='post'>
+<section id="comments" class='comments-container'>
+    
+    <h3 class="title"><a href="#comments">Comments</a></h3>
+    <section class="staticman-comments post-comments">
+        
+        
+        
+
+        
+        
+        
+        
+        
+
+        <form id="comment-form" class="new-comment" method="post">
+            
+            <p>Be the first to leave a comment! 🎉</p>
+            
+            <h3 class="prompt">Say something</h3>
+            
+            <h3 class='reply-notice hidden'>
+              <span class='reply-name'></span>
+              <a class='reply-close-btn button'><i class='fas fa-times'></i></a>
+            </h3>
+ 
+            <input type='hidden' name='fields[replyName]' value=''>
+            <input type="hidden" name="options[slug]" value="BCDevelopmentSerie-02b">
+            <input type="text" name="fields[name]" class="post-comment-field" placeholder="Name *" required />
+            <input type="email" name="fields[email]" class="post-comment-field"
+                placeholder="Email address (will not be public) *" required />
+            <input type='text' name='fields[website]' class="post-comment-field"
+                placeholder='Your Website (include https://)'>
+            <input type="hidden" id="comment-parent" name="fields[reply_to]" value="">
+            <textarea name="fields[comment]" class="post-comment-field" placeholder="Comment (markdown is accepted) *"
+                required rows="10"></textarea>
+            
+            
+            
+            <input hidden name='options[reCaptcha][siteKey]' value='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'>
+            <input hidden name='options[reCaptcha][secret]' value='FdlTy3aVy1SZfJ3h9aKAOgqeyZIFjV6Tjk3yN9BXxz5WB6FcmGlafyM&#43;hvBpDzOTstLDgQvBnWIn0T96nMLzI6bUyJL50tfeMuVpkYZhS9VkOhmPq7YEFmZCO7hVYkQkE4hh8JvVtyAmI9WKE5gOHBnRIrLWAFNLz7kUJRu7riOJtj8mNNMlpnfANVaiPQZ6xFykxG2X8RnJRW4dMV/335SiI5QcgB7fZzm0ntYZc1WsnYOUegqgw1z2ttJdB4J0xclKFcowrgKvq1LPn0P7H47EriVwt0QHz9NfK65CA6nJPQ8S487TI635IeXJ8HLOJkYeQnIyMeQZGKavlqDFFA=='>
+            <div class='g-recaptcha' data-sitekey='6LcsWkMdAAAAAD27lvZOIBkH4TSll08hMxHHLFxs'></div>
+            
+            
+            
+            <div class='submit-notice'>
+                <strong class='submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+                <strong class='submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission. Please make sure all required fields have been completed and try again.</strong>
+            </div>
+
+            
+            <button type='button' id="comment-form-submit" class='button'>Submit</button>
+            <button type='button' id="comment-form-submitted" class='hidden button' disabled>Submitted</button>
+            <button type='reset' id="comment-form-reset" class='button'>Reset</button>
+
+        </form>
+    </section>
+
+    
+</section>
+</div>
+
+    
+  </article>
+  <div class="pagination">
+    
+    
+      <a href="https://blog.kine.cz/posts/bcdevelopmentserie-02/" class="button right"><span>Business Central Development Serie - Part 2: Using AI for BC development</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/bcdevelopmentserie-02b/" class="image" style="--bg-image: url('/assets/BCDevSerie/BCDevSeriePart02b.svg');">
+    <img class="" src="https://blog.kine.cz/assets/BCDevSerie/BCDevSeriePart02b.svg" alt="Business Central Development Serie - Part 2b: AI for BC Development — The Knowledge Gap That Ships to Production">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/bcdevelopmentserie-02b/">Business Central Development Serie - Part 2b: AI for BC Development — The Knowledge Gap That Ships to Production</a></h2>
+          <time class="published" datetime="2026-03-31 00:00:00 &#43;0100 &#43;0100">March 31, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/bcdevelopmentserie-02/" class="image" style="--bg-image: url('/assets/BCDevSerie/BCDevSeriePart02.svg');">
+    <img class="" src="https://blog.kine.cz/assets/BCDevSerie/BCDevSeriePart02.svg" alt="Business Central Development Serie - Part 2: Using AI for BC Development">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/bcdevelopmentserie-02/">Business Central Development Serie - Part 2: Using AI for BC development</a></h2>
+          <time class="published" datetime="2026-03-11 00:00:00 &#43;0100 &#43;0100">March 11, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/bcdevelopmentserie-01/" class="image" style="--bg-image: url('/assets/BCDevSerie/BCDevSerieIntro.svg');">
+    <img class="" src="https://blog.kine.cz/assets/BCDevSerie/BCDevSerieIntro.svg" alt="Business Central Development Serie - best practices and patterns for BC extension development">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/bcdevelopmentserie-01/">Business Central Development Serie - Part 1: Introduction</a></h2>
+          <time class="published" datetime="2026-03-04 00:00:00 &#43;0100 &#43;0100">March 4, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/azureblobstoragewithserviceprincipalinal/">Accessing Azure Blob Storage with Service Principal from Business Central AL</a></h2>
+          <time class="published" datetime="2024-08-26 14:00:00 &#43;0200 &#43;0200">August 26, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="https://blog.kine.cz/posts/paketforbc/" class="image" style="--bg-image: url('/assets/NuGet/PaketLogo.png');">
+    <img class="" src="https://blog.kine.cz/assets/NuGet/PaketLogo.png" alt="Paket Logo">
+  </a>
+        <header>
+          <h2><a href="https://blog.kine.cz/posts/paketforbc/">Using Paket CLI for Business Central</a></h2>
+          <time class="published" datetime="2024-07-15 15:00:00 &#43;0200 &#43;0200">July 15, 2024</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="https://blog.kine.cz/blog" class="button">See More</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="https://blog.kine.cz/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/business-central/">business-central<span class="count">14</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/architecture/">architecture<span class="count">8</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/al/">al<span class="count">5</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/pte/">pte<span class="count">5</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/development/">development<span class="count">3</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/appsource/">appsource<span class="count">2</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/nuget/">nuget<span class="count">2</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/administration/">administration<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/azure/">azure<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/general/">general<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/infrastructure/">infrastructure<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/nvrappdevops/">nvrappdevops<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/onprem/">onprem<span class="count">1</span></a>
+          
+          <li>
+              <a href="https://blog.kine.cz/categories/powershell/">powershell<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I have more than 35 years of experience with SW development and everything around IT. I have got my first MVP award in 2005.</p>
+      <footer>
+        <a href="https://blog.kine.cz/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/kine" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.linkedin.com/in/kamil-sacek-8830661" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/MVPKine" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//www.buymeacoffee.com/kine" target="_blank" rel="noopener" title="BuyMeACoffee" class="fas fa-coffee"></a></li>
+<li><a href="mailto:kamil.sacek@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+  
+  <p class="copyright">
+    © 2026 Kine&#39;s info
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.101.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="https://blog.kine.cz/js/highlight.js"></script>
+    
+    <script>hljs.highlightAll();</script><script src="https://blog.kine.cz/js/bundle.min.d74e45d6a7031b09ff76bb1bfcee45240414918cdbec910300817dd7ec6e4e5a.js" integrity="sha256-105F1qcDGwn/drsb/O5FJAQUkYzb7JEDAIF91&#43;xuTlo="></script>
+    <script src="https://blog.kine.cz/js/add-on.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-92839335-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>
