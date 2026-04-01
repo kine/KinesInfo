@@ -317,12 +317,12 @@
 <h2 id="what-you-need-to-know-to-validate-ai-output">What you need to know to validate AI output</h2>
 <p>Vibe coding Business Central extensions responsibly is not a one-dimensional skill. It requires knowing enough across multiple domains to catch what AI gets wrong in each of them. The list below is not exhaustive — Business Central is a complex platform and there will always be areas not covered here. But it gives you an honest picture of the breadth of knowledge required.</p>
 <h3 id="architecture">Architecture</h3>
-<p>Do you know when to create a new table versus extend an existing one? When to create new application and when midify existing one? If you don&rsquo;t, AI will make these decisions for you — and it will make them based on the simplest interpretation of the request, not the best long-term design. The <a href="https://blog.kine.cz/posts/sali_part1/">SaLi architecture articles</a> describe the principles that apply directly here, and you need to validate AI output against them.</p>
+<p>Do you know when to create a new table versus extend an existing one? When to create new application and when modify existing one? If you don&rsquo;t, AI will make these decisions for you — and it will make them based on the simplest interpretation of the request, not the best long-term design. The <a href="https://blog.kine.cz/posts/sali_part1/">SaLi architecture articles</a> describe some principles that apply directly here, and you need to validate AI output against them. And do not forget about SOLID principles.</p>
 <h3 id="performance">Performance</h3>
 <ul>
 <li>Are all filters applied before <code>FindSet()</code>?</li>
 <li>Are <code>SetLoadFields()</code> used to load only necessary fields?</li>
-<li>Are keys defined for every field (or field combination) used in <code>SetRange</code>/<code>SetFilter</code>?</li>
+<li>Are keys defined for every field (or field combination) used in <code>SetRange</code>/<code>SetFilter</code> to make SQL happy?</li>
 <li>Is <code>Query</code> used instead of nested record loops — the &ldquo;loopy-loopy&rdquo; code that looks fine and kills performance?</li>
 <li>Are page triggers (<code>OnAfterGetRecord</code>, <code>OnAfterGetCurrRecord</code>) free of database operations that run per row?</li>
 <li>Is <code>ReadIsolation</code> set correctly to avoid unnecessary locks on read operations?</li>
@@ -361,26 +361,27 @@
 <p>There is an important reframing of the validation problem: <strong>trying to catch AI mistakes in code review is already too late and too expensive.</strong> The right place to enforce quality is <em>before the agent writes a single line of code</em> — in the instructions, guidelines, guardrails, and skills you give it.</p>
 <p>A plain AI agent with no rules is the highest-risk configuration. And it is the most common one. Someone opens GitHub Copilot Agent or Claude Code, types a requirement, and accepts whatever comes out.</p>
 <p>The correct approach — described in detail in <a href="https://blog.kine.cz/posts/bcdevelopmentserie-02/">Part 2</a> — is to encode your quality standards into the agent&rsquo;s instructions: naming conventions, architecture rules, performance patterns, error handling requirements, permission set structure, event publishing expectations. When the agent follows these rules from the start, the output quality is fundamentally different from what a plain agent produces.</p>
-<p>This does not eliminate the need for review. But it shifts the review from &ldquo;find all the problems&rdquo; to &ldquo;verify the agent followed the rules&rdquo; — a much narrower and more tractable task.</p>
+<p>This does not eliminate the need for review (to learn or from any other reason, if you need it). But it shifts the review from &ldquo;find all the problems&rdquo; to &ldquo;verify the agent followed the rules&rdquo; or &ldquo;haven&rsquo;t we forget some rule&rdquo; — a much narrower and more clear task.</p>
 <p>And create such an AI agent system is not simple job.</p>
 <h2 id="it-is-not-a-one-person-job">It is not a one-person job</h2>
 <p>Look at the validation dimensions above. Architecture. Performance. Standard BC processes. Events. Object design. Locking. Testing. CI/CD. Security. Upgrades. Telemetry. API patterns. Localization. Each of them requires real experience to validate correctly.</p>
 <p>No single person is expert in all of them. Not even the most experienced BC developer covers every dimension equally well.</p>
 <p>When you use AI to write code, you are implicitly committing to validate its output across all relevant dimensions before shipping. If there are gaps in your knowledge — and there will be — those gaps become risks. And unlike a junior developer who writes code slowly and predictably, AI produces large amounts of code quickly. The surface area for validation grows faster than most people realize.</p>
 <p>And here is a trend already visible in the market: the explosion of <strong>&ldquo;vibe-coding cleanup experts&rdquo;</strong> — developers whose primary work is fixing AI-generated extensions/applications that shipped to production without proper validation. It is a new job category created entirely by the gap between what AI produces and what production environments require. Do not create that work for someone else. Or for yourself.</p>
+<p>Solution? &ldquo;Replicate&rdquo; the team structure and knowledge into the AI Agent infrastructure. And this needs time and knowledge how to do that correctly. It needs maintenance as the models are evolving. It needs monitoring to ensure the agent continues to follow the rules as it writes code. It is not a &ldquo;set it and forget it&rdquo; system. Can you do that? Do you have the resources to do that? If not, you are not ready to use AI for production BC development.</p>
 <h2 id="when-is-it-acceptable">When is it acceptable?</h2>
 <p>This article is not saying <em>never use AI for Business Central development</em>. It is saying: know what you are committing to when you do.</p>
 <p><strong>Proof of Concept and learning</strong></p>
 <p>If you are building a PoC to demonstrate a concept to a customer, or to explore feasibility, or to learn — use AI freely. The code is not going to production. The goal is speed and exploration. Just be transparent about what it is and do not let a PoC silently become a production system (it happens more often than anyone admits).</p>
-<p><strong>Experienced teams with proper review and guardrails</strong></p>
-<p>If your team has the coverage to validate AI output — the architecture expertise, the BC domain knowledge, the automated testing infrastructure, the CI/CD pipeline, and the agent instructions that encode your quality standards — then AI is a powerful productivity multiplier. This is the right way to use it.</p>
+<p><strong>Experienced teams with proper rules and guardrails</strong></p>
+<p>If your team has the coverage to validate AI output (and to build the proper AI infrastructure) — the architecture expertise, the BC domain knowledge, the automated testing infrastructure, the CI/CD pipeline, and the agent instructions that encode your quality standards — then AI is a powerful productivity multiplier. This is the right way to use it.</p>
 <p><strong>Isolated, well-defined, low-risk changes</strong></p>
-<p>Adding a caption, creating a simple report extension, adding a field to a page with no business logic — these are low-risk tasks where AI produces good results and validation is straightforward. The risk is proportional to the complexity of BC business logic involved.</p>
+<p>Adding a caption, creating a simple report extension, adding a field to a page with no business logic — these are low-risk tasks where AI produces good results and validation is straightforward. The risk is proportional to the complexity of BC business logic involved. But still, even the simples case can be done wrongly. Are you able to validate that?</p>
 <p><strong>What is not acceptable</strong></p>
 <ul>
 <li>Code going to production without review by someone who understands BC development</li>
 <li>Code involving posting, item tracking, warehouse management, approval workflows, or any other complex BC process without validation by someone who knows those processes deeply</li>
-<li>Extensions built without any automated tests, especially for anything touching financial data</li>
+<li>Extensions built without any automated tests</li>
 <li>Any code where the author cannot explain what every generated function does and why</li>
 <li>Using a plain AI agent with no rules, instructions, or guardrails and treating its output as production-ready</li>
 </ul>
